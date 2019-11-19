@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="DailyRewards" customModuleProvider="target">
+            <connections>
+                <outlet property="iconLottieView" destination="ZvC-K1-jei" id="Weo-Wk-R6A"/>
+                <outlet property="signInButton" destination="TuD-y6-Phm" id="Or4-uz-sBF"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZvC-K1-jei" customClass="AnimationView" customModule="Lottie">
+                    <rect key="frame" x="137.5" y="283.5" width="100" height="100"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="ERi-N3-h4U"/>
+                        <constraint firstAttribute="height" constant="100" id="fZN-Uf-SWQ"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuD-y6-Phm" customClass="GIDSignInButton">
+                    <rect key="frame" x="67" y="447.5" width="241" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Hvh-RE-2U1"/>
+                        <constraint firstAttribute="width" secondItem="TuD-y6-Phm" secondAttribute="height" multiplier="241:50" id="nYI-9Q-2S1"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Rewards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ma8-6I-yAt">
+                    <rect key="frame" x="16" y="169.5" width="343" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="jsu-D3-Q6C"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="33"/>
+                    <color key="textColor" red="1" green="0.54831159114837646" blue="0.17238733172416687" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.13800060363013511" green="0.13800060363013511" blue="0.13800060363013511" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="TuD-y6-Phm" firstAttribute="top" secondItem="ZvC-K1-jei" secondAttribute="bottom" constant="64" id="1Re-oF-WL3"/>
+                <constraint firstItem="ZvC-K1-jei" firstAttribute="top" secondItem="Ma8-6I-yAt" secondAttribute="bottom" constant="64" id="LeT-ll-dAq"/>
+                <constraint firstItem="TuD-y6-Phm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Nhm-Hk-RM4"/>
+                <constraint firstItem="Ma8-6I-yAt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="WYc-dD-zhH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ma8-6I-yAt" secondAttribute="trailing" constant="16" id="frg-WM-UhE"/>
+                <constraint firstItem="ZvC-K1-jei" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pqm-Sk-mFC"/>
+                <constraint firstItem="ZvC-K1-jei" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="xk6-Yd-Qdm"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>

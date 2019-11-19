@@ -3,16 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF26DC5D8C16A58A99FD35CE /* Pods_DailyRewards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCAD6FE9D7AB2877647DC390 /* Pods_DailyRewards.framework */; };
 		CC531BBB237D838C006870EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC531BBA237D838C006870EF /* AppDelegate.swift */; };
-		CC531BBD237D838C006870EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC531BBC237D838C006870EF /* ViewController.swift */; };
-		CC531BC0237D838C006870EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC531BBE237D838C006870EF /* Main.storyboard */; };
 		CC531BC2237D838D006870EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC531BC1237D838D006870EF /* Assets.xcassets */; };
 		CC531BC5237D838D006870EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC531BC3237D838D006870EF /* LaunchScreen.storyboard */; };
 		CC531BD0237D838D006870EF /* DailyRewardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC531BCF237D838D006870EF /* DailyRewardsTests.swift */; };
+		CC531BDC237DB077006870EF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC531BDA237DB077006870EF /* LoginViewController.swift */; };
+		CC531BDD237DB077006870EF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC531BDB237DB077006870EF /* LoginViewController.xib */; };
+		CC531BE1237DB362006870EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC531BE0237DB362006870EF /* GoogleService-Info.plist */; };
+		CC531BE3237DBCD4006870EF /* IconLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = CC531BE2237DBCD4006870EF /* IconLottie.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +29,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		330214D1A0592BB321A1360B /* Pods-DailyRewards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyRewards.debug.xcconfig"; path = "Target Support Files/Pods-DailyRewards/Pods-DailyRewards.debug.xcconfig"; sourceTree = "<group>"; };
 		CC531BB7237D838C006870EF /* DailyRewards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyRewards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC531BBA237D838C006870EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CC531BBC237D838C006870EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CC531BBF237D838C006870EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC531BC1237D838D006870EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC531BC4237D838D006870EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC531BC6237D838D006870EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC531BCB237D838D006870EF /* DailyRewardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyRewardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC531BCF237D838D006870EF /* DailyRewardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRewardsTests.swift; sourceTree = "<group>"; };
 		CC531BD1237D838D006870EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC531BDA237DB077006870EF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CC531BDB237DB077006870EF /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		CC531BE0237DB362006870EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CC531BE2237DBCD4006870EF /* IconLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = IconLottie.json; sourceTree = "<group>"; };
+		FB185F9362793955DBBF3537 /* Pods-DailyRewards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyRewards.release.xcconfig"; path = "Target Support Files/Pods-DailyRewards/Pods-DailyRewards.release.xcconfig"; sourceTree = "<group>"; };
+		FCAD6FE9D7AB2877647DC390 /* Pods_DailyRewards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyRewards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF26DC5D8C16A58A99FD35CE /* Pods_DailyRewards.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +65,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52201F893D588E951935B3DD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				330214D1A0592BB321A1360B /* Pods-DailyRewards.debug.xcconfig */,
+				FB185F9362793955DBBF3537 /* Pods-DailyRewards.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C59F209D4327EBAC0740D873 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FCAD6FE9D7AB2877647DC390 /* Pods_DailyRewards.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CC531BAE237D838C006870EF = {
 			isa = PBXGroup;
 			children = (
 				CC531BB9237D838C006870EF /* DailyRewards */,
 				CC531BCE237D838D006870EF /* DailyRewardsTests */,
 				CC531BB8237D838C006870EF /* Products */,
+				52201F893D588E951935B3DD /* Pods */,
+				C59F209D4327EBAC0740D873 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,11 +105,12 @@
 		CC531BB9237D838C006870EF /* DailyRewards */ = {
 			isa = PBXGroup;
 			children = (
+				CC531BDF237DB352006870EF /* GoogleAnalytics */,
+				CC531BDE237DB07B006870EF /* Screen */,
 				CC531BBA237D838C006870EF /* AppDelegate.swift */,
-				CC531BBC237D838C006870EF /* ViewController.swift */,
-				CC531BBE237D838C006870EF /* Main.storyboard */,
 				CC531BC1237D838D006870EF /* Assets.xcassets */,
 				CC531BC3237D838D006870EF /* LaunchScreen.storyboard */,
+				CC531BE2237DBCD4006870EF /* IconLottie.json */,
 				CC531BC6237D838D006870EF /* Info.plist */,
 			);
 			path = DailyRewards;
@@ -96,6 +125,23 @@
 			path = DailyRewardsTests;
 			sourceTree = "<group>";
 		};
+		CC531BDE237DB07B006870EF /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				CC531BDA237DB077006870EF /* LoginViewController.swift */,
+				CC531BDB237DB077006870EF /* LoginViewController.xib */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		CC531BDF237DB352006870EF /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				CC531BE0237DB362006870EF /* GoogleService-Info.plist */,
+			);
+			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +149,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC531BD4237D838D006870EF /* Build configuration list for PBXNativeTarget "DailyRewards" */;
 			buildPhases = (
+				62C75E7FB5CFBC26D04633AC /* [CP] Check Pods Manifest.lock */,
 				CC531BB3237D838C006870EF /* Sources */,
 				CC531BB4237D838C006870EF /* Frameworks */,
 				CC531BB5237D838C006870EF /* Resources */,
+				153AC6FBABF7B6EACE35857F /* [CP] Embed Pods Frameworks */,
+				A75ED51C575710B573985F6D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -178,8 +227,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC531BC5237D838D006870EF /* LaunchScreen.storyboard in Resources */,
+				CC531BE1237DB362006870EF /* GoogleService-Info.plist in Resources */,
 				CC531BC2237D838D006870EF /* Assets.xcassets in Resources */,
-				CC531BC0237D838C006870EF /* Main.storyboard in Resources */,
+				CC531BDD237DB077006870EF /* LoginViewController.xib in Resources */,
+				CC531BE3237DBCD4006870EF /* IconLottie.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,12 +243,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		153AC6FBABF7B6EACE35857F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DailyRewards/Pods-DailyRewards-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DailyRewards/Pods-DailyRewards-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DailyRewards/Pods-DailyRewards-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62C75E7FB5CFBC26D04633AC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DailyRewards-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A75ED51C575710B573985F6D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DailyRewards/Pods-DailyRewards-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DailyRewards/Pods-DailyRewards-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DailyRewards/Pods-DailyRewards-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CC531BB3237D838C006870EF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC531BBD237D838C006870EF /* ViewController.swift in Sources */,
+				CC531BDC237DB077006870EF /* LoginViewController.swift in Sources */,
 				CC531BBB237D838C006870EF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,14 +331,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CC531BBE237D838C006870EF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CC531BBF237D838C006870EF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CC531BC3237D838D006870EF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -291,7 +393,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -346,7 +448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -358,6 +460,7 @@
 		};
 		CC531BD5237D838D006870EF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 330214D1A0592BB321A1360B /* Pods-DailyRewards.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -376,6 +479,7 @@
 		};
 		CC531BD6237D838D006870EF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB185F9362793955DBBF3537 /* Pods-DailyRewards.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
