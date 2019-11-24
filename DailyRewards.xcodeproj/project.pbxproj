@@ -16,6 +16,12 @@
 		CC531BDD237DB077006870EF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC531BDB237DB077006870EF /* LoginViewController.xib */; };
 		CC531BE1237DB362006870EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC531BE0237DB362006870EF /* GoogleService-Info.plist */; };
 		CC531BE3237DBCD4006870EF /* IconLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = CC531BE2237DBCD4006870EF /* IconLottie.json */; };
+		CCBCFCB5238A0463003B9CD8 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCFCB0238A0463003B9CD8 /* LoginPresenter.swift */; };
+		CCBCFCB6238A0463003B9CD8 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCFCB1238A0463003B9CD8 /* LoginWorker.swift */; };
+		CCBCFCB7238A0463003B9CD8 /* DailyRewardsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCFCB2238A0463003B9CD8 /* DailyRewardsRouter.swift */; };
+		CCBCFCB8238A0463003B9CD8 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCFCB3238A0463003B9CD8 /* LoginInteractor.swift */; };
+		CCBCFCB9238A0463003B9CD8 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCFCB4238A0463003B9CD8 /* Login.swift */; };
+		CCCA986F2389D31100DCDC50 /* InitializationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA986E2389D31100DCDC50 /* InitializationSetup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +48,12 @@
 		CC531BDB237DB077006870EF /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		CC531BE0237DB362006870EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CC531BE2237DBCD4006870EF /* IconLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = IconLottie.json; sourceTree = "<group>"; };
+		CCBCFCB0238A0463003B9CD8 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		CCBCFCB1238A0463003B9CD8 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
+		CCBCFCB2238A0463003B9CD8 /* DailyRewardsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRewardsRouter.swift; sourceTree = "<group>"; };
+		CCBCFCB3238A0463003B9CD8 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		CCBCFCB4238A0463003B9CD8 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		CCCA986E2389D31100DCDC50 /* InitializationSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializationSetup.swift; sourceTree = "<group>"; };
 		FB185F9362793955DBBF3537 /* Pods-DailyRewards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyRewards.release.xcconfig"; path = "Target Support Files/Pods-DailyRewards/Pods-DailyRewards.release.xcconfig"; sourceTree = "<group>"; };
 		FCAD6FE9D7AB2877647DC390 /* Pods_DailyRewards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyRewards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -128,8 +140,9 @@
 		CC531BDE237DB07B006870EF /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				CC531BDA237DB077006870EF /* LoginViewController.swift */,
-				CC531BDB237DB077006870EF /* LoginViewController.xib */,
+				CCBCFCB2238A0463003B9CD8 /* DailyRewardsRouter.swift */,
+				CCCA986D2389D2E900DCDC50 /* Initialization */,
+				CCCA986C2389D2D500DCDC50 /* Login */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -140,6 +153,27 @@
 				CC531BE0237DB362006870EF /* GoogleService-Info.plist */,
 			);
 			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		CCCA986C2389D2D500DCDC50 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CC531BDA237DB077006870EF /* LoginViewController.swift */,
+				CC531BDB237DB077006870EF /* LoginViewController.xib */,
+				CCBCFCB0238A0463003B9CD8 /* LoginPresenter.swift */,
+				CCBCFCB1238A0463003B9CD8 /* LoginWorker.swift */,
+				CCBCFCB3238A0463003B9CD8 /* LoginInteractor.swift */,
+				CCBCFCB4238A0463003B9CD8 /* Login.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		CCCA986D2389D2E900DCDC50 /* Initialization */ = {
+			isa = PBXGroup;
+			children = (
+				CCCA986E2389D31100DCDC50 /* InitializationSetup.swift */,
+			);
+			path = Initialization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,8 +341,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCBCFCB6238A0463003B9CD8 /* LoginWorker.swift in Sources */,
+				CCBCFCB5238A0463003B9CD8 /* LoginPresenter.swift in Sources */,
+				CCBCFCB8238A0463003B9CD8 /* LoginInteractor.swift in Sources */,
+				CCBCFCB7238A0463003B9CD8 /* DailyRewardsRouter.swift in Sources */,
 				CC531BDC237DB077006870EF /* LoginViewController.swift in Sources */,
+				CCCA986F2389D31100DCDC50 /* InitializationSetup.swift in Sources */,
 				CC531BBB237D838C006870EF /* AppDelegate.swift in Sources */,
+				CCBCFCB9238A0463003B9CD8 /* Login.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

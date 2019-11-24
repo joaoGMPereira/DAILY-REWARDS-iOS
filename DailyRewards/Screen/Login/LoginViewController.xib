@@ -59,6 +59,7 @@
                 <constraint firstItem="ZvC-K1-jei" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="xk6-Yd-Qdm"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="294" y="296"/>
         </view>
     </objects>
 </document>
