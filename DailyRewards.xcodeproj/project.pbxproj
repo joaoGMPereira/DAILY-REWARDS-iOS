@@ -16,12 +16,20 @@
 		CC531BDD237DB077006870EF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC531BDB237DB077006870EF /* LoginViewController.xib */; };
 		CC531BE1237DB362006870EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC531BE0237DB362006870EF /* GoogleService-Info.plist */; };
 		CC531BE3237DBCD4006870EF /* IconLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = CC531BE2237DBCD4006870EF /* IconLottie.json */; };
+		CCB44012238D95B900A54B92 /* Expandable+UpdateConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB44011238D95B900A54B92 /* Expandable+UpdateConstraints.swift */; };
 		CCBCFCB5238A0463003B9CD8 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCFCB0238A0463003B9CD8 /* LoginPresenter.swift */; };
 		CCBCFCB6238A0463003B9CD8 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCFCB1238A0463003B9CD8 /* LoginWorker.swift */; };
 		CCBCFCB7238A0463003B9CD8 /* DailyRewardsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCFCB2238A0463003B9CD8 /* DailyRewardsRouter.swift */; };
 		CCBCFCB8238A0463003B9CD8 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCFCB3238A0463003B9CD8 /* LoginInteractor.swift */; };
-		CCBCFCB9238A0463003B9CD8 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCFCB4238A0463003B9CD8 /* Login.swift */; };
 		CCCA986F2389D31100DCDC50 /* InitializationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA986E2389D31100DCDC50 /* InitializationSetup.swift */; };
+		CCE47C1A238C55D600CFF71B /* ChallengePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE47C14238C55D500CFF71B /* ChallengePresenter.swift */; };
+		CCE47C1B238C55D600CFF71B /* ChallengeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE47C15238C55D500CFF71B /* ChallengeWorker.swift */; };
+		CCE47C1D238C55D600CFF71B /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE47C17238C55D500CFF71B /* ChallengeViewController.swift */; };
+		CCE47C1E238C55D600CFF71B /* ChallengeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE47C18238C55D500CFF71B /* ChallengeInteractor.swift */; };
+		CCE47C1F238C55D600CFF71B /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE47C19238C55D600CFF71B /* Challenge.swift */; };
+		CCE47C21238C564100CFF71B /* ChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCE47C20238C564100CFF71B /* ChallengeViewController.xib */; };
+		CCE47C23238C613B00CFF71B /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE47C22238C613B00CFF71B /* ExpandableHeaderView.swift */; };
+		CCE47C25238CA99600CFF71B /* ChallengeViewController+AnimateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE47C24238CA99600CFF71B /* ChallengeViewController+AnimateHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,12 +56,20 @@
 		CC531BDB237DB077006870EF /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		CC531BE0237DB362006870EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CC531BE2237DBCD4006870EF /* IconLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = IconLottie.json; sourceTree = "<group>"; };
+		CCB44011238D95B900A54B92 /* Expandable+UpdateConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expandable+UpdateConstraints.swift"; sourceTree = "<group>"; };
 		CCBCFCB0238A0463003B9CD8 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		CCBCFCB1238A0463003B9CD8 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		CCBCFCB2238A0463003B9CD8 /* DailyRewardsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRewardsRouter.swift; sourceTree = "<group>"; };
 		CCBCFCB3238A0463003B9CD8 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
-		CCBCFCB4238A0463003B9CD8 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		CCCA986E2389D31100DCDC50 /* InitializationSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializationSetup.swift; sourceTree = "<group>"; };
+		CCE47C14238C55D500CFF71B /* ChallengePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengePresenter.swift; sourceTree = "<group>"; };
+		CCE47C15238C55D500CFF71B /* ChallengeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeWorker.swift; sourceTree = "<group>"; };
+		CCE47C17238C55D500CFF71B /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
+		CCE47C18238C55D500CFF71B /* ChallengeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeInteractor.swift; sourceTree = "<group>"; };
+		CCE47C19238C55D600CFF71B /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		CCE47C20238C564100CFF71B /* ChallengeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeViewController.xib; sourceTree = "<group>"; };
+		CCE47C22238C613B00CFF71B /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeaderView.swift; sourceTree = "<group>"; };
+		CCE47C24238CA99600CFF71B /* ChallengeViewController+AnimateHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChallengeViewController+AnimateHeaderView.swift"; sourceTree = "<group>"; };
 		FB185F9362793955DBBF3537 /* Pods-DailyRewards.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyRewards.release.xcconfig"; path = "Target Support Files/Pods-DailyRewards/Pods-DailyRewards.release.xcconfig"; sourceTree = "<group>"; };
 		FCAD6FE9D7AB2877647DC390 /* Pods_DailyRewards.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyRewards.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -143,6 +159,7 @@
 				CCBCFCB2238A0463003B9CD8 /* DailyRewardsRouter.swift */,
 				CCCA986D2389D2E900DCDC50 /* Initialization */,
 				CCCA986C2389D2D500DCDC50 /* Login */,
+				CCE47C13238C558F00CFF71B /* Challenge */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -163,7 +180,6 @@
 				CCBCFCB0238A0463003B9CD8 /* LoginPresenter.swift */,
 				CCBCFCB1238A0463003B9CD8 /* LoginWorker.swift */,
 				CCBCFCB3238A0463003B9CD8 /* LoginInteractor.swift */,
-				CCBCFCB4238A0463003B9CD8 /* Login.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -174,6 +190,22 @@
 				CCCA986E2389D31100DCDC50 /* InitializationSetup.swift */,
 			);
 			path = Initialization;
+			sourceTree = "<group>";
+		};
+		CCE47C13238C558F00CFF71B /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				CCE47C14238C55D500CFF71B /* ChallengePresenter.swift */,
+				CCE47C15238C55D500CFF71B /* ChallengeWorker.swift */,
+				CCE47C18238C55D500CFF71B /* ChallengeInteractor.swift */,
+				CCE47C19238C55D600CFF71B /* Challenge.swift */,
+				CCE47C17238C55D500CFF71B /* ChallengeViewController.swift */,
+				CCE47C24238CA99600CFF71B /* ChallengeViewController+AnimateHeaderView.swift */,
+				CCE47C20238C564100CFF71B /* ChallengeViewController.xib */,
+				CCE47C22238C613B00CFF71B /* ExpandableHeaderView.swift */,
+				CCB44011238D95B900A54B92 /* Expandable+UpdateConstraints.swift */,
+			);
+			path = Challenge;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +296,7 @@
 				CC531BE1237DB362006870EF /* GoogleService-Info.plist in Resources */,
 				CC531BC2237D838D006870EF /* Assets.xcassets in Resources */,
 				CC531BDD237DB077006870EF /* LoginViewController.xib in Resources */,
+				CCE47C21238C564100CFF71B /* ChallengeViewController.xib in Resources */,
 				CC531BE3237DBCD4006870EF /* IconLottie.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,14 +374,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCE47C1E238C55D600CFF71B /* ChallengeInteractor.swift in Sources */,
 				CCBCFCB6238A0463003B9CD8 /* LoginWorker.swift in Sources */,
+				CCE47C1B238C55D600CFF71B /* ChallengeWorker.swift in Sources */,
 				CCBCFCB5238A0463003B9CD8 /* LoginPresenter.swift in Sources */,
 				CCBCFCB8238A0463003B9CD8 /* LoginInteractor.swift in Sources */,
+				CCE47C1A238C55D600CFF71B /* ChallengePresenter.swift in Sources */,
+				CCE47C1F238C55D600CFF71B /* Challenge.swift in Sources */,
 				CCBCFCB7238A0463003B9CD8 /* DailyRewardsRouter.swift in Sources */,
 				CC531BDC237DB077006870EF /* LoginViewController.swift in Sources */,
 				CCCA986F2389D31100DCDC50 /* InitializationSetup.swift in Sources */,
 				CC531BBB237D838C006870EF /* AppDelegate.swift in Sources */,
-				CCBCFCB9238A0463003B9CD8 /* Login.swift in Sources */,
+				CCE47C23238C613B00CFF71B /* ExpandableHeaderView.swift in Sources */,
+				CCB44012238D95B900A54B92 /* Expandable+UpdateConstraints.swift in Sources */,
+				CCE47C1D238C55D600CFF71B /* ChallengeViewController.swift in Sources */,
+				CCE47C25238CA99600CFF71B /* ChallengeViewController+AnimateHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

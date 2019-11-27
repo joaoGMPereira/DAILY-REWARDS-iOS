@@ -1,14 +1,14 @@
 //
-//  Login.swift
+//  Challenge.swift
 //  DailyRewards
 //
-//  Created by Joao Gabriel Medeiros Perei on 23/11/19.
+//  Created by Joao Gabriel Medeiros Perei on 25/11/19.
 //  Copyright (c) 2019 Globile. All rights reserved.
 //
 
 import Foundation
 
-public struct Login: Codable {
+public struct Challenge: Codable {
     var value: String
     
     public init(value: String) {

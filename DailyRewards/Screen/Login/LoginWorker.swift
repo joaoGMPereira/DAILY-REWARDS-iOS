@@ -7,56 +7,83 @@
 //
 
 import Foundation
+import Firebase
 import GoogleSignIn
-typealias LoginSuccess = ((_ response: String) -> Void)
+import JewFeatures
+
+typealias LoginSuccess = ((_ response: JEWUserModel) -> Void)
 typealias LoginError = ((_ errorMessage: String) -> Void)
 
 protocol LoginWorkerProtocol {
     var successCallback: LoginSuccess?{ get set }
     var errorCallback: LoginError?{ get set }
+    func create(user: User?, success: @escaping LoginSuccess, error: LoginError)
 }
 
 class LoginWorker: NSObject, LoginWorkerProtocol, GIDSignInDelegate {
     var successCallback: LoginSuccess?
     var errorCallback: LoginError?
-    
+    let userNotLogged = "The user has not signed in before or they have since signed out."
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
-        if !showError(withError: error) {
-        // Perform any operations on signed in user here.
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
-            if user.profile.hasImage
-            {
-                let pic = user.profile.imageURL(withDimension: 100)
-            }
+        if !shouldShowError(withError: error) {
+            guard let idToken = user.authentication.idToken else {
+                return
+            } // Safe to send to the server
+            guard let accessToken = user.authentication.accessToken else {return}
+            let credentials = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
             
-            if let success = successCallback {
-                success("teste")
+            Auth.auth().signIn(with: credentials) { (authData, error) in
+                if !self.shouldShowError(withError: error) {
+                    self.create(user: authData?.user, success: { (user) in
+                        if let success = self.successCallback {
+                            success(user)
+                        }
+                    }, error: { (user) in
+                        self.showError(text: JEWConstants.Default.errorMessage.rawValue)
+                    })
+                }
+                
             }
         }
     }
     
-    func showError(withError error: Error?) -> Bool {
+    func create(user: User?, success: @escaping LoginSuccess, error: LoginError) {
+        guard let user = user, let email = user.email, let fullName = user.displayName, let photoURL = user.photoURL else {
+            self.showError(text: JEWConstants.Default.errorMessage.rawValue)
+            return
+        }
+        user.getIDToken { (token, error) in
+            if !self.shouldShowError(withError: error), let token = token {
+                success(JEWUserModel(email: email, uid: token, fullName: fullName, photoURL: photoURL))
+                return
+            }
+            self.showError(text: JEWConstants.Default.errorMessage.rawValue)
+        }
+    }
+    
+    func shouldShowError(withError error: Error? = nil, text: String? = nil) -> Bool {
         if let error = error {
             if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
-                print("The user has not signed in before or they have since signed out.")
-                if let errorCallback = errorCallback {
-                    errorCallback(error.localizedDescription)
-                }
+                showError(text: error.localizedDescription, log: userNotLogged)
             } else {
-                print("\(error.localizedDescription)")
-                if let errorCallback = errorCallback {
-                    errorCallback(error.localizedDescription)
-                }
+                showError(text: error.localizedDescription, log: error.localizedDescription)
             }
             return true
         }
+        if let text = text {
+            showError(text: text)
+            return true
+        }
         return false
+    }
+    
+    
+    func showError(text: String, log: String? = nil) {
+        JEWLogger.error(log ?? text)
+        if let errorCallback = errorCallback {
+            errorCallback(text)
+        }
     }
     
 }

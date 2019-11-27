@@ -14,18 +14,20 @@ import JewFeatures
 import SwiftyRSA
 
 protocol LoginViewControllerProtocol: class {
-    
+    func displayLogin(user: JEWUserModel)
+    func displayLogin(error: String)
 }
 
-class LoginViewController: UIViewController, LoginViewControllerProtocol {
+class LoginViewController: UIViewController {
     
     //MARK: UIProperties
     @IBOutlet weak var signInButton: GIDSignInButton!
     @IBOutlet weak var iconLottieView: AnimationView!
+    var popupMessageView: JEWPopupMessage? = nil
     
     //MARK: Properties
     var interactor: LoginInteractorProtocol?
-    
+    let router: DailyRewardsRouterProtocol = DailyRewardsRouter()
     //MARK: Setup
     func setup() {
         let interactor = LoginInteractor()
@@ -63,31 +65,8 @@ class LoginViewController: UIViewController, LoginViewControllerProtocol {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Login"
+        popupMessageView = JEWPopupMessage(parentViewController: self)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //        let errorViewController = JEWConnectorHelpers.setupAlertController(lastViewController: self, message: "OLA Teste", title: "Title Test", lottie: .closePlusAnimationPurple)
-        //        errorViewController.confirmCallback = { (button) -> () in
-        //            Timer.init(timeInterval: 3.0, repeats: false, block: { (timer) in
-        //                errorViewController.dismiss(animated: true) {
-        //                }
-        //            })
-        //
-        //        }
-    }
-
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
-
-    
     
 //    func teste() {
 //        do {
@@ -121,11 +100,29 @@ class LoginViewController: UIViewController, LoginViewControllerProtocol {
 //    }
 }
 
+extension LoginViewController: LoginViewControllerProtocol {
+    func displayLogin(user: JEWUserModel) {
+        if let popupMessage = popupMessageView {
+            popupMessage.show(withTextMessage: "Sucesso", title: "\(JEWConstants.Default.title.rawValue)\n", popupType: .alert)
+            router.setupChallengeViewController()
+            
+        }
+    }
+    
+    func displayLogin(error: String) {
+        if let popupMessage = popupMessageView {
+            popupMessage.show(withTextMessage: error, title: "\(JEWConstants.Default.title.rawValue)\n", popupType: .error)
+        }
+    }
+    
+    
+}
+
 extension LoginViewController: JEWFloatingTextFieldDelegate {
     
     public func infoButtonAction(_ textField: JEWFloatingTextField) {
         let teste = JEWPopupMessage.init(parentViewController: self)
-        teste.show(withAttributedMessage: "testando\n", title: "O teste", popupType: .alert, shouldHideAutomatically: false)
+        teste.show(withTextMessage: "testando\n", title: "O teste", popupType: .custom(messageColor: .yellow, backgroundColor: .JEWLightGray()), shouldHideAutomatically: false)
     }
     
     public func toolbarAction(_ textField: JEWFloatingTextField, typeOfAction type: JEWKeyboardToolbarButton) {

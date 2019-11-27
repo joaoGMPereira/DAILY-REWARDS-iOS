@@ -9,15 +9,12 @@
 import UIKit
 import JewFeatures
 protocol DailyRewardsRouterProtocol: class {
-    func openLogin(fromController: UIViewController)
+    func setupStartViewController()
+    func setupLoginViewController()
+    func setupChallengeViewController()
 }
 
 class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
-    
-    func openLogin(fromController: UIViewController) {
-        let viewController = LoginViewController(nibName: "LoginViewController", bundle: Bundle(for: type(of: self)))
-        fromController.navigationController?.pushViewController(viewController, animated: true)
-    }
     
     func setupStartViewController() {
         let appDelegate = InitializationSetup.appDelegate()
@@ -31,7 +28,7 @@ class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
         checkIfStartHasBeenLoaded(withViewController: startViewController)
     }
     
-    func checkIfStartHasBeenLoaded(withViewController viewController: UIViewController) {
+    private func checkIfStartHasBeenLoaded(withViewController viewController: UIViewController) {
         if viewController.isViewLoaded {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.setupLoginViewController()
@@ -54,6 +51,23 @@ class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
         options.style = .easeOut
         options.background = UIWindow.TransitionOptions.Background.solidColor(.JEWBlack())
         window.setRootViewController(loginViewController, options: options)
+        
+    }
+    
+    func setupChallengeViewController() {
+        guard let window = UIApplication.shared.keyWindow else {
+            return
+        }
+        let challengeViewController = ChallengeViewController.init(nibName: ChallengeViewController.toString(), bundle: Bundle.main)
+        
+        var options = UIWindow.TransitionOptions()
+        options.direction = .toBottom
+        options.duration = 0.4
+        options.style = .easeOut
+        options.background = UIWindow.TransitionOptions.Background.solidColor(.JEWBlack())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            window.setRootViewController(challengeViewController, options: options)
+        }
         
     }
     
