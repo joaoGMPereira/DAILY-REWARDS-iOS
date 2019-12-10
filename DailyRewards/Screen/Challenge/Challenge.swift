@@ -9,14 +9,10 @@
 import Foundation
 
 public struct Challenge: Codable {
-    var value: String
+    var title: String
+    var description: String
+    var imageURLString: String
     
-    public init(value: String) {
-        self.value = value
-    }
-    
-    var valueComplex: String? {
-        return self.value
-    }
-    
+    var cellType: ChallengeCellType
+    var challengeStatus: ChallengeStatus
 }

@@ -102,10 +102,23 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginViewControllerProtocol {
     func displayLogin(user: JEWUserModel) {
-        if let popupMessage = popupMessageView {
-            popupMessage.show(withTextMessage: "Sucesso", title: "\(JEWConstants.Default.title.rawValue)\n", popupType: .alert)
-            router.setupChallengeViewController()
-            
+        askForBiometric()
+    }
+    
+    func askForBiometric() {
+        JEWBiometricsChallenge.checkLoggedUser(keychainKey: JEWConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue, successChallenge: {
+            self.router.setupChallengeViewController()
+        }) { (type) in
+            switch type {
+            case .default:
+                //let message = JEWBiometrics.faceIDAvailable() ? BioMetricsFaceIDErrors.kDefaultFaceIDErrorAuthentication.rawValue : BioMetricsTouchIDErrors.kDefaultTouchIDErrorAuthentication.rawValue
+                //self.popupMessageView?.show(withTextMessage: message, title: "\(JEWConstants.Default.title.rawValue)\n", popupType: .error, shouldHideAutomatically: true)
+                self.router.setupChallengeViewController()
+            case .error(let error):
+                self.popupMessageView?.show(withTextMessage: error.message(), title: "\(error.title())\n", popupType: .error, shouldHideAutomatically: true)
+            case .goSettings(let error):
+                self.popupMessageView?.show(withTextMessage: error.message(), title: "\(error.title())\n", popupType: .error, shouldHideAutomatically: true)
+            }
         }
     }
     
@@ -113,24 +126,6 @@ extension LoginViewController: LoginViewControllerProtocol {
         if let popupMessage = popupMessageView {
             popupMessage.show(withTextMessage: error, title: "\(JEWConstants.Default.title.rawValue)\n", popupType: .error)
         }
-    }
-    
-    
-}
-
-extension LoginViewController: JEWFloatingTextFieldDelegate {
-    
-    public func infoButtonAction(_ textField: JEWFloatingTextField) {
-        let teste = JEWPopupMessage.init(parentViewController: self)
-        teste.show(withTextMessage: "testando\n", title: "O teste", popupType: .custom(messageColor: .yellow, backgroundColor: .JEWLightGray()), shouldHideAutomatically: false)
-    }
-    
-    public func toolbarAction(_ textField: JEWFloatingTextField, typeOfAction type: JEWKeyboardToolbarButton) {
-        view.endEditing(true)
-    }
-    
-    public func textFieldDidBeginEditing(_ textField: JEWFloatingTextField) {
-        
     }
 }
 

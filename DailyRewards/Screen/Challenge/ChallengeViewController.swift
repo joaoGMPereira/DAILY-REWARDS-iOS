@@ -10,20 +10,34 @@ import UIKit
 import JewFeatures
 import FirebaseAuth
 
+protocol ChallengeViewControllerDelegate: class {
+    func selectedCell(cellType: ChallengeCellType, challenge: Challenge?)
+}
+
 protocol ChallengeViewControllerProtocol: class {
     func displayProfile(image: UIImage)
+    func displayProfile(name: String)
     func displayProfile(error: String)
+    func displayNew()
+    func displayDetail(challenge: Challenge)
+
 }
 
 class ChallengeViewController: UIViewController {
     
     //MARK: UIProperties
-    @IBOutlet weak var signOutButton: UIButton!
-    var tableView:UITableView = UITableView()
-    var headerView:ExpandableHeaderView = ExpandableHeaderView(frame: .zero, titleFont: .JEW16Bold(), color: .JEWBlack(), textColor: .white)
+    public let myChallengesScalingCarousel = ScalingCarouselView(withFrame: .zero, andInset: 50)
+    var myChallengesSelectedAnimationView: SelectedAnimationView?
+    public var groupsChallengesScalingCarousel = ScalingCarouselView(withFrame: .zero, andInset: 50)
+    var groupsChallengesSelectedAnimationView: SelectedAnimationView?
+    var scrollableStackView: ScrollableStackView = ScrollableStackView(frame: .zero)
+    var headerView:ExpandableView = ExpandableView(frame: .zero, titleFont: .JEW16Bold(), color: .JEWBlack(), textColor: .white)
     var popupMessageView: JEWPopupMessage? = nil
     
     //MARK: Properties
+    var delegate: ChallengeViewControllerDelegate?
+    var myChallengesCollectionViewDataSource: MyChallengesCollectionViewDataSource?
+    var groupChallengesCollectionViewDataSource: GroupChallengesCollectionViewDataSource?
     var headerHeightConstraint:NSLayoutConstraint!
     private var lastContentOffset: CGFloat = 0
     var interactor: ChallengeInteractorProtocol?
@@ -32,6 +46,9 @@ class ChallengeViewController: UIViewController {
     //MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(applicationDidBecomeActive),
+                                               name: UIApplication.didBecomeActiveNotification, object: nil)
         self.setup()
         self.setupUI()
     }
@@ -42,6 +59,38 @@ class ChallengeViewController: UIViewController {
         popupMessageView = JEWPopupMessage(parentViewController: self)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        hideSelectedAnimationView()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    @objc func applicationDidBecomeActive() {
+        groupsChallengesScalingCarousel.reloadData()
+        myChallengesScalingCarousel.reloadData()
+    }
+    
+    func hideSelectedAnimationView() {
+        if let myChallengesSelectedAnimationView = myChallengesSelectedAnimationView {
+            if myChallengesSelectedAnimationView.isExpanded {
+                myChallengesSelectedAnimationView.hide { (finished) in
+                }
+            }
+        }
+        
+        if let groupsChallengesSelectedAnimationView = groupsChallengesSelectedAnimationView {
+            if groupsChallengesSelectedAnimationView.isExpanded {
+                groupsChallengesSelectedAnimationView.hide { (finished) in
+                }
+            }
+        }
+    }
+    
     //MARK: Setup
     func setup() {
         let interactor = ChallengeInteractor()
@@ -49,15 +98,16 @@ class ChallengeViewController: UIViewController {
         let presenter = ChallengePresenter()
         presenter.viewController = self
         interactor.presenter = presenter
+        delegate = self
         interactor.downloadProfileImage()
+        interactor.setUserName()
     }
     
     //MARK: SetupUI
     func setupUI() {
         view.backgroundColor = .JEWBlack()
-        signOutButton.tintColor = .JEWDefault()
         setUpHeader()
-        setUpTableView()
+        addCarousel()
     }
     
     func setUpHeader() {
@@ -80,68 +130,107 @@ class ChallengeViewController: UIViewController {
         }
         
         headerView.imageCallback = {(imageView) in
-            print("chegou aqui")
+            self.router.setupProfileViewController(withParentViewController: self, heroImageView: self.headerView.iconImageView)
         }
     }
     
-    func setUpTableView() {
-        tableView.backgroundColor = .clear
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tableView)
-        let constraints:[NSLayoutConstraint] = [
-            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80)
-        ]
-        NSLayoutConstraint.activate(constraints)
-        tableView.register(UITableViewCell.self,forCellReuseIdentifier: "cell")
-        tableView.delegate = self
-        tableView.dataSource = self
+    private func addCarousel() {
+        myChallengesSelectedAnimationView = SelectedAnimationView(frame: .zero, superView: myChallengesScalingCarousel, parentView: view)
+        groupsChallengesSelectedAnimationView = SelectedAnimationView(frame: .zero, superView: groupsChallengesScalingCarousel, parentView: view)
+        let titleMyRewardsLabel = self.setupMyChallengesTitle()
+        let titleGroupsChallegens = self.setupGroupsChallengesTitle()
+        interactor?.setMyChallenges()
+        setupMyChallengesCollectionView()
+        setupGroupsChallengesCollectionView()
+        scrollableStackView.delegate = self
+        scrollableStackView.setup(subViews: [titleMyRewardsLabel, myChallengesScalingCarousel, titleGroupsChallegens, groupsChallengesScalingCarousel], axis: .vertical, spacing: 8, alwaysBounce: true)
+        setupScrollableConstraints()
     }
     
-    @IBAction func signOut(_ sender: Any) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            router.setupLoginViewController()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+    func setupMyChallengesTitle() -> UILabel {
+        let titleMyRewardsLabel = UILabel(frame: .zero)
+        titleMyRewardsLabel.backgroundColor = .clear
+        titleMyRewardsLabel.text = "Meus Desafios"
+        titleMyRewardsLabel.textColor = .JEWDefault()
+        titleMyRewardsLabel.font = .JEW16Bold()
+        return titleMyRewardsLabel
+    }
+    
+    func setupGroupsChallengesTitle() -> UILabel {
+        let titleGroupsRewardsLabel = UILabel(frame: .zero)
+        titleGroupsRewardsLabel.backgroundColor = .clear
+        titleGroupsRewardsLabel.text = "Desafios em Grupo"
+        titleGroupsRewardsLabel.textColor = .JEWDefault()
+        titleGroupsRewardsLabel.font = .JEW16Bold()
+        return titleGroupsRewardsLabel
+    }
+    
+    func setupMyChallengesCollectionView() {
+        myChallengesCollectionViewDataSource = MyChallengesCollectionViewDataSource.init(challenges: interactor?.myChallenges ?? [], scrollableStackView: scrollableStackView, collectionView: myChallengesScalingCarousel, viewControllerDelegate: delegate, animationView: myChallengesSelectedAnimationView)
+        myChallengesScalingCarousel.translatesAutoresizingMaskIntoConstraints = false
+        myChallengesScalingCarousel.backgroundColor = .clear
+        myChallengesScalingCarousel.register(ChallengeNewCell.self, forCellWithReuseIdentifier: String(describing: type(of: ChallengeNewCell.self)))
+        myChallengesScalingCarousel.register(ChallengeInfoCell.self, forCellWithReuseIdentifier: String(describing: type(of: ChallengeInfoCell.self)))
+        myChallengesScalingCarousel.heightAnchor.constraint(equalToConstant: 200).isActive = true
+    }
+    
+    func setupGroupsChallengesCollectionView() {
+        groupChallengesCollectionViewDataSource = GroupChallengesCollectionViewDataSource.init(challenges: interactor?.groupChallenges ?? [], scrollableStackView: scrollableStackView, collectionView: groupsChallengesScalingCarousel, viewControllerDelegate: delegate, animationView: groupsChallengesSelectedAnimationView)
+        groupsChallengesScalingCarousel.translatesAutoresizingMaskIntoConstraints = false
+        groupsChallengesScalingCarousel.backgroundColor = .clear
+        groupsChallengesScalingCarousel.register(ChallengeNewCell.self, forCellWithReuseIdentifier: String(describing: type(of: ChallengeNewCell.self)))
+        groupsChallengesScalingCarousel.register(ChallengeInfoCell.self, forCellWithReuseIdentifier: String(describing: type(of: ChallengeInfoCell.self)))
+        groupsChallengesScalingCarousel.heightAnchor.constraint(equalToConstant: 200).isActive = true
+    }
+    
+    func setupScrollableConstraints() {
+        view.addSubview(scrollableStackView)
+        scrollableStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scrollableStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollableStackView.topAnchor.constraint(equalTo: headerView.safeAreaLayoutGuide.bottomAnchor),
+            scrollableStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollableStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            ])
+        self.interactor?.setMyChallenges()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.myChallengesScalingCarousel.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+            self.myChallengesScalingCarousel.reloadData()
+            self.groupsChallengesScalingCarousel.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+            self.groupsChallengesScalingCarousel.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.myChallengesCollectionViewDataSource?.collectionViewScrollPosition()
+                self.groupChallengesCollectionViewDataSource?.collectionViewScrollPosition()
+            }
         }
     }
 }
-
-extension ChallengeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.init(style: .default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = "Teste\(indexPath.row)"
-        cell.textLabel?.textColor = .white
-        cell.backgroundColor = .clear
-        cell.tintColor = .clear
-        cell.backgroundView?.backgroundColor = .clear
-        return cell
-    }
-    
-    
-}
-
-extension ChallengeViewController:UITableViewDelegate {
-}
-
 
 extension ChallengeViewController: ChallengeViewControllerProtocol {
+    
     func displayProfile(image: UIImage) {
         headerView.iconImageView.image = image
-        headerView.titleLabel.text = "Bem Vindo: \(JEWSession.session.user?.fullName?.capitalized ?? String())" 
     }
     
     func displayProfile(error: String) {
         popupMessageView?.show(withTextMessage: error, title: "\(JEWConstants.Default.title)\n", popupType: .error)
     }
     
+    func displayProfile(name: String) {
+        headerView.titleLabel.text = JEWSession.session.user?.fullName?.capitalized ?? String()
+    }
     
+    func displayNew() {
+        router.setupNewChallengeViewController(withParentViewController: self)
+    }
+    
+    func displayDetail(challenge: Challenge) {
+        router.setupEditChallengeViewController(withParentViewController: self, challenge: challenge)
+    }
+}
+
+extension ChallengeViewController: ChallengeViewControllerDelegate {
+    func selectedCell(cellType: ChallengeCellType, challenge: Challenge?) {
+        interactor?.selectedCell(cellType: cellType, challenge: challenge)
+    }
 }

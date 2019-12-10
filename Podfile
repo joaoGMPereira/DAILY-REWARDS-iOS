@@ -19,7 +19,7 @@ def all_pods
   pod 'BetterSegmentedControl', '~> 1.1'
   pod 'StepView'
   pod 'ZCAnimatedLabel', :git => 'https://github.com/joaoGMPereira/ZCAnimatedLabel.git'
-  
+  pod 'CollectionKit'
   
   #Resquests
   pod 'Alamofire'

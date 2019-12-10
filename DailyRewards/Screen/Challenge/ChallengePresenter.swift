@@ -7,10 +7,13 @@
 //
 
 import UIKit
-
+import JewFeatures
 protocol ChallengePresenterProtocol {
     func presentProfile(image: UIImage)
     func presentProfile(error: String)
+    func presentProfile(name: String)
+    func presentNew()
+    func presentDetail(challenge: Challenge)
 }
 
 class ChallengePresenter: ChallengePresenterProtocol {
@@ -23,6 +26,18 @@ class ChallengePresenter: ChallengePresenterProtocol {
     
     func presentProfile(error: String) {
         viewController?.displayProfile(error: error)
+    }
+    
+    func presentProfile(name: String) {
+        viewController?.displayProfile(name: name)
+    }
+    
+    func presentNew() {
+        viewController?.displayNew()
+    }
+    
+    func presentDetail(challenge: Challenge) {
+        viewController?.displayDetail(challenge: challenge)
     }
     
 }

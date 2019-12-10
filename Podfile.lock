@@ -6,6 +6,9 @@ PODS:
   - AppAuth/Core (1.2.0)
   - AppAuth/ExternalUserAgent (1.2.0)
   - BetterSegmentedControl (1.3.0)
+  - CollectionKit (2.4.0):
+    - CollectionKit/Core (= 2.4.0)
+  - CollectionKit/Core (2.4.0)
   - Firebase/Auth (6.13.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.4.0)
@@ -61,8 +64,9 @@ PODS:
   - GTMSessionFetcher/Full (1.3.0):
     - GTMSessionFetcher/Core (= 1.3.0)
   - Hero (1.4.0)
-  - JewFeatures (0.0.1):
+  - JewFeatures (0.0.2):
     - Alamofire
+    - CollectionKit
     - lottie-ios
     - PodAsset
     - SkeletonView
@@ -85,6 +89,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - BetterSegmentedControl (~> 1.1)
+  - CollectionKit
   - Firebase/Auth
   - GoogleSignIn
   - Hero (from `https://github.com/barrault01/Hero.git`, commit `6220387`)
@@ -101,6 +106,7 @@ SPEC REPOS:
     - Alamofire
     - AppAuth
     - BetterSegmentedControl
+    - CollectionKit
     - Firebase
     - FirebaseAuth
     - FirebaseAuthInterop
@@ -147,6 +153,7 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
   BetterSegmentedControl: 85d1b0343a09603b098884d527f550dfc8e6cdd9
+  CollectionKit: 8f01e7629185bb81072c4aa734d105df5c2d1c8b
   Firebase: 458d109512200d1aca2e1b9b6cf7d68a869a4a46
   FirebaseAuth: 7d0f84873926f6648bbd1391a318dfb1a26b5e4f
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
@@ -160,7 +167,7 @@ SPEC CHECKSUMS:
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 43b8b64263023d4f32caa0b40f4c8bfa3c5f36d8
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
-  JewFeatures: b2f723672bae941b42df17274d0c31b238f4e312
+  JewFeatures: 9dc1b6d34cef0f7bc7b45a1d6cbbe8efeb2532a5
   lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PodAsset: c2c2b20013c1edf698fea2bacba6e75a638537a2
@@ -170,6 +177,6 @@ SPEC CHECKSUMS:
   SwiftyRSA: 6e528fb1b1a87d5111c48081083b141d6d65f1cf
   ZCAnimatedLabel: 519b688bef4403fd356bc785f9b61cdfd8e6472d
 
-PODFILE CHECKSUM: be6936a4e58bd20728658a7244c7ee54e1b0ee49
+PODFILE CHECKSUM: 268417dd6e2ed0d2ba2a3e6e8692525f5513946b
 
 COCOAPODS: 1.7.5
