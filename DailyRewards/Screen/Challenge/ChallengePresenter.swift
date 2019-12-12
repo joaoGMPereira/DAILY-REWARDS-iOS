@@ -29,7 +29,7 @@ class ChallengePresenter: ChallengePresenterProtocol {
     }
     
     func presentProfile(name: String) {
-        viewController?.displayProfile(name: name)
+        viewController?.displayProfile(name: name.capitalized)
     }
     
     func presentNew() {

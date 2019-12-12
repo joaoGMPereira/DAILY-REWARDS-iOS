@@ -7,11 +7,19 @@
 //
 
 protocol NewChallengeInteractorProtocol {
-    
+    func hasSelectedButton(totalIndex: Int, selectedIndex: Int)
+    func changeGoalReach(isOn: Bool)
 }
 
 class NewChallengeInteractor: NewChallengeInteractorProtocol {
     var presenter: NewChallengePresenterProtocol?
     var worker: NewChallengeWorker?
     
+    func hasSelectedButton(totalIndex: Int, selectedIndex: Int) {
+        presenter?.presentSelectedButton(totalIndex: totalIndex, selectedIndex: selectedIndex)
+    }
+    
+    func changeGoalReach(isOn: Bool) {
+        presenter?.presentGoalReach(isOn: isOn)
+    }
 }

@@ -57,6 +57,20 @@ class ChallengeViewController: UIViewController {
         super.viewWillAppear(animated)
         title = "Challenge"
         popupMessageView = JEWPopupMessage(parentViewController: self)
+        scrollToSelectedIndex()
+    }
+    
+    func scrollToSelectedIndex() {
+        if let myChallengesSelectedAnimationView = myChallengesSelectedAnimationView {
+            if myChallengesSelectedAnimationView.isExpanded {
+                self.myChallengesCollectionViewDataSource?.scrollToSelectedIndex()
+            }
+        }
+        if let groupsChallengesSelectedAnimationView = groupsChallengesSelectedAnimationView {
+            if groupsChallengesSelectedAnimationView.isExpanded {
+                self.groupChallengesCollectionViewDataSource?.scrollToSelectedIndex()
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,15 +92,13 @@ class ChallengeViewController: UIViewController {
     func hideSelectedAnimationView() {
         if let myChallengesSelectedAnimationView = myChallengesSelectedAnimationView {
             if myChallengesSelectedAnimationView.isExpanded {
-                myChallengesSelectedAnimationView.hide { (finished) in
-                }
+                myChallengesSelectedAnimationView.hide { (finished) in }
             }
         }
         
         if let groupsChallengesSelectedAnimationView = groupsChallengesSelectedAnimationView {
             if groupsChallengesSelectedAnimationView.isExpanded {
-                groupsChallengesSelectedAnimationView.hide { (finished) in
-                }
+                groupsChallengesSelectedAnimationView.hide { (finished) in }
             }
         }
     }
@@ -217,7 +229,7 @@ extension ChallengeViewController: ChallengeViewControllerProtocol {
     }
     
     func displayProfile(name: String) {
-        headerView.titleLabel.text = JEWSession.session.user?.fullName?.capitalized ?? String()
+        headerView.titleLabel.text = name
     }
     
     func displayNew() {

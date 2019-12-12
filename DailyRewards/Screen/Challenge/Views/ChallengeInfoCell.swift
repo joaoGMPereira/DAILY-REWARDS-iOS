@@ -111,9 +111,9 @@ extension ChallengeInfoCell: JEWCodeView {
             statusLabel.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: paddingMinus8)
             ])
         
-        let distance = contentView.frame.minX - contentView.center.x + minimumSize/1.4
+        let distanceX = contentView.frame.maxX - contentView.center.x - minimumSize/1.4
         let distanceY = contentView.center.y - contentView.frame.maxY + minimumSize/1.4
-        centerXIconConstraint = iconImageView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor, constant: distance)
+        centerXIconConstraint = iconImageView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor, constant: distanceX)
         centerYIconConstraint = iconImageView.centerYAnchor.constraint(equalTo: mainView.centerYAnchor, constant: distanceY)
         heightIconConstraint = iconImageView.heightAnchor.constraint(equalToConstant: minimumSize)
         widthIconConstraint = iconImageView.widthAnchor.constraint(equalToConstant: minimumSize)
@@ -124,6 +124,7 @@ extension ChallengeInfoCell: JEWCodeView {
             heightIconConstraint,
             widthIconConstraint
             ])
+        layoutIfNeeded()
     }
     
     func setupAdditionalConfiguration() {}

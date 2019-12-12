@@ -87,7 +87,7 @@ class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
         let newChallengeNavigationController = UINavigationController.init(rootViewController: newChallengeViewController)
         newChallengeNavigationController.modalTransitionStyle = .crossDissolve
         newChallengeNavigationController.hero.isEnabled = true
-        newChallengeViewController.challengeImageButton.hero.id = "\(HeroConstants.challengeImageHero.rawValue)\(challenge.title)"
+        newChallengeViewController.challengeImageView.challengeImageButton.hero.id = "\(HeroConstants.challengeImageHero.rawValue)\(challenge.title)"
         parentViewController.present(newChallengeNavigationController, animated: true)
     }
     

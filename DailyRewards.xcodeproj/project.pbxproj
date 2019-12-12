@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		BF26DC5D8C16A58A99FD35CE /* Pods_DailyRewards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCAD6FE9D7AB2877647DC390 /* Pods_DailyRewards.framework */; };
 		CC05AFCC239FCF570015E386 /* infinityLottieOrange.json in Resources */ = {isa = PBXBuildFile; fileRef = CC05AFCB239FCF560015E386 /* infinityLottieOrange.json */; };
+		CC05AFD423A035E40015E386 /* ChallengeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05AFD323A035E40015E386 /* ChallengeImageView.swift */; };
+		CC05AFD623A057D70015E386 /* ZoomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05AFD523A057D70015E386 /* ZoomAnimator.swift */; };
+		CC05AFDA23A106C40015E386 /* ChallengeNameTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05AFD923A106C40015E386 /* ChallengeNameTextFieldView.swift */; };
+		CC05AFDC23A11A9F0015E386 /* RecurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05AFDB23A11A9F0015E386 /* RecurrencyView.swift */; };
+		CC06679623A1B7B10055D04C /* GoalReachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC06679523A1B7B10055D04C /* GoalReachView.swift */; };
 		CC531BBB237D838C006870EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC531BBA237D838C006870EF /* AppDelegate.swift */; };
 		CC531BC2237D838D006870EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC531BC1237D838D006870EF /* Assets.xcassets */; };
 		CC531BC5237D838D006870EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC531BC3237D838D006870EF /* LaunchScreen.storyboard */; };
@@ -63,6 +68,11 @@
 /* Begin PBXFileReference section */
 		330214D1A0592BB321A1360B /* Pods-DailyRewards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyRewards.debug.xcconfig"; path = "Target Support Files/Pods-DailyRewards/Pods-DailyRewards.debug.xcconfig"; sourceTree = "<group>"; };
 		CC05AFCB239FCF560015E386 /* infinityLottieOrange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = infinityLottieOrange.json; sourceTree = "<group>"; };
+		CC05AFD323A035E40015E386 /* ChallengeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeImageView.swift; sourceTree = "<group>"; };
+		CC05AFD523A057D70015E386 /* ZoomAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAnimator.swift; sourceTree = "<group>"; };
+		CC05AFD923A106C40015E386 /* ChallengeNameTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeNameTextFieldView.swift; sourceTree = "<group>"; };
+		CC05AFDB23A11A9F0015E386 /* RecurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrencyView.swift; sourceTree = "<group>"; };
+		CC06679523A1B7B10055D04C /* GoalReachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalReachView.swift; sourceTree = "<group>"; };
 		CC531BB7237D838C006870EF /* DailyRewards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyRewards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC531BBA237D838C006870EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC531BC1237D838D006870EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -146,6 +156,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CC05AFD223A02C1E0015E386 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC05AFD323A035E40015E386 /* ChallengeImageView.swift */,
+				CC05AFD923A106C40015E386 /* ChallengeNameTextFieldView.swift */,
+				CC05AFDB23A11A9F0015E386 /* RecurrencyView.swift */,
+				CC06679523A1B7B10055D04C /* GoalReachView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CC531BAE237D838C006870EF = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +221,7 @@
 				CCE47C13238C558F00CFF71B /* Challenge */,
 				CCD2D2432396F44E00B0A4B6 /* NewChallenge */,
 				CCB44026238F0EEB00A54B92 /* Profile */,
+				CC05AFD523A057D70015E386 /* ZoomAnimator.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -275,6 +297,7 @@
 		CCD2D2432396F44E00B0A4B6 /* NewChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				CC05AFD223A02C1E0015E386 /* Views */,
 				CCD2D2442396F46B00B0A4B6 /* NewChallengePresenter.swift */,
 				CCD2D2452396F46B00B0A4B6 /* NewChallengeWorker.swift */,
 				CCD2D2462396F46B00B0A4B6 /* NewChallengeRouter.swift */,
@@ -481,6 +504,7 @@
 				CC70824F239AB0630067A47C /* SelectedAnimationView.swift in Sources */,
 				CCB44023238F0EE700A54B92 /* ProfileViewController.swift in Sources */,
 				CCE47C1A238C55D600CFF71B /* ChallengePresenter.swift in Sources */,
+				CC05AFDA23A106C40015E386 /* ChallengeNameTextFieldView.swift in Sources */,
 				CCD2D23A239589D000B0A4B6 /* ChallengeCellFactory.swift in Sources */,
 				CCE47C1F238C55D600CFF71B /* Challenge.swift in Sources */,
 				CCD2D24F2396F46B00B0A4B6 /* NewChallenge.swift in Sources */,
@@ -488,6 +512,8 @@
 				CCD2D23D2396D0BD00B0A4B6 /* MyChallengesCollectionViewDataSource.swift in Sources */,
 				CC531BDC237DB077006870EF /* LoginViewController.swift in Sources */,
 				CCB4402C238FEC8A00A54B92 /* DailyRewardsConstants.swift in Sources */,
+				CC05AFDC23A11A9F0015E386 /* RecurrencyView.swift in Sources */,
+				CC05AFD623A057D70015E386 /* ZoomAnimator.swift in Sources */,
 				CCCA986F2389D31100DCDC50 /* InitializationSetup.swift in Sources */,
 				CCD2D24C2396F46B00B0A4B6 /* NewChallengeRouter.swift in Sources */,
 				CCB44020238F0EE700A54B92 /* ProfilePresenter.swift in Sources */,
@@ -496,9 +522,11 @@
 				CCCA17E62395736400AEF0E9 /* ChallengeNewCell.swift in Sources */,
 				CCD2D24E2396F46B00B0A4B6 /* NewChallengeInteractor.swift in Sources */,
 				CCD2D23F2396D0D400B0A4B6 /* GroupChallengesCollectionViewDataSource.swift in Sources */,
+				CC06679623A1B7B10055D04C /* GoalReachView.swift in Sources */,
 				CCD2D24B2396F46B00B0A4B6 /* NewChallengeWorker.swift in Sources */,
 				CCB44025238F0EE700A54B92 /* Profile.swift in Sources */,
 				CCCA17E82395817900AEF0E9 /* ChallengeInfoCell.swift in Sources */,
+				CC05AFD423A035E40015E386 /* ChallengeImageView.swift in Sources */,
 				CCB44024238F0EE700A54B92 /* ProfileInteractor.swift in Sources */,
 				CCE47C25238CA99600CFF71B /* ChallengeViewController+AnimationDelegates.swift in Sources */,
 			);

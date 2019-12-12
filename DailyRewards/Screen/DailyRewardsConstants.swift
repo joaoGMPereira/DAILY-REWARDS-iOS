@@ -16,3 +16,6 @@ enum HeroConstants: String {
     case profileNameHero = "profileNameHero"
     case challengeImageHero = "challengeImageHero"
 }
+enum LottieConstants: String {
+    case infityLoop = "infinityLottieOrange"
+}

@@ -16,7 +16,7 @@ class GroupChallengesCollectionViewDataSource: NSObject, UICollectionViewDataSou
     var animationView: SelectedAnimationView?
     var scalingCollectionView: ScalingCarouselView
     var viewControllerDelegate: ChallengeViewControllerDelegate?
-    
+    private var selectedIndex: IndexPath?
     init (challenges: [Challenge], scrollableStackView: ScrollableStackView, collectionView: ScalingCarouselView, viewControllerDelegate: ChallengeViewControllerDelegate?, animationView: SelectedAnimationView?) {
         self.challenges = challenges
         self.scrollableStackView = scrollableStackView
@@ -65,7 +65,8 @@ class GroupChallengesCollectionViewDataSource: NSObject, UICollectionViewDataSou
                 self.viewControllerDelegate?.selectedCell(cellType: challenge.cellType, challenge: challenge)
             }
         }
-        collectionView.scrollToItem(at: scalingCollectionView.lastCurrentCenterCellIndex ?? IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
+        selectedIndex = scalingCollectionView.lastCurrentCenterCellIndex
+        collectionView.scrollToItem(at: selectedIndex ?? IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
     }
     
     func selectedCell(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath, selectionFinished: @escaping SelectedCellFinished) {
@@ -79,6 +80,10 @@ class GroupChallengesCollectionViewDataSource: NSObject, UICollectionViewDataSou
                 }
             }
         }
+    }
+    
+    func scrollToSelectedIndex() {
+        scalingCollectionView.scrollToItem(at: selectedIndex ?? IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
     }
     
     func selectAnimation(cell: ScalingCarouselCell) {
