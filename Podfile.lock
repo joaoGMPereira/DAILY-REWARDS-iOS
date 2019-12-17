@@ -64,13 +64,14 @@ PODS:
   - GTMSessionFetcher/Full (1.3.0):
     - GTMSessionFetcher/Core (= 1.3.0)
   - Hero (1.4.0)
-  - JewFeatures (0.0.2):
+  - JewFeatures (0.0.3):
     - Alamofire
     - CollectionKit
     - lottie-ios
     - PodAsset
     - SkeletonView
     - SwiftKeychainWrapper
+  - JTAppleCalendar (7.1.8)
   - lottie-ios (3.1.5)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
@@ -94,6 +95,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - Hero (from `https://github.com/barrault01/Hero.git`, commit `6220387`)
   - JewFeatures (from `../JewFeatures`)
+  - JTAppleCalendar (~> 7.1)
   - lottie-ios
   - SkeletonView (from `https://github.com/Juanpe/SkeletonView.git`, tag `1.4.2`)
   - StepView
@@ -119,6 +121,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - JTAppleCalendar
     - lottie-ios
     - nanopb
     - PodAsset
@@ -167,7 +170,8 @@ SPEC CHECKSUMS:
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 43b8b64263023d4f32caa0b40f4c8bfa3c5f36d8
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
-  JewFeatures: 9dc1b6d34cef0f7bc7b45a1d6cbbe8efeb2532a5
+  JewFeatures: 0cc787622a4a099025fea724fcffee00256e011a
+  JTAppleCalendar: b7fb40852f5f319fe55c8ec3861f1de0edc99cc8
   lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PodAsset: c2c2b20013c1edf698fea2bacba6e75a638537a2
@@ -177,6 +181,6 @@ SPEC CHECKSUMS:
   SwiftyRSA: 6e528fb1b1a87d5111c48081083b141d6d65f1cf
   ZCAnimatedLabel: 519b688bef4403fd356bc785f9b61cdfd8e6472d
 
-PODFILE CHECKSUM: 268417dd6e2ed0d2ba2a3e6e8692525f5513946b
+PODFILE CHECKSUM: 28d68f85e2ad9255317c3465c52bb593125df6ec
 
 COCOAPODS: 1.7.5

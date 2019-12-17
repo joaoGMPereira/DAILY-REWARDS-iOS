@@ -1,5 +1,5 @@
 //
-//  NewChallenge.swift
+//  EditChallenge.swift
 //  DailyRewards
 //
 //  Created by Joao Gabriel Medeiros Perei on 03/12/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct NewChallenge: Codable {
+public struct EditChallenge: Codable {
     var value: String
     
     public init(value: String) {

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import JewFeatures
 
-class RecurrencyView: UIView {
+class ChallengeRecurrencyView: UIView {
     var recurrencyTitle = UILabel(frame: .zero)
     var recurrencyView = JEWNPSView(frame: .zero)
     var recurrencyArray: [Avaliation] = []
@@ -39,26 +39,20 @@ class RecurrencyView: UIView {
         recurrencyArray.append(Avaliation.init(text: "S"))
         recurrencyArray.append(Avaliation.init(text: "S"))
         recurrencyArray.append(Avaliation.init(text: "D"))
-        recurrencyArray.append(Avaliation.init(text: "Todos", width: 70))
         recurrencyView.setIndividualSelection(individualSelection: true).setup(avaliations: recurrencyArray)
         recurrencyView.hasSelectedButtonCallback = { (selectedIndex) in
             if let hasSelectedButtonCallback = self.hasSelectedButtonCallback {
                 hasSelectedButtonCallback(self.recurrencyArray.count, selectedIndex)
             }
-            
         }
     }
     
-    public func unselectButtons(notUnselectIndex: Int) {
-        recurrencyView.unselectButtons(notUnselectIndex: notUnselectIndex)
-    }
-    
-    public func unselectButton(indexButton: Int) {
-        recurrencyView.unselectButton(indexButton: indexButton)
+    public func selected(index: Int) {
+       // recurrencyView.unselectButton(indexButton: index)
     }
 }
 
-extension RecurrencyView: JEWCodeView {
+extension ChallengeRecurrencyView: JEWCodeView {
     func buildViewHierarchy() {
         addSubview(recurrencyTitle)
         addSubview(recurrencyView)
@@ -103,7 +97,7 @@ extension RecurrencyView: JEWCodeView {
     }
     
     func setupAdditionalConfiguration() {
-        recurrencyTitle.text = "Frequência:"
+        recurrencyTitle.text = "Dias da semana:"
         recurrencyTitle.textColor = UIColor.JEWDefault()
     }
     

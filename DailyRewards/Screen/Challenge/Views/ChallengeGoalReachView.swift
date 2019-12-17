@@ -9,7 +9,7 @@
 import UIKit
 import JewFeatures
 import Lottie
-class GoalReachView: UIStackView {
+class ChallengeGoalReachView: UIStackView {
     
     typealias TextFieldDidBeginEditing = ((JEWFloatingTextField) -> Void)
     typealias TextFieldDidEndEditing = ((JEWFloatingTextField) -> Void)
@@ -38,7 +38,7 @@ class GoalReachView: UIStackView {
     func setupTextField() {
         let goalReachTextFieldFactory = JEWFloatingTextFieldFactory(withFloatingTextField: goalReachTextField)
         let goalReachToolbarBuilder = JEWFloatingTextFieldToolbarBuilder(with: goalReachTextField).setToolbar(leftButtons: [.cancel], rightButtons: [.ok], shouldShowKeyboard: true)
-        let goalReachFormatBuilder = JEWFloatingTextFieldFormatBuilder(with: goalReachTextField).setAll(withPlaceholder: "Repetições").setKeyboardType(type: .decimalPad).setTextFieldTextColor(color: .white)
+        let goalReachFormatBuilder = JEWFloatingTextFieldFormatBuilder(with: goalReachTextField).setAll(withPlaceholder: "Repetições").setKeyboardType(type: .decimalPad).setTextFieldTextColor(color: .white).setTextFieldTextColor(color: .white).setTextFieldKeyboardAppearance(appearance: .dark)
         
         goalReachTextFieldFactory.setupFormatBuilder(builder: goalReachFormatBuilder)
             .setupToolbarBuilder(builder: goalReachToolbarBuilder)
@@ -53,7 +53,7 @@ class GoalReachView: UIStackView {
     
 }
 
-extension GoalReachView: JEWFloatingTextFieldDelegate {
+extension ChallengeGoalReachView: JEWFloatingTextFieldDelegate {
     
     func toolbarAction(_ textField: JEWFloatingTextField, typeOfAction type: JEWKeyboardToolbarButton) {
         endEditing(true)
@@ -73,7 +73,7 @@ extension GoalReachView: JEWFloatingTextFieldDelegate {
     
 }
 
-extension GoalReachView: JEWCodeView {
+extension ChallengeGoalReachView: JEWCodeView {
     func buildViewHierarchy() {
         setupGoalReachViews()
         translatesAutoresizingMaskIntoConstraints = false
@@ -86,7 +86,8 @@ extension GoalReachView: JEWCodeView {
     }
     
     func setupGoalReachViews() {
-        self.axis = .vertical
+        axis = .vertical
+        spacing = 4
         addArrangedSubview(goalReachTitle)
         addArrangedSubview(goalReachStackView)
         goalReachStackView.setup(subViews: [goalReachSwitch, goalReachAnimation], axis: .horizontal)

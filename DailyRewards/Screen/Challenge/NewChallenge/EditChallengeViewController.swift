@@ -1,5 +1,5 @@
 //
-//  NewChallengeViewController.swift
+//  EditChallengeViewController.swift
 //  DailyRewards
 //
 //  Created by Joao Gabriel Medeiros Perei on 03/12/19.
@@ -11,30 +11,38 @@ import JewFeatures
 import Lottie
 import PodAsset
 
-protocol NewChallengeViewControllerProtocol: class {
-    func displayAllDays(allDaysIndex: Int)
-    func hideAllDays(allDaysIndex: Int)
+protocol EditChallengeViewControllerProtocol: class {
+    func displayRecurrency(selectedIndex: Int)
+    func displayPeriod(selectedIndex: Int)
+    func displayRecurrency()
+    func hideRecurrency()
     func displayInfinityGoalReach()
     func displayGoalReach()
+    func displayNoReward()
+    func displayReward()
+    func displayRewardType(selectedIndex: Int)
 }
 
-class NewChallengeViewController: UIViewController {
+class EditChallengeViewController: UIViewController {
     
     //MARK: UIProperties
     var scrollableStackView = ScrollableStackView(frame: .zero)
     var challengeImageView = ChallengeImageView(frame: .zero)
     var challengeNameTextFieldView = ChallengeNameTextFieldView(frame: .zero)
-    var recurrencyView = RecurrencyView(frame: .zero)
-    var goalReachView = GoalReachView(frame: .zero)
+    var recurrencyView = ChallengeRecurrencyView(frame: .zero)
+    var periodView = ChallengePeriodView(frame: .zero)
+    var goalReachView = ChallengeGoalReachView(frame: .zero)
+    var rewardView = ChallengeRewardView(frame: .zero)
+    
     
     //MARK: Properties
     var keyboardSize: CGRect = .zero
-    var interactor: NewChallengeInteractorProtocol?
+    var interactor: EditChallengeInteractorProtocol?
     
     //MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        background = UIColor.JEWBlack()
+        background = UIColor.JEWBackground()
         keyboardSize = KeyboardService.keyboardSize()
         setup()
         setupView()
@@ -49,9 +57,9 @@ class NewChallengeViewController: UIViewController {
     
     //MARK: Setup
     func setup() {
-        let interactor = NewChallengeInteractor()
+        let interactor = EditChallengeInteractor()
         self.interactor = interactor
-        let presenter = NewChallengePresenter()
+        let presenter = EditChallengePresenter()
         presenter.viewController = self
         interactor.presenter = presenter
     }
@@ -72,8 +80,13 @@ class NewChallengeViewController: UIViewController {
     }
     
     func callBacks() {
+        
+        challengeImageView.hasSelectedButtonCallback = { button in
+            self.challengeImageView.showSelectImage(inViewController: self)
+        }
+        
         challengeNameTextFieldView.textFieldDidBeginEditingCallback = { textField in
-            self.moveUpKeyboard(textField: textField)
+            self.moveUpKeyboard(textField: textField, superView: self.challengeNameTextFieldView)
         }
         
         challengeNameTextFieldView.textFieldDidEndEditingCallback = { textField in
@@ -81,7 +94,7 @@ class NewChallengeViewController: UIViewController {
         }
         
         goalReachView.textFieldDidBeginEditingCallback = { textField in
-            self.moveUpKeyboard(textField: textField)
+            self.moveUpKeyboard(textField: textField, superView: self.goalReachView)
         }
         
         goalReachView.textFieldDidEndEditingCallback = { textField in
@@ -89,50 +102,80 @@ class NewChallengeViewController: UIViewController {
         }
         
         recurrencyView.hasSelectedButtonCallback = { (totalIndex, selectedIndex) in
-            self.interactor?.hasSelectedButton(totalIndex: totalIndex, selectedIndex: selectedIndex)
+            self.interactor?.changeGoalHasSelectedButton(totalIndex: totalIndex, selectedIndex: selectedIndex)
         }
+        
+        periodView.hasSelectedButtonCallback = { (totalIndex, selectedIndex) in
+            self.interactor?.periodHasSelectedButton(totalIndex: totalIndex, selectedIndex: selectedIndex)
+        }
+        
         goalReachView.switchGoalReachChangeCallback = { isOn in
             self.interactor?.changeGoalReach(isOn: isOn)
+        }
+        
+        rewardView.textFieldDidBeginEditingCallback = { textField in
+            self.moveUpKeyboard(textField: textField, superView: self.rewardView)
+        }
+        
+        rewardView.textFieldDidEndEditingCallback = { textField in
+            self.moveDownKeyboard()
+        }
+        
+        rewardView.switchRewardChangeCallback = { isOn in
+            self.interactor?.changeReward(isOn: isOn)
+        }
+        
+        rewardView.hasSelectedButtonCallback = { (totalIndex, selectedIndex) in
+            self.interactor?.rewardHasSelectedButton(totalIndex: totalIndex, selectedIndex: selectedIndex)
         }
     }
     
 }
 
 //MARK: Keyboard methods
-extension NewChallengeViewController {
-    func moveUpKeyboard(textField: JEWFloatingTextField) {
+extension EditChallengeViewController {
+    func moveUpKeyboard(textField: JEWFloatingTextField, superView: UIView) {
         let height = KeyboardService.keyboardHeight()
-        let minYTextField = self.scrollableStackView.convert(textField.frame.origin, to: self.scrollableStackView).y
+        let minYTextField = superView.convert(textField.frame.origin, to: self.scrollableStackView).y
         let toolbarHeight: CGFloat = 50
         let maxYTextField = minYTextField + textField.frame.height
         let minYKeyboard = self.view.frame.maxY - height - toolbarHeight
         let moveTextField = maxYTextField - minYKeyboard + toolbarHeight
+        self.scrollableStackView.contentInset.bottom = height
         if maxYTextField > minYKeyboard {
             self.scrollableStackView.setContentOffset(CGPoint.init(x: 0, y: moveTextField), animated: true)
         }
     }
     
     func moveDownKeyboard() {
-        self.scrollableStackView.setContentOffset(.zero, animated: true)
+        self.scrollableStackView.contentInset = .zero
     }
 }
 
 //MARK: Actions
-extension NewChallengeViewController {
+extension EditChallengeViewController {
     @IBAction func closeAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
 }
 
 //MARK: Display Protocol
-extension NewChallengeViewController: NewChallengeViewControllerProtocol {
-    
-    func displayAllDays(allDaysIndex: Int) {
-        self.recurrencyView.unselectButtons(notUnselectIndex: allDaysIndex)
+extension EditChallengeViewController: EditChallengeViewControllerProtocol {
+
+    func displayRecurrency(selectedIndex: Int) {
+        self.recurrencyView.selected(index: selectedIndex)
     }
     
-    func hideAllDays(allDaysIndex: Int) {
-        self.recurrencyView.unselectButton(indexButton: allDaysIndex)
+    func displayPeriod(selectedIndex: Int) {
+        self.periodView.selectType(index: selectedIndex)
+    }
+    
+    func hideRecurrency() {
+        self.recurrencyView.isHidden = true
+    }
+    
+    func displayRecurrency() {
+        self.recurrencyView.isHidden = false
     }
     
     func displayInfinityGoalReach() {
@@ -150,9 +193,29 @@ extension NewChallengeViewController: NewChallengeViewControllerProtocol {
         }
     }
     
+    func displayReward() {
+        rewardView.rewardTextField.isHidden = false
+        rewardView.rewardTypeView.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.rewardView.rewardAnimation.alpha = 0
+        }
+    }
+    
+    func displayNoReward() {
+        rewardView.rewardTextField.isHidden = true
+        rewardView.rewardTypeView.isHidden = true
+        UIView.animate(withDuration: 0.3) {
+            self.rewardView.rewardAnimation.alpha = 1
+            self.rewardView.rewardAnimation.play()
+        }
+    }
+    
+    func displayRewardType(selectedIndex: Int) {
+        self.rewardView.selectType(index: selectedIndex)
+    }
 }
 
-extension NewChallengeViewController: JEWCodeView {
+extension EditChallengeViewController: JEWCodeView {
     func buildViewHierarchy() {
         view.addSubview(scrollableStackView)
         scrollableStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -164,7 +227,7 @@ extension NewChallengeViewController: JEWCodeView {
             scrollableStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             scrollableStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             scrollableStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            scrollableStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 8)
+            scrollableStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8)
         ])
         
         view.layoutIfNeeded()
@@ -172,8 +235,8 @@ extension NewChallengeViewController: JEWCodeView {
     
     func setupAdditionalConfiguration() {
         scrollableStackView.isScrollEnabled = true
-        scrollableStackView.setCustomSpacing(spacing: 16, after: challengeNameTextFieldView)
-        scrollableStackView.setup(subViews: [challengeImageView, challengeNameTextFieldView, recurrencyView, goalReachView], axis: .vertical, spacing: 4)
+        scrollableStackView.setup(subViews: [challengeImageView, challengeNameTextFieldView, recurrencyView, periodView, goalReachView, rewardView], axis: .vertical, spacing: 16, alwaysBounce: true)
+        scrollableStackView.setCustomSpacing(spacing: 32, after: challengeNameTextFieldView)
     }
     
 }

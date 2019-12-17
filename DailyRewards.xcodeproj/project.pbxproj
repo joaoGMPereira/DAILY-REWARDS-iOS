@@ -12,8 +12,12 @@
 		CC05AFD423A035E40015E386 /* ChallengeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05AFD323A035E40015E386 /* ChallengeImageView.swift */; };
 		CC05AFD623A057D70015E386 /* ZoomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05AFD523A057D70015E386 /* ZoomAnimator.swift */; };
 		CC05AFDA23A106C40015E386 /* ChallengeNameTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05AFD923A106C40015E386 /* ChallengeNameTextFieldView.swift */; };
-		CC05AFDC23A11A9F0015E386 /* RecurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05AFDB23A11A9F0015E386 /* RecurrencyView.swift */; };
-		CC06679623A1B7B10055D04C /* GoalReachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC06679523A1B7B10055D04C /* GoalReachView.swift */; };
+		CC05AFDC23A11A9F0015E386 /* ChallengeRecurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05AFDB23A11A9F0015E386 /* ChallengeRecurrencyView.swift */; };
+		CC06679623A1B7B10055D04C /* ChallengeGoalReachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC06679523A1B7B10055D04C /* ChallengeGoalReachView.swift */; };
+		CC06679823A1CAC70055D04C /* ChallengeRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC06679723A1CAC70055D04C /* ChallengeRewardView.swift */; };
+		CC06679A23A26F8E0055D04C /* plusMinusLottieOrange.json in Resources */ = {isa = PBXBuildFile; fileRef = CC06679923A26F8E0055D04C /* plusMinusLottieOrange.json */; };
+		CC06679D23A278B30055D04C /* RewardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC06679C23A278B30055D04C /* RewardType.swift */; };
+		CC06679F23A279470055D04C /* closeLottieOrange.json in Resources */ = {isa = PBXBuildFile; fileRef = CC06679E23A279470055D04C /* closeLottieOrange.json */; };
 		CC531BBB237D838C006870EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC531BBA237D838C006870EF /* AppDelegate.swift */; };
 		CC531BC2237D838D006870EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC531BC1237D838D006870EF /* Assets.xcassets */; };
 		CC531BC5237D838D006870EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC531BC3237D838D006870EF /* LaunchScreen.storyboard */; };
@@ -23,6 +27,10 @@
 		CC531BE1237DB362006870EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC531BE0237DB362006870EF /* GoogleService-Info.plist */; };
 		CC531BE3237DBCD4006870EF /* IconLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = CC531BE2237DBCD4006870EF /* IconLottie.json */; };
 		CC70824F239AB0630067A47C /* SelectedAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC70824E239AB0630067A47C /* SelectedAnimationView.swift */; };
+		CC9ED02823A464AB00DC49D2 /* NewChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9ED02723A464AB00DC49D2 /* NewChallengeViewController.swift */; };
+		CC9ED02A23A7E7CE00DC49D2 /* NewChallengeViewController+Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9ED02923A7E7CE00DC49D2 /* NewChallengeViewController+Steps.swift */; };
+		CC9ED02C23A7F7FC00DC49D2 /* ChallengeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9ED02B23A7F7FC00DC49D2 /* ChallengeButtonsView.swift */; };
+		CC9ED02E23A80F7700DC49D2 /* NewChallengeStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9ED02D23A80F7700DC49D2 /* NewChallengeStep.swift */; };
 		CCB44020238F0EE700A54B92 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4401A238F0EE700A54B92 /* ProfilePresenter.swift */; };
 		CCB44021238F0EE700A54B92 /* ProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4401B238F0EE700A54B92 /* ProfileWorker.swift */; };
 		CCB44023238F0EE700A54B92 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4401D238F0EE700A54B92 /* ProfileViewController.swift */; };
@@ -36,17 +44,16 @@
 		CCCA17E62395736400AEF0E9 /* ChallengeNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA17E52395736400AEF0E9 /* ChallengeNewCell.swift */; };
 		CCCA17E82395817900AEF0E9 /* ChallengeInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA17E72395817900AEF0E9 /* ChallengeInfoCell.swift */; };
 		CCCA986F2389D31100DCDC50 /* InitializationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA986E2389D31100DCDC50 /* InitializationSetup.swift */; };
+		CCCF564423A3F21D00BD34D1 /* ChallengePeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCF564323A3F21D00BD34D1 /* ChallengePeriodView.swift */; };
 		CCD2D23A239589D000B0A4B6 /* ChallengeCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD2D239239589D000B0A4B6 /* ChallengeCellFactory.swift */; };
 		CCD2D23D2396D0BD00B0A4B6 /* MyChallengesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD2D23C2396D0BD00B0A4B6 /* MyChallengesCollectionViewDataSource.swift */; };
 		CCD2D23F2396D0D400B0A4B6 /* GroupChallengesCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD2D23E2396D0D400B0A4B6 /* GroupChallengesCollectionViewDataSource.swift */; };
 		CCD2D2412396F33700B0A4B6 /* ChallengesEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD2D2402396F33700B0A4B6 /* ChallengesEnums.swift */; };
-		CCD2D24A2396F46B00B0A4B6 /* NewChallengePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD2D2442396F46B00B0A4B6 /* NewChallengePresenter.swift */; };
-		CCD2D24B2396F46B00B0A4B6 /* NewChallengeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD2D2452396F46B00B0A4B6 /* NewChallengeWorker.swift */; };
-		CCD2D24C2396F46B00B0A4B6 /* NewChallengeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD2D2462396F46B00B0A4B6 /* NewChallengeRouter.swift */; };
-		CCD2D24D2396F46B00B0A4B6 /* NewChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD2D2472396F46B00B0A4B6 /* NewChallengeViewController.swift */; };
-		CCD2D24E2396F46B00B0A4B6 /* NewChallengeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD2D2482396F46B00B0A4B6 /* NewChallengeInteractor.swift */; };
-		CCD2D24F2396F46B00B0A4B6 /* NewChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD2D2492396F46B00B0A4B6 /* NewChallenge.swift */; };
-		CCD2D2512396F4B800B0A4B6 /* NewChallengeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCD2D2502396F4B800B0A4B6 /* NewChallengeViewController.xib */; };
+		CCD2D24A2396F46B00B0A4B6 /* EditChallengePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD2D2442396F46B00B0A4B6 /* EditChallengePresenter.swift */; };
+		CCD2D24B2396F46B00B0A4B6 /* EditChallengeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD2D2452396F46B00B0A4B6 /* EditChallengeWorker.swift */; };
+		CCD2D24D2396F46B00B0A4B6 /* EditChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD2D2472396F46B00B0A4B6 /* EditChallengeViewController.swift */; };
+		CCD2D24E2396F46B00B0A4B6 /* EditChallengeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD2D2482396F46B00B0A4B6 /* EditChallengeInteractor.swift */; };
+		CCD2D24F2396F46B00B0A4B6 /* EditChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD2D2492396F46B00B0A4B6 /* EditChallenge.swift */; };
 		CCE47C1A238C55D600CFF71B /* ChallengePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE47C14238C55D500CFF71B /* ChallengePresenter.swift */; };
 		CCE47C1B238C55D600CFF71B /* ChallengeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE47C15238C55D500CFF71B /* ChallengeWorker.swift */; };
 		CCE47C1D238C55D600CFF71B /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE47C17238C55D500CFF71B /* ChallengeViewController.swift */; };
@@ -71,8 +78,12 @@
 		CC05AFD323A035E40015E386 /* ChallengeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeImageView.swift; sourceTree = "<group>"; };
 		CC05AFD523A057D70015E386 /* ZoomAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAnimator.swift; sourceTree = "<group>"; };
 		CC05AFD923A106C40015E386 /* ChallengeNameTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeNameTextFieldView.swift; sourceTree = "<group>"; };
-		CC05AFDB23A11A9F0015E386 /* RecurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrencyView.swift; sourceTree = "<group>"; };
-		CC06679523A1B7B10055D04C /* GoalReachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalReachView.swift; sourceTree = "<group>"; };
+		CC05AFDB23A11A9F0015E386 /* ChallengeRecurrencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRecurrencyView.swift; sourceTree = "<group>"; };
+		CC06679523A1B7B10055D04C /* ChallengeGoalReachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeGoalReachView.swift; sourceTree = "<group>"; };
+		CC06679723A1CAC70055D04C /* ChallengeRewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardView.swift; sourceTree = "<group>"; };
+		CC06679923A26F8E0055D04C /* plusMinusLottieOrange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = plusMinusLottieOrange.json; sourceTree = "<group>"; };
+		CC06679C23A278B30055D04C /* RewardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardType.swift; sourceTree = "<group>"; };
+		CC06679E23A279470055D04C /* closeLottieOrange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = closeLottieOrange.json; sourceTree = "<group>"; };
 		CC531BB7237D838C006870EF /* DailyRewards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyRewards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC531BBA237D838C006870EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC531BC1237D838D006870EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,6 +97,10 @@
 		CC531BE0237DB362006870EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CC531BE2237DBCD4006870EF /* IconLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = IconLottie.json; sourceTree = "<group>"; };
 		CC70824E239AB0630067A47C /* SelectedAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedAnimationView.swift; sourceTree = "<group>"; };
+		CC9ED02723A464AB00DC49D2 /* NewChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChallengeViewController.swift; sourceTree = "<group>"; };
+		CC9ED02923A7E7CE00DC49D2 /* NewChallengeViewController+Steps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewChallengeViewController+Steps.swift"; sourceTree = "<group>"; };
+		CC9ED02B23A7F7FC00DC49D2 /* ChallengeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeButtonsView.swift; sourceTree = "<group>"; };
+		CC9ED02D23A80F7700DC49D2 /* NewChallengeStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChallengeStep.swift; sourceTree = "<group>"; };
 		CCB4401A238F0EE700A54B92 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		CCB4401B238F0EE700A54B92 /* ProfileWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWorker.swift; sourceTree = "<group>"; };
 		CCB4401D238F0EE700A54B92 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -99,17 +114,16 @@
 		CCCA17E52395736400AEF0E9 /* ChallengeNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeNewCell.swift; sourceTree = "<group>"; };
 		CCCA17E72395817900AEF0E9 /* ChallengeInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeInfoCell.swift; sourceTree = "<group>"; };
 		CCCA986E2389D31100DCDC50 /* InitializationSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializationSetup.swift; sourceTree = "<group>"; };
+		CCCF564323A3F21D00BD34D1 /* ChallengePeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengePeriodView.swift; sourceTree = "<group>"; };
 		CCD2D239239589D000B0A4B6 /* ChallengeCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCellFactory.swift; sourceTree = "<group>"; };
 		CCD2D23C2396D0BD00B0A4B6 /* MyChallengesCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChallengesCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		CCD2D23E2396D0D400B0A4B6 /* GroupChallengesCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChallengesCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		CCD2D2402396F33700B0A4B6 /* ChallengesEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesEnums.swift; sourceTree = "<group>"; };
-		CCD2D2442396F46B00B0A4B6 /* NewChallengePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChallengePresenter.swift; sourceTree = "<group>"; };
-		CCD2D2452396F46B00B0A4B6 /* NewChallengeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChallengeWorker.swift; sourceTree = "<group>"; };
-		CCD2D2462396F46B00B0A4B6 /* NewChallengeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChallengeRouter.swift; sourceTree = "<group>"; };
-		CCD2D2472396F46B00B0A4B6 /* NewChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChallengeViewController.swift; sourceTree = "<group>"; };
-		CCD2D2482396F46B00B0A4B6 /* NewChallengeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChallengeInteractor.swift; sourceTree = "<group>"; };
-		CCD2D2492396F46B00B0A4B6 /* NewChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChallenge.swift; sourceTree = "<group>"; };
-		CCD2D2502396F4B800B0A4B6 /* NewChallengeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewChallengeViewController.xib; sourceTree = "<group>"; };
+		CCD2D2442396F46B00B0A4B6 /* EditChallengePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChallengePresenter.swift; sourceTree = "<group>"; };
+		CCD2D2452396F46B00B0A4B6 /* EditChallengeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChallengeWorker.swift; sourceTree = "<group>"; };
+		CCD2D2472396F46B00B0A4B6 /* EditChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChallengeViewController.swift; sourceTree = "<group>"; };
+		CCD2D2482396F46B00B0A4B6 /* EditChallengeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChallengeInteractor.swift; sourceTree = "<group>"; };
+		CCD2D2492396F46B00B0A4B6 /* EditChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChallenge.swift; sourceTree = "<group>"; };
 		CCE47C14238C55D500CFF71B /* ChallengePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengePresenter.swift; sourceTree = "<group>"; };
 		CCE47C15238C55D500CFF71B /* ChallengeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeWorker.swift; sourceTree = "<group>"; };
 		CCE47C17238C55D500CFF71B /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
@@ -161,10 +175,21 @@
 			children = (
 				CC05AFD323A035E40015E386 /* ChallengeImageView.swift */,
 				CC05AFD923A106C40015E386 /* ChallengeNameTextFieldView.swift */,
-				CC05AFDB23A11A9F0015E386 /* RecurrencyView.swift */,
-				CC06679523A1B7B10055D04C /* GoalReachView.swift */,
+				CC05AFDB23A11A9F0015E386 /* ChallengeRecurrencyView.swift */,
+				CCCF564323A3F21D00BD34D1 /* ChallengePeriodView.swift */,
+				CC06679523A1B7B10055D04C /* ChallengeGoalReachView.swift */,
+				CC06679723A1CAC70055D04C /* ChallengeRewardView.swift */,
+				CC9ED02B23A7F7FC00DC49D2 /* ChallengeButtonsView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CC06679B23A278A30055D04C /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				CC06679C23A278B30055D04C /* RewardType.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		CC531BAE237D838C006870EF = {
@@ -195,6 +220,8 @@
 				CC531BBA237D838C006870EF /* AppDelegate.swift */,
 				CC531BC1237D838D006870EF /* Assets.xcassets */,
 				CC531BC3237D838D006870EF /* LaunchScreen.storyboard */,
+				CC06679923A26F8E0055D04C /* plusMinusLottieOrange.json */,
+				CC06679E23A279470055D04C /* closeLottieOrange.json */,
 				CC05AFCB239FCF560015E386 /* infinityLottieOrange.json */,
 				CC531BE2237DBCD4006870EF /* IconLottie.json */,
 				CC531BC6237D838D006870EF /* Info.plist */,
@@ -219,7 +246,6 @@
 				CCCA986D2389D2E900DCDC50 /* Initialization */,
 				CCCA986C2389D2D500DCDC50 /* Login */,
 				CCE47C13238C558F00CFF71B /* Challenge */,
-				CCD2D2432396F44E00B0A4B6 /* NewChallenge */,
 				CCB44026238F0EEB00A54B92 /* Profile */,
 				CC05AFD523A057D70015E386 /* ZoomAnimator.swift */,
 			);
@@ -232,6 +258,32 @@
 				CC531BE0237DB362006870EF /* GoogleService-Info.plist */,
 			);
 			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		CC9ED02523A4636E00DC49D2 /* List Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				CCD2D2422396F37300B0A4B6 /* Enums */,
+				CCD2D23B2396D06100B0A4B6 /* DataSources */,
+				CCCA17E42395733100AEF0E9 /* Views */,
+				CCE47C14238C55D500CFF71B /* ChallengePresenter.swift */,
+				CCE47C15238C55D500CFF71B /* ChallengeWorker.swift */,
+				CCE47C18238C55D500CFF71B /* ChallengeInteractor.swift */,
+				CCE47C19238C55D600CFF71B /* Challenge.swift */,
+				CCE47C17238C55D500CFF71B /* ChallengeViewController.swift */,
+				CCE47C24238CA99600CFF71B /* ChallengeViewController+AnimationDelegates.swift */,
+			);
+			path = "List Challenge";
+			sourceTree = "<group>";
+		};
+		CC9ED02623A4639700DC49D2 /* New  Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				CC9ED02723A464AB00DC49D2 /* NewChallengeViewController.swift */,
+				CC9ED02923A7E7CE00DC49D2 /* NewChallengeViewController+Steps.swift */,
+				CC9ED02D23A80F7700DC49D2 /* NewChallengeStep.swift */,
+			);
+			path = "New  Challenge";
 			sourceTree = "<group>";
 		};
 		CCB44026238F0EEB00A54B92 /* Profile */ = {
@@ -294,33 +346,27 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		CCD2D2432396F44E00B0A4B6 /* NewChallenge */ = {
+		CCD2D2432396F44E00B0A4B6 /* Edit Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				CC05AFD223A02C1E0015E386 /* Views */,
-				CCD2D2442396F46B00B0A4B6 /* NewChallengePresenter.swift */,
-				CCD2D2452396F46B00B0A4B6 /* NewChallengeWorker.swift */,
-				CCD2D2462396F46B00B0A4B6 /* NewChallengeRouter.swift */,
-				CCD2D2472396F46B00B0A4B6 /* NewChallengeViewController.swift */,
-				CCD2D2482396F46B00B0A4B6 /* NewChallengeInteractor.swift */,
-				CCD2D2492396F46B00B0A4B6 /* NewChallenge.swift */,
-				CCD2D2502396F4B800B0A4B6 /* NewChallengeViewController.xib */,
+				CC06679B23A278A30055D04C /* Enums */,
+				CCD2D2442396F46B00B0A4B6 /* EditChallengePresenter.swift */,
+				CCD2D2452396F46B00B0A4B6 /* EditChallengeWorker.swift */,
+				CCD2D2472396F46B00B0A4B6 /* EditChallengeViewController.swift */,
+				CCD2D2482396F46B00B0A4B6 /* EditChallengeInteractor.swift */,
+				CCD2D2492396F46B00B0A4B6 /* EditChallenge.swift */,
 			);
+			name = "Edit Challenge";
 			path = NewChallenge;
 			sourceTree = "<group>";
 		};
 		CCE47C13238C558F00CFF71B /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				CCD2D2422396F37300B0A4B6 /* Enums */,
-				CCD2D23B2396D06100B0A4B6 /* DataSources */,
-				CCCA17E42395733100AEF0E9 /* Views */,
-				CCE47C14238C55D500CFF71B /* ChallengePresenter.swift */,
-				CCE47C15238C55D500CFF71B /* ChallengeWorker.swift */,
-				CCE47C18238C55D500CFF71B /* ChallengeInteractor.swift */,
-				CCE47C19238C55D600CFF71B /* Challenge.swift */,
-				CCE47C17238C55D500CFF71B /* ChallengeViewController.swift */,
-				CCE47C24238CA99600CFF71B /* ChallengeViewController+AnimationDelegates.swift */,
+				CC05AFD223A02C1E0015E386 /* Views */,
+				CC9ED02523A4636E00DC49D2 /* List Challenge */,
+				CC9ED02623A4639700DC49D2 /* New  Challenge */,
+				CCD2D2432396F44E00B0A4B6 /* Edit Challenge */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
@@ -415,7 +461,8 @@
 				CC531BDD237DB077006870EF /* LoginViewController.xib in Resources */,
 				CC05AFCC239FCF570015E386 /* infinityLottieOrange.json in Resources */,
 				CC531BE3237DBCD4006870EF /* IconLottie.json in Resources */,
-				CCD2D2512396F4B800B0A4B6 /* NewChallengeViewController.xib in Resources */,
+				CC06679F23A279470055D04C /* closeLottieOrange.json in Resources */,
+				CC06679A23A26F8E0055D04C /* plusMinusLottieOrange.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,37 +540,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCE47C1E238C55D600CFF71B /* ChallengeInteractor.swift in Sources */,
-				CCD2D24A2396F46B00B0A4B6 /* NewChallengePresenter.swift in Sources */,
+				CCD2D24A2396F46B00B0A4B6 /* EditChallengePresenter.swift in Sources */,
+				CC9ED02C23A7F7FC00DC49D2 /* ChallengeButtonsView.swift in Sources */,
 				CCB44021238F0EE700A54B92 /* ProfileWorker.swift in Sources */,
 				CCBCFCB6238A0463003B9CD8 /* LoginWorker.swift in Sources */,
-				CCD2D24D2396F46B00B0A4B6 /* NewChallengeViewController.swift in Sources */,
+				CCD2D24D2396F46B00B0A4B6 /* EditChallengeViewController.swift in Sources */,
 				CCE47C1B238C55D600CFF71B /* ChallengeWorker.swift in Sources */,
 				CCBCFCB5238A0463003B9CD8 /* LoginPresenter.swift in Sources */,
+				CC9ED02E23A80F7700DC49D2 /* NewChallengeStep.swift in Sources */,
 				CCBCFCB8238A0463003B9CD8 /* LoginInteractor.swift in Sources */,
 				CCD2D2412396F33700B0A4B6 /* ChallengesEnums.swift in Sources */,
+				CC06679823A1CAC70055D04C /* ChallengeRewardView.swift in Sources */,
 				CC70824F239AB0630067A47C /* SelectedAnimationView.swift in Sources */,
 				CCB44023238F0EE700A54B92 /* ProfileViewController.swift in Sources */,
 				CCE47C1A238C55D600CFF71B /* ChallengePresenter.swift in Sources */,
 				CC05AFDA23A106C40015E386 /* ChallengeNameTextFieldView.swift in Sources */,
+				CC9ED02823A464AB00DC49D2 /* NewChallengeViewController.swift in Sources */,
+				CC06679D23A278B30055D04C /* RewardType.swift in Sources */,
 				CCD2D23A239589D000B0A4B6 /* ChallengeCellFactory.swift in Sources */,
 				CCE47C1F238C55D600CFF71B /* Challenge.swift in Sources */,
-				CCD2D24F2396F46B00B0A4B6 /* NewChallenge.swift in Sources */,
+				CCD2D24F2396F46B00B0A4B6 /* EditChallenge.swift in Sources */,
 				CCBCFCB7238A0463003B9CD8 /* DailyRewardsRouter.swift in Sources */,
 				CCD2D23D2396D0BD00B0A4B6 /* MyChallengesCollectionViewDataSource.swift in Sources */,
 				CC531BDC237DB077006870EF /* LoginViewController.swift in Sources */,
+				CCCF564423A3F21D00BD34D1 /* ChallengePeriodView.swift in Sources */,
 				CCB4402C238FEC8A00A54B92 /* DailyRewardsConstants.swift in Sources */,
-				CC05AFDC23A11A9F0015E386 /* RecurrencyView.swift in Sources */,
+				CC05AFDC23A11A9F0015E386 /* ChallengeRecurrencyView.swift in Sources */,
 				CC05AFD623A057D70015E386 /* ZoomAnimator.swift in Sources */,
 				CCCA986F2389D31100DCDC50 /* InitializationSetup.swift in Sources */,
-				CCD2D24C2396F46B00B0A4B6 /* NewChallengeRouter.swift in Sources */,
 				CCB44020238F0EE700A54B92 /* ProfilePresenter.swift in Sources */,
 				CC531BBB237D838C006870EF /* AppDelegate.swift in Sources */,
+				CC9ED02A23A7E7CE00DC49D2 /* NewChallengeViewController+Steps.swift in Sources */,
 				CCE47C1D238C55D600CFF71B /* ChallengeViewController.swift in Sources */,
 				CCCA17E62395736400AEF0E9 /* ChallengeNewCell.swift in Sources */,
-				CCD2D24E2396F46B00B0A4B6 /* NewChallengeInteractor.swift in Sources */,
+				CCD2D24E2396F46B00B0A4B6 /* EditChallengeInteractor.swift in Sources */,
 				CCD2D23F2396D0D400B0A4B6 /* GroupChallengesCollectionViewDataSource.swift in Sources */,
-				CC06679623A1B7B10055D04C /* GoalReachView.swift in Sources */,
-				CCD2D24B2396F46B00B0A4B6 /* NewChallengeWorker.swift in Sources */,
+				CC06679623A1B7B10055D04C /* ChallengeGoalReachView.swift in Sources */,
+				CCD2D24B2396F46B00B0A4B6 /* EditChallengeWorker.swift in Sources */,
 				CCB44025238F0EE700A54B92 /* Profile.swift in Sources */,
 				CCCA17E82395817900AEF0E9 /* ChallengeInfoCell.swift in Sources */,
 				CC05AFD423A035E40015E386 /* ChallengeImageView.swift in Sources */,

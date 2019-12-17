@@ -57,7 +57,7 @@ class ProfileViewController: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Profile"
+        title = ProfileConstants.title.rawValue
         popupMessageView = JEWPopupMessage(parentViewController: self)
         profileImageView.setupRounded(borderColor: .white)
         setupSignOut()
@@ -83,7 +83,7 @@ class ProfileViewController: UIViewController {
     
     func setupSignOut() {
         if let bundle = PodAsset.bundle(forPod: JEWConstants.Resources.podsJewFeature.rawValue) {
-            signOutButton.setImage(UIImage(named: "exitAppIconWhite", in: bundle, compatibleWith: nil), for: .normal)
+            signOutButton.setImage(UIImage(named: ImagesConstants.exitAppIconWhite.rawValue, in: bundle, compatibleWith: nil), for: .normal)
         }
         signOutButton.imageView?.contentMode = .scaleAspectFit
         signOutButton.tintColor = .JEWDefault()
@@ -126,7 +126,7 @@ class ProfileViewController: UIViewController {
         npsView.hasSelectedButtonCallback = { (index) in
             self.interactor?.vote(index: index)
         }
-        npsTitleLabel.text = "Quanto você indicaria esse aplicativo para um amigo?"
+        npsTitleLabel.text = ProfileConstants.npsTitle.rawValue
         npsTitleLabel.numberOfLines = 0
         npsTitleLabel.textColor = .JEWDefault()
         npsTitleLabel.font = .JEW13Bold()
@@ -211,7 +211,7 @@ extension ProfileViewController: JEWCodeView {
     
     func setupAdditionalConfiguration() {
         view.layoutIfNeeded()
-        background = UIColor.JEWBlack()
+        background = UIColor.JEWBackground()
         contentProfileView.backgroundColor = UIColor.darkGray
     }
 }
@@ -241,14 +241,14 @@ extension ProfileViewController: ProfileViewControllerProtocol {
         let voteViewController = INVSAlertViewController()
         voteViewController.setup(withHeight: 120, andWidth: 300, andCornerRadius: 8, andContentViewColor: .white)
         voteViewController.titleAlert = JEWConstants.Default.title.rawValue
-        voteViewController.messageAlert = "Deseja confirmar seu voto?"
+        voteViewController.messageAlert = ProfileConstants.messageAlert.rawValue
         voteViewController.view.frame = view.bounds
         voteViewController.modalPresentationStyle = .overCurrentContext
         voteViewController.view.backgroundColor = .clear
         present(voteViewController, animated: true, completion: nil)
         voteViewController.confirmCallback = { (button) -> () in
             self.dismiss(animated: true) {
-                self.popupMessageView?.show(withTextMessage: "Votado!")
+                self.popupMessageView?.show(withTextMessage: ProfileConstants.votedMessageAlert.rawValue)
             }
         }
         voteViewController.cancelCallback = { (button) -> () in

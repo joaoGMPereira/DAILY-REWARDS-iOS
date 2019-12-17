@@ -18,4 +18,24 @@ enum HeroConstants: String {
 }
 enum LottieConstants: String {
     case infityLoop = "infinityLottieOrange"
+    case plusMinus = "plusMinusLottieOrange"
+    case closeLottieOrange = "closeLottieOrange"
+}
+
+enum ImagesConstants: String {
+    case exitAppIconWhite = "exitAppIconWhite"
+}
+
+enum ProfileConstants: String {
+    case title = "Profile"
+    case npsTitle = "Quanto você indicaria esse aplicativo para um amigo?"
+    case messageAlert = "Deseja confirmar seu voto?"
+    case votedMessageAlert = "Votado!"
+}
+
+enum ChallengeConstants: String {
+    case myChallenges = "Meus Desafios"
+    case groupChallenges = "Desafios em Grupo"
+    case objectives = "Objectivos"
+    
 }

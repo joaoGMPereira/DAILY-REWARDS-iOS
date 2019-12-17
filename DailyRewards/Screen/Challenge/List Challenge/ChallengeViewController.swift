@@ -31,7 +31,7 @@ class ChallengeViewController: UIViewController {
     public var groupsChallengesScalingCarousel = ScalingCarouselView(withFrame: .zero, andInset: 50)
     var groupsChallengesSelectedAnimationView: SelectedAnimationView?
     var scrollableStackView: ScrollableStackView = ScrollableStackView(frame: .zero)
-    var headerView:ExpandableView = ExpandableView(frame: .zero, titleFont: .JEW16Bold(), color: .JEWBlack(), textColor: .white)
+    var headerView:ExpandableView = ExpandableView(frame: .zero, titleFont: .JEW16Bold(), color: .JEWBackground(), textColor: .white)
     var popupMessageView: JEWPopupMessage? = nil
     
     //MARK: Properties
@@ -55,7 +55,6 @@ class ChallengeViewController: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Challenge"
         popupMessageView = JEWPopupMessage(parentViewController: self)
         scrollToSelectedIndex()
     }
@@ -117,7 +116,7 @@ class ChallengeViewController: UIViewController {
     
     //MARK: SetupUI
     func setupUI() {
-        view.backgroundColor = .JEWBlack()
+        view.backgroundColor = .JEWBackground()
         setUpHeader()
         addCarousel()
     }
@@ -162,7 +161,7 @@ class ChallengeViewController: UIViewController {
     func setupMyChallengesTitle() -> UILabel {
         let titleMyRewardsLabel = UILabel(frame: .zero)
         titleMyRewardsLabel.backgroundColor = .clear
-        titleMyRewardsLabel.text = "Meus Desafios"
+        titleMyRewardsLabel.text = ChallengeConstants.myChallenges.rawValue
         titleMyRewardsLabel.textColor = .JEWDefault()
         titleMyRewardsLabel.font = .JEW16Bold()
         return titleMyRewardsLabel
@@ -171,7 +170,7 @@ class ChallengeViewController: UIViewController {
     func setupGroupsChallengesTitle() -> UILabel {
         let titleGroupsRewardsLabel = UILabel(frame: .zero)
         titleGroupsRewardsLabel.backgroundColor = .clear
-        titleGroupsRewardsLabel.text = "Desafios em Grupo"
+        titleGroupsRewardsLabel.text = ChallengeConstants.groupChallenges.rawValue
         titleGroupsRewardsLabel.textColor = .JEWDefault()
         titleGroupsRewardsLabel.font = .JEW16Bold()
         return titleGroupsRewardsLabel

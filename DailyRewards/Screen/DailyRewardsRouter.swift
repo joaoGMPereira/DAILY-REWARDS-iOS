@@ -26,7 +26,7 @@ class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
         appDelegate.window = UIWindow(frame: UIScreen.main.bounds)
         
         let startViewController = UIViewController()
-        startViewController.view.backgroundColor = UIColor.JEWBlack()
+        startViewController.view.backgroundColor = UIColor.JEWBackground()
         
         appDelegate.window?.rootViewController = startViewController
         appDelegate.window?.makeKeyAndVisible()
@@ -54,7 +54,7 @@ class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
         options.direction = .toTop
         options.duration = 0.4
         options.style = .easeOut
-        options.background = UIWindow.TransitionOptions.Background.solidColor(.JEWBlack())
+        options.background = UIWindow.TransitionOptions.Background.solidColor(.JEWBackground())
         window.setRootViewController(loginViewController, options: options)
         
     }
@@ -69,26 +69,26 @@ class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
         options.direction = .toBottom
         options.duration = 0.4
         options.style = .easeOut
-        options.background = UIWindow.TransitionOptions.Background.solidColor(.JEWBlack())
+        options.background = UIWindow.TransitionOptions.Background.solidColor(.JEWBackground())
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             window.setRootViewController(challengeViewController, options: options)
         }
     }
     
     func setupNewChallengeViewController(withParentViewController parentViewController: UIViewController) {
-        let newChallengeViewController = NewChallengeViewController.init(nibName: NewChallengeViewController.toString(), bundle: Bundle.main)
+        let newChallengeViewController = NewChallengeViewController()
         let newChallengeNavigationController = UINavigationController.init(rootViewController: newChallengeViewController)
         newChallengeNavigationController.modalTransitionStyle = .crossDissolve
         parentViewController.present(newChallengeNavigationController, animated: true, completion: nil)
     }
     
     func setupEditChallengeViewController(withParentViewController parentViewController: UIViewController, challenge: Challenge) {
-        let newChallengeViewController = NewChallengeViewController.init(nibName: NewChallengeViewController.toString(), bundle: Bundle.main)
-        let newChallengeNavigationController = UINavigationController.init(rootViewController: newChallengeViewController)
-        newChallengeNavigationController.modalTransitionStyle = .crossDissolve
-        newChallengeNavigationController.hero.isEnabled = true
-        newChallengeViewController.challengeImageView.challengeImageButton.hero.id = "\(HeroConstants.challengeImageHero.rawValue)\(challenge.title)"
-        parentViewController.present(newChallengeNavigationController, animated: true)
+        let editChallengeViewController = EditChallengeViewController()
+        let editChallengeNavigationController = UINavigationController.init(rootViewController: editChallengeViewController)
+        editChallengeNavigationController.modalTransitionStyle = .crossDissolve
+        editChallengeNavigationController.hero.isEnabled = true
+        editChallengeViewController.challengeImageView.challengeImageButton.hero.id = "\(HeroConstants.challengeImageHero.rawValue)\(challenge.title)"
+        parentViewController.present(editChallengeNavigationController, animated: true)
     }
     
     func setupProfileViewController(withParentViewController parentViewController: UIViewController, heroImageView: UIView?) {

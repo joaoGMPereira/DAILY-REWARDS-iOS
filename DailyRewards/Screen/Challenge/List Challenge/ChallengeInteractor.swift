@@ -33,7 +33,7 @@ class ChallengeInteractor: ChallengeInteractorProtocol {
     }
     
     func setUserName() {
-        presenter?.presentProfile(name: "Objetivos")
+        presenter?.presentProfile(name: ChallengeConstants.objectives.rawValue)
     }
     
     func setMyChallenges() {

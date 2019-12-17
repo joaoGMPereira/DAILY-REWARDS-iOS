@@ -13,10 +13,12 @@ import JewFeatures
 class ChallengeNameTextFieldView: UIView {
     typealias TextFieldDidBeginEditing = ((JEWFloatingTextField) -> Void)
     typealias TextFieldDidEndEditing = ((JEWFloatingTextField) -> Void)
+    typealias TextFieldToolbarAction = ((JEWKeyboardToolbarButton) -> Void)
     
     var challengeNameTextField = JEWFloatingTextField(frame: .zero)
     var textFieldDidBeginEditingCallback: TextFieldDidBeginEditing?
     var textFieldDidEndEditingCallback: TextFieldDidEndEditing?
+    var textFieldToolbarActionCallback: TextFieldToolbarAction?
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupView()
@@ -26,11 +28,19 @@ class ChallengeNameTextFieldView: UIView {
     func setupTextField() {
         let challengeNameTextFieldFactory = JEWFloatingTextFieldFactory(withFloatingTextField: challengeNameTextField)
         let challengeNameToolbarBuilder = JEWFloatingTextFieldToolbarBuilder(with: challengeNameTextField).setToolbar(leftButtons: [.cancel], rightButtons: [.ok], shouldShowKeyboard: true)
-        let challengeNameFormatBuilder = JEWFloatingTextFieldFormatBuilder(with: challengeNameTextField).setAll(withPlaceholder: "Nome do Objetivo").setTextFieldTextColor(color: .white)
+        let challengeNameFormatBuilder = JEWFloatingTextFieldFormatBuilder(with: challengeNameTextField).setAll(withPlaceholder: "Nome do Objetivo").setTextFieldTextColor(color: .white).setTextFieldKeyboardAppearance(appearance: .dark)
         
         challengeNameTextFieldFactory.setupFormatBuilder(builder: challengeNameFormatBuilder)
             .setupToolbarBuilder(builder: challengeNameToolbarBuilder)
             .setup(buildersType: [.CodeView], delegate: self)
+    }
+    
+    func setupCustomTextFieldFactory(withToolbarBuilder toolbarBuilder: JEWFloatingTextFieldToolbarBuilder, formatBuilder: JEWFloatingTextFieldFormatBuilder) {
+        let challengeNameTextFieldFactory = JEWFloatingTextFieldFactory(withFloatingTextField: challengeNameTextField)
+        
+        challengeNameTextFieldFactory.setup(buildersType: [.CodeView], delegate: self).setupFormatBuilder(builder: formatBuilder)
+            .setupToolbarBuilder(builder: toolbarBuilder)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,6 +52,9 @@ extension ChallengeNameTextFieldView: JEWFloatingTextFieldDelegate {
     
     func toolbarAction(_ textField: JEWFloatingTextField, typeOfAction type: JEWKeyboardToolbarButton) {
         endEditing(true)
+        if let textFieldToolbarActionCallback = textFieldToolbarActionCallback {
+            textFieldToolbarActionCallback(type)
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: JEWFloatingTextField) {

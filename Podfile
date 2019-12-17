@@ -20,6 +20,7 @@ def all_pods
   pod 'StepView'
   pod 'ZCAnimatedLabel', :git => 'https://github.com/joaoGMPereira/ZCAnimatedLabel.git'
   pod 'CollectionKit'
+  pod 'JTAppleCalendar', '~> 7.1'
   
   #Resquests
   pod 'Alamofire'

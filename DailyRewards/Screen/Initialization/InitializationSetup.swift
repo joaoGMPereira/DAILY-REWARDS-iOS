@@ -23,14 +23,16 @@ class InitializationSetup: NSObject {
     }
     
     static func setupColors() {
-        JEWUIColor.default.defaultColor = UIColor.JEWPallete(red: 255, green: 140, blue: 44)
-        JEWUIColor.default.lightDefaultColor = UIColor.JEWPallete(red: 164, green: 6, blue: 6)
-        UINavigationBar.appearance().barTintColor = .JEWBlack()
-        UINavigationBar.appearance().tintColor = .JEWBlack()
+        JEWUIColor.default.defaultColor = UIColor.JEWPallete(red: 91, green: 201, blue: 250)
+        JEWUIColor.default.lightDefaultColor = UIColor.JEWPallete(red: 238, green: 255, blue: 255)
+        JEWUIColor.default.darkDefaultColor = UIColor.JEWPallete(red: 2, green: 119, blue: 189)
+        JEWUIColor.default.backgroundColor = UIColor.JEWBlack()
+        UINavigationBar.appearance().barTintColor = .JEWBackground()
+        UINavigationBar.appearance().tintColor = .JEWBackground()
         UINavigationBar.appearance().isTranslucent = false
         UIBarButtonItem.appearance().tintColor = .JEWDefault()
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.JEWDefault()]
-        UITabBar.appearance().backgroundColor = .JEWBlack()
+        UITabBar.appearance().backgroundColor = .JEWBackground()
     }
     
     static func setupKeyChain() {
