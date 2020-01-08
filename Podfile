@@ -6,21 +6,21 @@ def all_pods
   
   #MyJewThings
   #pod 'JewFeatures', :git => 'https://github.com/joaoGMPereira/JEW-FEATURE', :branch => 'master'
-  pod 'JewFeatures', :path => '../JewFeatures'
+  pod 'JewFeatures', :path => '../JEW-FEATURE'
   pod 'SwiftyRSA'
   
   #Security
   pod 'SwiftKeychainWrapper'
   
   #UIPods
-  pod 'Hero', :git => 'https://github.com/barrault01/Hero.git', :commit => '6220387'
+  pod 'Hero'
   pod 'lottie-ios'
-  pod 'SkeletonView', :git => 'https://github.com/Juanpe/SkeletonView.git', :tag => '1.4.2'
-  pod 'BetterSegmentedControl', '~> 1.1'
+  pod 'SkeletonView'
+  pod 'BetterSegmentedControl'
   pod 'StepView'
   pod 'ZCAnimatedLabel', :git => 'https://github.com/joaoGMPereira/ZCAnimatedLabel.git'
   pod 'CollectionKit'
-  pod 'JTAppleCalendar', '~> 7.1'
+  pod 'JTAppleCalendar'
   
   #Resquests
   pod 'Alamofire'
@@ -35,7 +35,7 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      config.build_settings['SWIFT_VERSION'] = '4.2'
+      config.build_settings['SWIFT_VERSION'] = '5.0'
     end
   end
 end

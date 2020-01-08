@@ -63,7 +63,7 @@ PODS:
   - GTMSessionFetcher/Core (1.3.0)
   - GTMSessionFetcher/Full (1.3.0):
     - GTMSessionFetcher/Core (= 1.3.0)
-  - Hero (1.4.0)
+  - Hero (1.5.0)
   - JewFeatures (0.0.3):
     - Alamofire
     - CollectionKit
@@ -79,7 +79,7 @@ PODS:
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
   - PodAsset (1.0.0)
-  - SkeletonView (1.4.2)
+  - SkeletonView (1.8.2)
   - StepView (1.0.5)
   - SwiftKeychainWrapper (3.4.0)
   - SwiftyRSA (1.5.0):
@@ -89,22 +89,22 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - BetterSegmentedControl (~> 1.1)
+  - BetterSegmentedControl
   - CollectionKit
   - Firebase/Auth
   - GoogleSignIn
-  - Hero (from `https://github.com/barrault01/Hero.git`, commit `6220387`)
-  - JewFeatures (from `../JewFeatures`)
-  - JTAppleCalendar (~> 7.1)
+  - Hero
+  - JewFeatures (from `../JEW-FEATURE`)
+  - JTAppleCalendar
   - lottie-ios
-  - SkeletonView (from `https://github.com/Juanpe/SkeletonView.git`, tag `1.4.2`)
+  - SkeletonView
   - StepView
   - SwiftKeychainWrapper
   - SwiftyRSA
   - ZCAnimatedLabel (from `https://github.com/joaoGMPereira/ZCAnimatedLabel.git`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
     - AppAuth
     - BetterSegmentedControl
@@ -121,33 +121,23 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - Hero
     - JTAppleCalendar
     - lottie-ios
     - nanopb
     - PodAsset
+    - SkeletonView
     - StepView
     - SwiftKeychainWrapper
     - SwiftyRSA
 
 EXTERNAL SOURCES:
-  Hero:
-    :commit: '6220387'
-    :git: https://github.com/barrault01/Hero.git
   JewFeatures:
-    :path: "../JewFeatures"
-  SkeletonView:
-    :git: https://github.com/Juanpe/SkeletonView.git
-    :tag: 1.4.2
+    :path: "../JEW-FEATURE"
   ZCAnimatedLabel:
     :git: https://github.com/joaoGMPereira/ZCAnimatedLabel.git
 
 CHECKOUT OPTIONS:
-  Hero:
-    :commit: '6220387'
-    :git: https://github.com/barrault01/Hero.git
-  SkeletonView:
-    :git: https://github.com/Juanpe/SkeletonView.git
-    :tag: 1.4.2
   ZCAnimatedLabel:
     :commit: 9d1ffa4a343b7b787b23564f6889faaf3bee851d
     :git: https://github.com/joaoGMPereira/ZCAnimatedLabel.git
@@ -169,18 +159,18 @@ SPEC CHECKSUMS:
   GoogleUtilities: 547a86735c6f0ee30ad17e94df4fc21f616b71cb
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 43b8b64263023d4f32caa0b40f4c8bfa3c5f36d8
-  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
+  Hero: b7385b75e7259da62f4f85462f59a5082d66b058
   JewFeatures: 0cc787622a4a099025fea724fcffee00256e011a
   JTAppleCalendar: b7fb40852f5f319fe55c8ec3861f1de0edc99cc8
   lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PodAsset: c2c2b20013c1edf698fea2bacba6e75a638537a2
-  SkeletonView: b7c59bff7c6f240833592da35dcbcbea98c742f8
+  SkeletonView: bb27c39857e5492136f02ee8a3aa78de55d12ecd
   StepView: e69413ca377b42c5777d446854bb036ff8e988fd
   SwiftKeychainWrapper: 6fc49fbf7d4a6b0772917acb0e53a1639f6078d6
   SwiftyRSA: 6e528fb1b1a87d5111c48081083b141d6d65f1cf
   ZCAnimatedLabel: 519b688bef4403fd356bc785f9b61cdfd8e6472d
 
-PODFILE CHECKSUM: 28d68f85e2ad9255317c3465c52bb593125df6ec
+PODFILE CHECKSUM: c64bcf8f737f6d143e38e1e85a54a571d0837cc7
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4

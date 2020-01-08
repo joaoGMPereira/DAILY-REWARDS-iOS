@@ -14,12 +14,12 @@ import JewFeatures
 
 class InitializationSetup: NSObject {
     
-    static func setup() {
+    static func setup(scene: UIWindowScene?) {
         GIDSignIn.sharedInstance().clientID = "824758762408-jpdekfmriacq1j1h1m96bpi81iudcpii.apps.googleusercontent.com"
         setupColors()
         setupFirebase()
         let router = DailyRewardsRouter()
-        router.setupStartViewController()
+        router.setupStartViewController(scene: scene)
     }
     
     static func setupColors() {
@@ -56,4 +56,5 @@ class InitializationSetup: NSObject {
     static func appDelegate() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
+
 }

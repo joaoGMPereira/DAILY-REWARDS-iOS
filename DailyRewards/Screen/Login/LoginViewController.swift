@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
         let interactor = LoginInteractor()
         self.interactor = interactor
         let presenter = LoginPresenter()
-        presenter.viewController = self
+        //presenter.viewController = self
         interactor.presenter = presenter
         interactor.setupSignIn()
     }

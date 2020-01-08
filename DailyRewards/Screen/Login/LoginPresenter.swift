@@ -16,7 +16,7 @@ protocol LoginPresenterProtocol {
 
 class LoginPresenter: LoginPresenterProtocol {
     
-    weak var viewController: LoginViewControllerProtocol?
+    var viewController: NewLoginViewControllerProtocol?
     
     func presentLogin(user: JEWUserModel) {
        viewController?.displayLogin(user: user)

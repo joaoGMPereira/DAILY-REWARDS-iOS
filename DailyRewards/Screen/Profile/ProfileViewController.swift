@@ -234,7 +234,8 @@ extension ProfileViewController: ProfileViewControllerProtocol {
     }
     
     func displaySignOut() {
-        router.setupLoginViewController()
+        let windowScene = UIApplication.shared.connectedScenes.first
+        router.setupLoginViewController(scene: windowScene as? UIWindowScene)
     }
     
     func displayVote(index: Int) {

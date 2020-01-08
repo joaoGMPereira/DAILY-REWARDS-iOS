@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		768232C723C44565006C680A /* SUITextWithAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768232C623C44565006C680A /* SUITextWithAttributedString.swift */; };
+		768232D023C66250006C680A /* ListCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768232CE23C66250006C680A /* ListCardsView.swift */; };
+		768232D123C66250006C680A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768232CF23C66250006C680A /* CardView.swift */; };
+		768232D723C66295006C680A /* CardType+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768232D323C66294006C680A /* CardType+SwiftUI.swift */; };
+		768232D823C66295006C680A /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768232D423C66294006C680A /* CardType.swift */; };
+		768232D923C66295006C680A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768232D523C66294006C680A /* Card.swift */; };
+		768232DA23C66295006C680A /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768232D623C66294006C680A /* List.swift */; };
+		76DEA2FE23BDA0A1000B3257 /* SUILottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA2FD23BDA0A1000B3257 /* SUILottieView.swift */; };
+		76DEA30023BDA0FD000B3257 /* SUIGoogleButtonSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA2FF23BDA0FD000B3257 /* SUIGoogleButtonSignInView.swift */; };
+		76DEA30223BDC6D0000B3257 /* SUIJEWPopupMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA30123BDC6D0000B3257 /* SUIJEWPopupMessage.swift */; };
+		76DEA30423BDD5AF000B3257 /* NewLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA30323BDD5AF000B3257 /* NewLoginViewController.swift */; };
+		76F16E8D23B858B80041C033 /* NewLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F16E8C23B858B80041C033 /* NewLoginView.swift */; };
+		76F16EAF23BB32B30041C033 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F16EAE23BB32B30041C033 /* SceneDelegate.swift */; };
 		BF26DC5D8C16A58A99FD35CE /* Pods_DailyRewards.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCAD6FE9D7AB2877647DC390 /* Pods_DailyRewards.framework */; };
 		CC05AFCC239FCF570015E386 /* infinityLottieOrange.json in Resources */ = {isa = PBXBuildFile; fileRef = CC05AFCB239FCF560015E386 /* infinityLottieOrange.json */; };
 		CC05AFD423A035E40015E386 /* ChallengeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05AFD323A035E40015E386 /* ChallengeImageView.swift */; };
@@ -21,7 +34,6 @@
 		CC531BBB237D838C006870EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC531BBA237D838C006870EF /* AppDelegate.swift */; };
 		CC531BC2237D838D006870EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC531BC1237D838D006870EF /* Assets.xcassets */; };
 		CC531BC5237D838D006870EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC531BC3237D838D006870EF /* LaunchScreen.storyboard */; };
-		CC531BD0237D838D006870EF /* DailyRewardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC531BCF237D838D006870EF /* DailyRewardsTests.swift */; };
 		CC531BDC237DB077006870EF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC531BDA237DB077006870EF /* LoginViewController.swift */; };
 		CC531BDD237DB077006870EF /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC531BDB237DB077006870EF /* LoginViewController.xib */; };
 		CC531BE1237DB362006870EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC531BE0237DB362006870EF /* GoogleService-Info.plist */; };
@@ -62,18 +74,21 @@
 		CCE47C25238CA99600CFF71B /* ChallengeViewController+AnimationDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE47C24238CA99600CFF71B /* ChallengeViewController+AnimationDelegates.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		CC531BCC237D838D006870EF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CC531BAF237D838C006870EF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CC531BB6237D838C006870EF;
-			remoteInfo = DailyRewards;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		330214D1A0592BB321A1360B /* Pods-DailyRewards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyRewards.debug.xcconfig"; path = "Target Support Files/Pods-DailyRewards/Pods-DailyRewards.debug.xcconfig"; sourceTree = "<group>"; };
+		768232C623C44565006C680A /* SUITextWithAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUITextWithAttributedString.swift; sourceTree = "<group>"; };
+		768232CE23C66250006C680A /* ListCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCardsView.swift; sourceTree = "<group>"; };
+		768232CF23C66250006C680A /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		768232D323C66294006C680A /* CardType+SwiftUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CardType+SwiftUI.swift"; sourceTree = "<group>"; };
+		768232D423C66294006C680A /* CardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
+		768232D523C66294006C680A /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		768232D623C66294006C680A /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		76DEA2FD23BDA0A1000B3257 /* SUILottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUILottieView.swift; sourceTree = "<group>"; };
+		76DEA2FF23BDA0FD000B3257 /* SUIGoogleButtonSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUIGoogleButtonSignInView.swift; sourceTree = "<group>"; };
+		76DEA30123BDC6D0000B3257 /* SUIJEWPopupMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUIJEWPopupMessage.swift; sourceTree = "<group>"; };
+		76DEA30323BDD5AF000B3257 /* NewLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoginViewController.swift; sourceTree = "<group>"; };
+		76F16E8C23B858B80041C033 /* NewLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLoginView.swift; sourceTree = "<group>"; };
+		76F16EAE23BB32B30041C033 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CC05AFCB239FCF560015E386 /* infinityLottieOrange.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = infinityLottieOrange.json; sourceTree = "<group>"; };
 		CC05AFD323A035E40015E386 /* ChallengeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeImageView.swift; sourceTree = "<group>"; };
 		CC05AFD523A057D70015E386 /* ZoomAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAnimator.swift; sourceTree = "<group>"; };
@@ -89,8 +104,6 @@
 		CC531BC1237D838D006870EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC531BC4237D838D006870EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC531BC6237D838D006870EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC531BCB237D838D006870EF /* DailyRewardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyRewardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC531BCF237D838D006870EF /* DailyRewardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRewardsTests.swift; sourceTree = "<group>"; };
 		CC531BD1237D838D006870EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC531BDA237DB077006870EF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CC531BDB237DB077006870EF /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -143,13 +156,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CC531BC8237D838D006870EF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -160,6 +166,71 @@
 				FB185F9362793955DBBF3537 /* Pods-DailyRewards.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		768232C823C661F0006C680A /* SUIListCards */ = {
+			isa = PBXGroup;
+			children = (
+				768232D223C66262006C680A /* Models */,
+				768232C923C66229006C680A /* Views */,
+			);
+			path = SUIListCards;
+			sourceTree = "<group>";
+		};
+		768232C923C66229006C680A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				768232CF23C66250006C680A /* CardView.swift */,
+				768232CE23C66250006C680A /* ListCardsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		768232D223C66262006C680A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				768232D523C66294006C680A /* Card.swift */,
+				768232D423C66294006C680A /* CardType.swift */,
+				768232D323C66294006C680A /* CardType+SwiftUI.swift */,
+				768232D623C66294006C680A /* List.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		768232DB23C662C5006C680A /* SUILottie */ = {
+			isa = PBXGroup;
+			children = (
+				76DEA2FD23BDA0A1000B3257 /* SUILottieView.swift */,
+			);
+			path = SUILottie;
+			sourceTree = "<group>";
+		};
+		768232DC23C662D5006C680A /* SUIJewPopupMessage */ = {
+			isa = PBXGroup;
+			children = (
+				76DEA30123BDC6D0000B3257 /* SUIJEWPopupMessage.swift */,
+				768232C623C44565006C680A /* SUITextWithAttributedString.swift */,
+			);
+			path = SUIJewPopupMessage;
+			sourceTree = "<group>";
+		};
+		768232DD23C662EE006C680A /* SUIGoogleButton */ = {
+			isa = PBXGroup;
+			children = (
+				76DEA2FF23BDA0FD000B3257 /* SUIGoogleButtonSignInView.swift */,
+			);
+			path = SUIGoogleButton;
+			sourceTree = "<group>";
+		};
+		76DEA2FC23BDA07E000B3257 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				768232DD23C662EE006C680A /* SUIGoogleButton */,
+				768232DC23C662D5006C680A /* SUIJewPopupMessage */,
+				768232DB23C662C5006C680A /* SUILottie */,
+				768232C823C661F0006C680A /* SUIListCards */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 		C59F209D4327EBAC0740D873 /* Frameworks */ = {
@@ -207,7 +278,6 @@
 			isa = PBXGroup;
 			children = (
 				CC531BB7237D838C006870EF /* DailyRewards.app */,
-				CC531BCB237D838D006870EF /* DailyRewardsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,8 +286,10 @@
 			isa = PBXGroup;
 			children = (
 				CC531BDF237DB352006870EF /* GoogleAnalytics */,
+				CCCA986D2389D2E900DCDC50 /* Initialization */,
 				CC531BDE237DB07B006870EF /* Screen */,
 				CC531BBA237D838C006870EF /* AppDelegate.swift */,
+				76F16EAE23BB32B30041C033 /* SceneDelegate.swift */,
 				CC531BC1237D838D006870EF /* Assets.xcassets */,
 				CC531BC3237D838D006870EF /* LaunchScreen.storyboard */,
 				CC06679923A26F8E0055D04C /* plusMinusLottieOrange.json */,
@@ -232,7 +304,6 @@
 		CC531BCE237D838D006870EF /* DailyRewardsTests */ = {
 			isa = PBXGroup;
 			children = (
-				CC531BCF237D838D006870EF /* DailyRewardsTests.swift */,
 				CC531BD1237D838D006870EF /* Info.plist */,
 			);
 			path = DailyRewardsTests;
@@ -243,7 +314,7 @@
 			children = (
 				CCB4402B238FEC8900A54B92 /* DailyRewardsConstants.swift */,
 				CCBCFCB2238A0463003B9CD8 /* DailyRewardsRouter.swift */,
-				CCCA986D2389D2E900DCDC50 /* Initialization */,
+				76DEA2FC23BDA07E000B3257 /* SwiftUI */,
 				CCCA986C2389D2D500DCDC50 /* Login */,
 				CCE47C13238C558F00CFF71B /* Challenge */,
 				CCB44026238F0EEB00A54B92 /* Profile */,
@@ -312,6 +383,8 @@
 		CCCA986C2389D2D500DCDC50 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				76F16E8C23B858B80041C033 /* NewLoginView.swift */,
+				76DEA30323BDD5AF000B3257 /* NewLoginViewController.swift */,
 				CC531BDA237DB077006870EF /* LoginViewController.swift */,
 				CC531BDB237DB077006870EF /* LoginViewController.xib */,
 				CCBCFCB0238A0463003B9CD8 /* LoginPresenter.swift */,
@@ -394,24 +467,6 @@
 			productReference = CC531BB7237D838C006870EF /* DailyRewards.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CC531BCA237D838D006870EF /* DailyRewardsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CC531BD7237D838D006870EF /* Build configuration list for PBXNativeTarget "DailyRewardsTests" */;
-			buildPhases = (
-				CC531BC7237D838D006870EF /* Sources */,
-				CC531BC8237D838D006870EF /* Frameworks */,
-				CC531BC9237D838D006870EF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CC531BCD237D838D006870EF /* PBXTargetDependency */,
-			);
-			name = DailyRewardsTests;
-			productName = DailyRewardsTests;
-			productReference = CC531BCB237D838D006870EF /* DailyRewardsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -424,10 +479,6 @@
 				TargetAttributes = {
 					CC531BB6237D838C006870EF = {
 						CreatedOnToolsVersion = 10.1;
-					};
-					CC531BCA237D838D006870EF = {
-						CreatedOnToolsVersion = 10.1;
-						TestTargetID = CC531BB6237D838C006870EF;
 					};
 				};
 			};
@@ -445,7 +496,6 @@
 			projectRoot = "";
 			targets = (
 				CC531BB6237D838C006870EF /* DailyRewards */,
-				CC531BCA237D838D006870EF /* DailyRewardsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -463,13 +513,6 @@
 				CC531BE3237DBCD4006870EF /* IconLottie.json in Resources */,
 				CC06679F23A279470055D04C /* closeLottieOrange.json in Resources */,
 				CC06679A23A26F8E0055D04C /* plusMinusLottieOrange.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CC531BC9237D838D006870EF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,11 +585,13 @@
 				CCE47C1E238C55D600CFF71B /* ChallengeInteractor.swift in Sources */,
 				CCD2D24A2396F46B00B0A4B6 /* EditChallengePresenter.swift in Sources */,
 				CC9ED02C23A7F7FC00DC49D2 /* ChallengeButtonsView.swift in Sources */,
+				76DEA30223BDC6D0000B3257 /* SUIJEWPopupMessage.swift in Sources */,
 				CCB44021238F0EE700A54B92 /* ProfileWorker.swift in Sources */,
 				CCBCFCB6238A0463003B9CD8 /* LoginWorker.swift in Sources */,
 				CCD2D24D2396F46B00B0A4B6 /* EditChallengeViewController.swift in Sources */,
 				CCE47C1B238C55D600CFF71B /* ChallengeWorker.swift in Sources */,
 				CCBCFCB5238A0463003B9CD8 /* LoginPresenter.swift in Sources */,
+				768232DA23C66295006C680A /* List.swift in Sources */,
 				CC9ED02E23A80F7700DC49D2 /* NewChallengeStep.swift in Sources */,
 				CCBCFCB8238A0463003B9CD8 /* LoginInteractor.swift in Sources */,
 				CCD2D2412396F33700B0A4B6 /* ChallengesEnums.swift in Sources */,
@@ -558,6 +603,9 @@
 				CC9ED02823A464AB00DC49D2 /* NewChallengeViewController.swift in Sources */,
 				CC06679D23A278B30055D04C /* RewardType.swift in Sources */,
 				CCD2D23A239589D000B0A4B6 /* ChallengeCellFactory.swift in Sources */,
+				768232D023C66250006C680A /* ListCardsView.swift in Sources */,
+				76F16E8D23B858B80041C033 /* NewLoginView.swift in Sources */,
+				76F16EAF23BB32B30041C033 /* SceneDelegate.swift in Sources */,
 				CCE47C1F238C55D600CFF71B /* Challenge.swift in Sources */,
 				CCD2D24F2396F46B00B0A4B6 /* EditChallenge.swift in Sources */,
 				CCBCFCB7238A0463003B9CD8 /* DailyRewardsRouter.swift in Sources */,
@@ -567,6 +615,7 @@
 				CCB4402C238FEC8A00A54B92 /* DailyRewardsConstants.swift in Sources */,
 				CC05AFDC23A11A9F0015E386 /* ChallengeRecurrencyView.swift in Sources */,
 				CC05AFD623A057D70015E386 /* ZoomAnimator.swift in Sources */,
+				768232D923C66295006C680A /* Card.swift in Sources */,
 				CCCA986F2389D31100DCDC50 /* InitializationSetup.swift in Sources */,
 				CCB44020238F0EE700A54B92 /* ProfilePresenter.swift in Sources */,
 				CC531BBB237D838C006870EF /* AppDelegate.swift in Sources */,
@@ -574,34 +623,25 @@
 				CCE47C1D238C55D600CFF71B /* ChallengeViewController.swift in Sources */,
 				CCCA17E62395736400AEF0E9 /* ChallengeNewCell.swift in Sources */,
 				CCD2D24E2396F46B00B0A4B6 /* EditChallengeInteractor.swift in Sources */,
+				76DEA30423BDD5AF000B3257 /* NewLoginViewController.swift in Sources */,
 				CCD2D23F2396D0D400B0A4B6 /* GroupChallengesCollectionViewDataSource.swift in Sources */,
 				CC06679623A1B7B10055D04C /* ChallengeGoalReachView.swift in Sources */,
+				76DEA30023BDA0FD000B3257 /* SUIGoogleButtonSignInView.swift in Sources */,
 				CCD2D24B2396F46B00B0A4B6 /* EditChallengeWorker.swift in Sources */,
 				CCB44025238F0EE700A54B92 /* Profile.swift in Sources */,
 				CCCA17E82395817900AEF0E9 /* ChallengeInfoCell.swift in Sources */,
+				768232D123C66250006C680A /* CardView.swift in Sources */,
 				CC05AFD423A035E40015E386 /* ChallengeImageView.swift in Sources */,
+				76DEA2FE23BDA0A1000B3257 /* SUILottieView.swift in Sources */,
+				768232C723C44565006C680A /* SUITextWithAttributedString.swift in Sources */,
+				768232D723C66295006C680A /* CardType+SwiftUI.swift in Sources */,
 				CCB44024238F0EE700A54B92 /* ProfileInteractor.swift in Sources */,
 				CCE47C25238CA99600CFF71B /* ChallengeViewController+AnimationDelegates.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CC531BC7237D838D006870EF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CC531BD0237D838D006870EF /* DailyRewardsTests.swift in Sources */,
+				768232D823C66295006C680A /* CardType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CC531BCD237D838D006870EF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CC531BB6237D838C006870EF /* DailyRewards */;
-			targetProxy = CC531BCC237D838D006870EF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CC531BC3237D838D006870EF /* LaunchScreen.storyboard */ = {
@@ -666,13 +706,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -721,12 +762,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -745,7 +787,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.br.ios.daily.rewards.DailyRewards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -764,50 +806,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.br.ios.daily.rewards.DailyRewards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		CC531BD8237D838D006870EF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G77MYT7HW8;
-				INFOPLIST_FILE = DailyRewardsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.br.ios.daily.rewards.DailyRewardsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DailyRewards.app/DailyRewards";
-			};
-			name = Debug;
-		};
-		CC531BD9237D838D006870EF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G77MYT7HW8;
-				INFOPLIST_FILE = DailyRewardsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.br.ios.daily.rewards.DailyRewardsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DailyRewards.app/DailyRewards";
 			};
 			name = Release;
 		};
@@ -828,15 +828,6 @@
 			buildConfigurations = (
 				CC531BD5237D838D006870EF /* Debug */,
 				CC531BD6237D838D006870EF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CC531BD7237D838D006870EF /* Build configuration list for PBXNativeTarget "DailyRewardsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CC531BD8237D838D006870EF /* Debug */,
-				CC531BD9237D838D006870EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
