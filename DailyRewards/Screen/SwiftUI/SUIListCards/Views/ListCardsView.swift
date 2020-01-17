@@ -11,7 +11,7 @@ import SwiftUI
 class ListCardsViewModel: ObservableObject {
     @Published var list: List = List(cards: cards, showLimit: 4)
     
-    @Published var newPositionOfCards: CGFloat = 0
+    @Published var forceUpdateLayout: CGFloat = 0
     @Published var isDraggingDown: Bool = true
 }
 
@@ -40,7 +40,7 @@ struct ListCardsView: View {
                         CardView(card: card)
                             .opacity(self.opacity(for: card))
                             .offset(x: 0,
-                                    y: self.viewModel.newPositionOfCards + self.offsetY(for: card))
+                                    y: self.offsetY(for: card, geometry: geometry))
                             .scaleEffect(self.scaleEffect(for: card))
                             .rotation3DEffect(self.rotationAngle(for: card),
                                               axis: (x: 0.5, y: 1, z: 0))
@@ -177,12 +177,12 @@ extension ListCardsView {
         return 1 - cardIndex * Self.cardOpacity
     }
     
-    private func offsetY(for card: Card) -> CGFloat {
+    private func offsetY(for card: Card, geometry: GeometryProxy) -> CGFloat {
         guard !viewModel.list.isFirst(ofLimited: card) else { return draggingOffset.y }
         let cardIndex = CGFloat(viewModel.list.index(ofLimited: card))
         let multiplier: CGFloat = card.isAddCard ? 1.2 : 1
         let offSet = (cardIndex * multiplier * Self.cardOffset)
-        return offSet
+        return self.viewModel.forceUpdateLayout + offSet
     }
     
     private func scaleEffect(for card: Card) -> CGFloat {

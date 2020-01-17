@@ -15,36 +15,41 @@ struct NewChallengeView: View {
     @State var rects = Array<CGRect>(repeating: CGRect(), count: 4)
     @State var rectsExpandable = Array<CGRect>(repeating: CGRect(), count: 1)
     @State var expandableIsOpened: Bool = false
+    var router = DailyRewardsRouter()
+    
     var body: some View {
         GeometryReader.init { geometry in
             ZStack(alignment: .top, content: {
                 Color(.JEWBackground())
                     .edgesIgnoringSafeArea(.all)
                 VStack(alignment: .center, spacing: 8) {
-                    SUIJewExpandableView(rects: self.$rectsExpandable, isOpened:  self.$expandableIsOpened).frame(width: geometry.size.width, height: self.expandableIsOpened ? 150 : 65).padding(.top, 20)
+                    SUIJewExpandableView(rects: self.$rectsExpandable, isOpened:  self.$expandableIsOpened).frame(width: geometry.size.width, height: self.expandableIsOpened ? 150 : 65).padding(.top, 20).onTapGesture {
+                        
+                    }
                     VStack(alignment: .center, spacing: 96) {
                         SUIJewSegmentedControl(selectedIndex: self.$selectedIndex, rects: self.$rects, titles: self.$titles)
-                        self.setCardsView(geometry: geometry)
+                        VStack(alignment: .center) {
+                            self.setCardsView(geometry: geometry)
+                        }
                     }
                 }
             })
         }.gesture(
-        DragGesture()
-            .onChanged({ (value) in
-                let dragHeight = value.location.y - value.startLocation.y
-                
-                if abs(dragHeight) > 50 {
-                    withAnimation {
-                    if dragHeight < 0 {
-                        self.expandableIsOpened = false
-                        self.cardView.viewModel.newPositionOfCards = 0
-                    } else {
-                        self.expandableIsOpened = true
-                        self.cardView.viewModel.newPositionOfCards = 150-65
+            DragGesture()
+                .onChanged({ (value) in
+                    let dragHeight = value.location.y - value.startLocation.y
+                    
+                    if abs(dragHeight) > 50 {
+                        withAnimation {
+                            if dragHeight < 0 {
+                                self.expandableIsOpened = false
+                            } else {
+                                self.expandableIsOpened = true
+                            }
+                            self.cardView.viewModel.forceUpdateLayout = self.expandableIsOpened ? 0.01 : 0
+                        }
                     }
-                    }
-                }
-            })
+                })
         )
     }
     
@@ -61,6 +66,10 @@ struct NewChallengeView: View {
             return List(cards: cards.filter{$0.isIndividual == true}, showLimit: 4)
         }
         return List(cards: cards.filter{$0.isIndividual == false}, showLimit: 4)
+    }
+    
+    func goToSettings() {
+        router.setupProfileViewController(withParentViewController: <#T##UIViewController#>, heroImageView: <#T##UIView?#>)
     }
 }
 
