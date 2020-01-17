@@ -9,10 +9,20 @@
 import Foundation
 
 class List: ObservableObject {
-    @Published var cards: [Card]
+    @Published var cards = [Card]()
+    @Published var limitedCards = [Card]()
+    init(cards: [Card], showLimit: Int? = nil) {
+        let cardsCount = cards.count
+        var minimumLimitedCardsIndex = 0
+        if let showLimit = showLimit {
+            minimumLimitedCardsIndex = cardsCount-showLimit
+            if minimumLimitedCardsIndex < 0 {
+                minimumLimitedCardsIndex = 0
+            }
+        }
+        self.limitedCards = cardNew + Array(cards.reversed()[minimumLimitedCardsIndex ..< cardsCount])
+        self.cards = Array(cards.reversed()[0 ..< minimumLimitedCardsIndex])
         
-    init(cards: [Card]) {
-        self.cards = cards.reversed()
     }
     
     func index(of card: Card) -> Int {
@@ -25,5 +35,17 @@ class List: ObservableObject {
     
     func isLast(card: Card) -> Bool {
         return index(of: card) == self.cards.count - 1
+    }
+    
+    func index(ofLimited card: Card) -> Int {
+        return limitedCards.count - limitedCards.firstIndex(of: card)! - 1
+    }
+    
+    func isFirst(ofLimited card: Card) -> Bool {
+        return index(ofLimited: card) == 0
+    }
+    
+    func isLast(ofLimited card: Card) -> Bool {
+        return index(ofLimited: card) == self.limitedCards.count - 1
     }
 }

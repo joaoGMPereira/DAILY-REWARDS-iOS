@@ -14,6 +14,9 @@
 		768232D823C66295006C680A /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768232D423C66294006C680A /* CardType.swift */; };
 		768232D923C66295006C680A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768232D523C66294006C680A /* Card.swift */; };
 		768232DA23C66295006C680A /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768232D623C66294006C680A /* List.swift */; };
+		768232DF23C666B5006C680A /* NewChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768232DE23C666B5006C680A /* NewChallengeView.swift */; };
+		768232E223C7FB89006C680A /* SUIJewSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768232E123C7FB89006C680A /* SUIJewSegmentedControl.swift */; };
+		7682923723D0C08800BD456D /* SUIJewExpandableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7682923623D0C08800BD456D /* SUIJewExpandableView.swift */; };
 		76DEA2FE23BDA0A1000B3257 /* SUILottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA2FD23BDA0A1000B3257 /* SUILottieView.swift */; };
 		76DEA30023BDA0FD000B3257 /* SUIGoogleButtonSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA2FF23BDA0FD000B3257 /* SUIGoogleButtonSignInView.swift */; };
 		76DEA30223BDC6D0000B3257 /* SUIJEWPopupMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA30123BDC6D0000B3257 /* SUIJEWPopupMessage.swift */; };
@@ -83,6 +86,9 @@
 		768232D423C66294006C680A /* CardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
 		768232D523C66294006C680A /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		768232D623C66294006C680A /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		768232DE23C666B5006C680A /* NewChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChallengeView.swift; sourceTree = "<group>"; };
+		768232E123C7FB89006C680A /* SUIJewSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUIJewSegmentedControl.swift; sourceTree = "<group>"; };
+		7682923623D0C08800BD456D /* SUIJewExpandableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUIJewExpandableView.swift; sourceTree = "<group>"; };
 		76DEA2FD23BDA0A1000B3257 /* SUILottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUILottieView.swift; sourceTree = "<group>"; };
 		76DEA2FF23BDA0FD000B3257 /* SUIGoogleButtonSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUIGoogleButtonSignInView.swift; sourceTree = "<group>"; };
 		76DEA30123BDC6D0000B3257 /* SUIJEWPopupMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUIJEWPopupMessage.swift; sourceTree = "<group>"; };
@@ -222,9 +228,27 @@
 			path = SUIGoogleButton;
 			sourceTree = "<group>";
 		};
+		768232E023C7FB04006C680A /* SUIJewSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				768232E123C7FB89006C680A /* SUIJewSegmentedControl.swift */,
+			);
+			path = SUIJewSegmentedControl;
+			sourceTree = "<group>";
+		};
+		7682923523D0C06500BD456D /* SUIJewExpandableView */ = {
+			isa = PBXGroup;
+			children = (
+				7682923623D0C08800BD456D /* SUIJewExpandableView.swift */,
+			);
+			path = SUIJewExpandableView;
+			sourceTree = "<group>";
+		};
 		76DEA2FC23BDA07E000B3257 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				7682923523D0C06500BD456D /* SUIJewExpandableView */,
+				768232E023C7FB04006C680A /* SUIJewSegmentedControl */,
 				768232DD23C662EE006C680A /* SUIGoogleButton */,
 				768232DC23C662D5006C680A /* SUIJewPopupMessage */,
 				768232DB23C662C5006C680A /* SUILottie */,
@@ -436,6 +460,7 @@
 		CCE47C13238C558F00CFF71B /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				768232DE23C666B5006C680A /* NewChallengeView.swift */,
 				CC05AFD223A02C1E0015E386 /* Views */,
 				CC9ED02523A4636E00DC49D2 /* List Challenge */,
 				CC9ED02623A4639700DC49D2 /* New  Challenge */,
@@ -587,6 +612,7 @@
 				CC9ED02C23A7F7FC00DC49D2 /* ChallengeButtonsView.swift in Sources */,
 				76DEA30223BDC6D0000B3257 /* SUIJEWPopupMessage.swift in Sources */,
 				CCB44021238F0EE700A54B92 /* ProfileWorker.swift in Sources */,
+				768232E223C7FB89006C680A /* SUIJewSegmentedControl.swift in Sources */,
 				CCBCFCB6238A0463003B9CD8 /* LoginWorker.swift in Sources */,
 				CCD2D24D2396F46B00B0A4B6 /* EditChallengeViewController.swift in Sources */,
 				CCE47C1B238C55D600CFF71B /* ChallengeWorker.swift in Sources */,
@@ -600,6 +626,8 @@
 				CCB44023238F0EE700A54B92 /* ProfileViewController.swift in Sources */,
 				CCE47C1A238C55D600CFF71B /* ChallengePresenter.swift in Sources */,
 				CC05AFDA23A106C40015E386 /* ChallengeNameTextFieldView.swift in Sources */,
+				7682923723D0C08800BD456D /* SUIJewExpandableView.swift in Sources */,
+				768232DF23C666B5006C680A /* NewChallengeView.swift in Sources */,
 				CC9ED02823A464AB00DC49D2 /* NewChallengeViewController.swift in Sources */,
 				CC06679D23A278B30055D04C /* RewardType.swift in Sources */,
 				CCD2D23A239589D000B0A4B6 /* ChallengeCellFactory.swift in Sources */,

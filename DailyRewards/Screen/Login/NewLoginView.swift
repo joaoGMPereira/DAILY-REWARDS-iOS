@@ -14,14 +14,14 @@ import SwiftyRSA
 
 
 
-struct NewLoginView: View, NewLoginViewControllerDelegate, SUIJEWPopupMessageDelegate {
+struct NewLoginView: View, NewLoginViewControllerDelegate {
     //MARK: Properties
     @State var controller: NewLoginViewController?
     var popupMessage = SUIJEWPopupMessage()
     
     var body: some View {
         ZStack {
-            Color.init(UIColor.JEWBlack())
+            Color.init(UIColor.JEWBackground())
             .edgesIgnoringSafeArea(.all)
             VStack(alignment: .center) {
                 Text("Daily Rewards").foregroundColor(Color.init(UIColor.JEWDefault())).font(.largeTitle).padding(.bottom, 64.0)
@@ -33,17 +33,14 @@ struct NewLoginView: View, NewLoginViewControllerDelegate, SUIJEWPopupMessageDel
         }.onAppear {
             self.controller = NewLoginViewController()
             self.controller?.delegate = self
-            self.popupMessage.popupMessageObservable.delegate = self
-            
+            self.popupMessage.popupMessageObservable.didDismiss = {
+
+            }
         }
     }
     
     func showError(withTextMessage message:String, title:String, popupType: JEWPopupMessageType, shouldHideAutomatically: Bool) {
         self.popupMessage.show(withTextMessage: message, title: title, popupType: popupType, shouldHideAutomatically: shouldHideAutomatically)
-    }
-    
-    func didFinishDismissPopupMessage(withPopupMessage popupMessage: SUIJEWPopupMessage) {
-        
     }
 }
 

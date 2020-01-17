@@ -10,6 +10,7 @@ import UIKit
 import JewFeatures
 import Hero
 import SwiftUI
+import SwiftyRSA
 
 protocol DailyRewardsRouterProtocol: class {
     func setupStartViewController(scene: UIWindowScene?)
@@ -72,19 +73,19 @@ class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
     }
     
     func setupChallengeViewController() {
-        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        if let windowScene = windowScene {
-            let loginView = NewLoginView()
+        let windowScene = UIApplication.shared.connectedScenes.first
+        let challengeView = NewChallengeView()
+        // Use a UIHostingController as window root view controller.
+        if let windowScene = windowScene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            let challengeViewController = ChallengeViewController()
-            
+            SceneDelegate.shared.window = window
             var options = UIWindow.TransitionOptions()
             options.direction = .toBottom
             options.duration = 0.4
             options.style = .easeOut
             options.background = UIWindow.TransitionOptions.Background.solidColor(.JEWBackground())
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                window.setRootViewController(challengeViewController, options: options)
+                window.setRootViewController(UIHostingController(rootView: challengeView), options: options)
             }
         }
         
@@ -121,3 +122,16 @@ class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
     }
     
 }
+
+//func teste(publicKey: String) -> String {
+//        do {
+//        let publicKey = try PublicKey(pemEncoded: publicKey)
+//            let str = "Clear Text"
+//            let clear = try ClearMessage(string: str, using: .utf8)
+//            let encrypted = try clear.encrypted(with: publicKey, padding: .PKCS1)
+//            print(encrypted.base64String)
+//            return encrypted.base64String
+//        } catch let error {
+//            print(error)
+//        }
+//    }

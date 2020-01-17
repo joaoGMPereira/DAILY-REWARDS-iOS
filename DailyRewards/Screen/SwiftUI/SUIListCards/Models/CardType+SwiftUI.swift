@@ -63,19 +63,19 @@ extension CardType {
         switch self {
         case .completed:
             return Gradient(colors: [
-                .green,
+                .gray,
                 .white])
         case .inProgress:
             return Gradient(colors: [
-                .yellow,
+                .gray,
                 .white])
         case .unCompleted:
             return Gradient(colors: [
-                .orange,
+                .gray,
                 .white])
         case .canceled:
             return Gradient(colors: [
-                .red,
+                .gray,
                 .white])
         case .new:
             return Gradient(colors: [

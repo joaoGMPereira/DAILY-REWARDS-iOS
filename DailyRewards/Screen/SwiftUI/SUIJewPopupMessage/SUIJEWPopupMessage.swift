@@ -14,7 +14,7 @@ import Combine
 
 
 class PopupMessageObservable: ObservableObject {
-    
+    typealias DidDismiss = (() -> ())
     @Published var size: CGSize = CGSize(width: 300, height: 60)
     @Published var title: String = "teste\n"
     @Published var message: String = "teste"
@@ -24,13 +24,9 @@ class PopupMessageObservable: ObservableObject {
     @Published var messageColor: UIColor = JEWPopupMessageType.error.messageColor()
     @Published var popupBackgroundColor: UIColor = JEWPopupMessageType.error.backgroundColor()
     @Published var popupType: JEWPopupMessageType = .error
-    @Published var shouldShow: Bool = false
+    @Published var isShowing: Bool = false
     @Published var shouldHideAutomatically = false
-    @Published var delegate: SUIJEWPopupMessageDelegate?
-}
-
-public protocol SUIJEWPopupMessageDelegate {
-    func didFinishDismissPopupMessage(withPopupMessage popupMessage:SUIJEWPopupMessage)
+    @Published var didDismiss: DidDismiss?
 }
 
 public struct SUIJEWPopupMessage: View {
@@ -56,7 +52,7 @@ public struct SUIJEWPopupMessage: View {
                         }.foregroundColor(Color(self.popupMessageObservable.messageColor)).frame(width: self.defaultHeight, height: self.popupMessageObservable.size.height, alignment: .center)
                 })
                 .position(CGPoint.init(x: proxy.size.width/2, y: proxy.frame(in: .local).origin.y - self.popupMessageObservable.size.height/2))
-                .modifier(MyEffect(y: self.popupMessageObservable.shouldShow ? self.topBarHeight + self.popupMessageObservable.size.height : -self.topBarHeight))
+                .modifier(MyEffect(y: self.popupMessageObservable.isShowing ? self.topBarHeight + self.popupMessageObservable.size.height : -self.topBarHeight))
         }
     }
     
@@ -101,10 +97,10 @@ public struct SUIJEWPopupMessage: View {
     
     private func changePopupPosition() {
         withAnimation(Animation.easeInOut(duration: 0.5)) {
-            self.popupMessageObservable.shouldShow.toggle()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-            self.popupMessageObservable.delegate?.didFinishDismissPopupMessage(withPopupMessage: self)
+            self.popupMessageObservable.isShowing.toggle()
+            if self.popupMessageObservable.isShowing == false {
+                self.popupMessageObservable.didDismiss?()
+            }
         }
     }
 }

@@ -23,10 +23,10 @@ class InitializationSetup: NSObject {
     }
     
     static func setupColors() {
-        JEWUIColor.default.defaultColor = UIColor.JEWPallete(red: 91, green: 201, blue: 250)
+        JEWUIColor.default.defaultColor = UIColor.JEWPallete(red: 19, green: 34, blue: 38)
         JEWUIColor.default.lightDefaultColor = UIColor.JEWPallete(red: 238, green: 255, blue: 255)
         JEWUIColor.default.darkDefaultColor = UIColor.JEWPallete(red: 2, green: 119, blue: 189)
-        JEWUIColor.default.backgroundColor = UIColor.JEWBlack()
+        JEWUIColor.default.backgroundColor = UIColor.JEWPallete(red: 114, green: 204, blue: 228)
         UINavigationBar.appearance().barTintColor = .JEWBackground()
         UINavigationBar.appearance().tintColor = .JEWBackground()
         UINavigationBar.appearance().isTranslucent = false

@@ -20,20 +20,21 @@ struct CardView: View {
                     HStack(alignment: .center) {
                         self.topLeftImage(for: geometry)
                         Spacer()
+                        self.topRightImage(for: geometry).padding()
+                        
                     }.padding(.horizontal)
                     VStack(spacing: 5) {
                         self.title
                         self.description
-                        }.padding(.bottom, geometry.size.height / 100).shadow(color: self.card.type.shadowColor, radius: 5, x: 0, y: 0)
+                    }.padding(.bottom, geometry.size.height / 100).shadow(color: self.card.type.shadowColor, radius: 5, x: 0, y: 0)
                     ZStack(alignment: .center) {
                         self.status
-                        }.padding(.horizontal).shadow(color: self.card.type.shadowColor, radius: 5, x: 0, y: 0)
+                    }.padding(.horizontal).shadow(color: self.card.type.shadowColor, radius: 5, x: 0, y: 0)
                     Spacer()
                 }
             }.frame(width: geometry.size.width,
                     height: geometry.size.width / CGFloat(Card.aspectRatio))
-                .background(LinearGradient(gradient: self.card.type.gradient,
-                                           startPoint: UnitPoint(x: 0, y: 1), endPoint: UnitPoint(x: 1, y: 0)))
+                .background(Color.init(.JEWDefault()))
                 .cornerRadius(10)
                 .shadow(radius: 10)
         }
@@ -45,13 +46,56 @@ struct CardView: View {
 extension CardView {
     
     func topLeftImage(for geometry: GeometryProxy) -> some View {
-        return Image(card.imageName)
-        .resizable()
-        .aspectRatio(contentMode: .fit)
-        .background(Color.clear)
-        .foregroundColor(.white)
-        .frame(height: geometry.size.height / 12).clipShape(RoundedRectangle(cornerRadius: 10))
-        .overlay(RoundedRectangle(cornerRadius: 10).stroke(card.type.firstColor, lineWidth: 3))
+        return Image(card.leftImageName)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .background(Color.clear)
+            .foregroundColor(.white)
+            .frame(height: UIScreen.main.bounds.height / 12).clipShape(RoundedRectangle(cornerRadius: 10))
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(card.type.firstColor, lineWidth: 3)).offset(x: 0, y: card.isAddCard ? -30 : 0)
+    }
+    
+    func topRightImage(for geometry: GeometryProxy) -> some View {
+        guard card.isAddCard else {
+            if card.isIndividual {
+                return AnyView(topRightIndividualImage(for: geometry))
+            }
+            return AnyView(topRightGroupImage(for: geometry))
+        }
+        return AnyView(EmptyView())
+    }
+    
+    func topRightGroupImage(for geometry: GeometryProxy) -> some View {
+        return ZStack {
+            Image(card.rightImageName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .background(Color.clear)
+                .foregroundColor(card.type.firstColor)
+                .frame(height: UIScreen.main.bounds.height / 24).offset(x: -10, y: 0)
+            Image(card.rightImageName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .background(Color.clear)
+                .foregroundColor(card.type.firstColor)
+                .frame(height: UIScreen.main.bounds.height / 24).offset(x: 10, y: 0)
+            Image(card.rightImageName)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .background(Color.clear)
+            .foregroundColor(card.type.firstColor)
+            .frame(height: UIScreen.main.bounds.height / 24).offset(x: 0, y: -2)
+        }.opacity(0.8)
+    }
+    func topRightIndividualImage(for geometry: GeometryProxy) -> some View {
+        return ZStack {
+            Image(card.rightImageName)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .background(Color.clear)
+            .foregroundColor(card.type.firstColor)
+            .frame(height: UIScreen.main.bounds.height / 24)
+        }.opacity(0.8)
     }
     
     var title: some View {
@@ -83,7 +127,7 @@ extension CardView {
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(["iPhone SE", "iPhone 11", "iPhone 11 Pro Max"], id: \.self) {
-            CardView(card: cards[2])
+            CardView(card: cards[1])
                 .padding(32)
                 .previewDevice(.init(rawValue: $0))
                 .previewDisplayName($0)
