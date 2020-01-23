@@ -60,7 +60,8 @@ extension NewLoginViewController: NewLoginViewControllerProtocol {
                 self.delegate?.showError(withTextMessage: error.message(), title: "\(error.title())\n", popupType: .error, shouldHideAutomatically: true)
                 break
             case .goSettings(let error):
-                self.delegate?.showError(withTextMessage: error.message(), title: "\(error.title())\n", popupType: .error, shouldHideAutomatically: true)
+                 self.router.setupChallengeViewController()
+                //self.delegate?.showError(withTextMessage: error.message(), title: "\(error.title())\n", popupType: .error, shouldHideAutomatically: true)
                 break
             }
         }

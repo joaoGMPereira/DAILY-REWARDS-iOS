@@ -8,7 +8,7 @@
 
 import Foundation
 
-class List: ObservableObject {
+class ListCard: ObservableObject {
     @Published var cards = [Card]()
     @Published var limitedCards = [Card]()
     init(cards: [Card], showLimit: Int? = nil) {

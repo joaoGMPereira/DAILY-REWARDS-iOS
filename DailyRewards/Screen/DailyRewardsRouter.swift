@@ -13,8 +13,8 @@ import SwiftUI
 import SwiftyRSA
 
 protocol DailyRewardsRouterProtocol: class {
-    func setupStartViewController(scene: UIWindowScene?)
-    func setupLoginViewController(scene: UIWindowScene?)
+    func setupStartViewController()
+    func setupLoginViewController()
     func setupChallengeViewController()
     func setupProfileViewController(withParentViewController parentViewController: UIViewController, heroImageView: UIView?)
     func setupNewChallengeViewController(withParentViewController parentViewController: UIViewController)
@@ -25,7 +25,7 @@ struct StartView: View {
     var body: some View {
         ZStack {
             Color.init(UIColor.JEWBlack())
-            .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
         }
     }
 }
@@ -33,60 +33,46 @@ struct StartView: View {
 
 class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
     
-    func setupStartViewController(scene: UIWindowScene?) {
-        if let windowScene = scene {
-            let startView = StartView()
-            let window = UIWindow(windowScene: windowScene)
-            let startViewController = UIHostingController(rootView: startView)
-            window.rootViewController = startViewController
-            SceneDelegate.shared.window = window
-            window.makeKeyAndVisible()
-            checkIfStartHasBeenLoaded(withViewController: startViewController, scene: scene)
-        }
+    func setupStartViewController() {
+        let startView = StartView()
+        let startViewController = UIHostingController(rootView: startView)
+        SceneDelegate.shared.window?.rootViewController = startViewController
+        SceneDelegate.shared.window?.makeKeyAndVisible()
+        checkIfStartHasBeenLoaded(withViewController: startViewController)
         
     }
     
-    private func checkIfStartHasBeenLoaded(withViewController viewController: UIViewController, scene: UIWindowScene?) {
+    private func checkIfStartHasBeenLoaded(withViewController viewController: UIViewController) {
         if viewController.isViewLoaded {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                self.setupLoginViewController(scene: scene)
+                self.setupLoginViewController()
             }
         } else {
-            checkIfStartHasBeenLoaded(withViewController: viewController, scene: scene)
+            checkIfStartHasBeenLoaded(withViewController: viewController)
         }
     }
     
-    func setupLoginViewController(scene: UIWindowScene?) {
+    func setupLoginViewController() {
         
-        if let windowScene = scene {
-            let loginView = NewLoginView()
-            let window = UIWindow(windowScene: windowScene)
-            SceneDelegate.shared.window = window
-            var options = UIWindow.TransitionOptions()
-            options.direction = .toTop
-            options.duration = 0.4
-            options.style = .easeOut
-            options.background = UIWindow.TransitionOptions.Background.solidColor(.JEWBackground())
-            window.setRootViewController(UIHostingController(rootView: loginView), options: options)
-        }
+        let loginView = NewLoginView()
+        var options = UIWindow.TransitionOptions()
+        options.direction = .toTop
+        options.duration = 0.4
+        options.style = .easeOut
+        options.background = UIWindow.TransitionOptions.Background.solidColor(.JEWBackground())
+        SceneDelegate.shared.window?.setRootViewController(UIHostingController(rootView: loginView), options: options)
         
     }
     
     func setupChallengeViewController() {
-        let windowScene = UIApplication.shared.connectedScenes.first
-        let challengeView = NewChallengeView()
-        // Use a UIHostingController as window root view controller.
-        if let windowScene = windowScene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            SceneDelegate.shared.window = window
-            var options = UIWindow.TransitionOptions()
-            options.direction = .toBottom
-            options.duration = 0.4
-            options.style = .easeOut
-            options.background = UIWindow.TransitionOptions.Background.solidColor(.JEWBackground())
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                window.setRootViewController(UIHostingController(rootView: challengeView), options: options)
-            }
+        let challengeView = NewListChallengeView()
+        var options = UIWindow.TransitionOptions()
+        options.direction = .toBottom
+        options.duration = 0.4
+        options.style = .easeOut
+        options.background = UIWindow.TransitionOptions.Background.solidColor(.JEWBackground())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            SceneDelegate.shared.window?.setRootViewController(UIHostingController(rootView: challengeView), options: options)
         }
         
     }

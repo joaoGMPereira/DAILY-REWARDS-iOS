@@ -8,26 +8,6 @@
 
 import SwiftUI
 
-struct JEWPreferenceKey: PreferenceKey {
-    typealias Value = CGSize
-    static var defaultValue = CGSize.zero
-    static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
-        value = nextValue()
-    }
-}
-
-
-struct JEWGeometry: View {
-    var body: some View {
-        GeometryReader { geometry in
-            return Rectangle()
-                .foregroundColor(.clear)
-                .preference(key: JEWPreferenceKey.self, value: geometry.size)
-        }
-    }
-}
-
-
 struct SizePreferenceKey: PreferenceKey {
     typealias Value = CGSize
     static var defaultValue = CGSize.zero
@@ -49,72 +29,86 @@ struct TextGeometry: View {
 struct SUIJewExpandableView: View {
     @Binding var rects: [CGRect]
     @Binding var isOpened: Bool
+    @Binding var isPresented: Bool
+    @Binding var title: String
+    @Binding var image: UIImage
+    @State private var parentSize: CGSize = .zero
+    @State private var size: CGSize = .zero
+    let padding: CGFloat = 16
+    let heightImageOpened: CGFloat = 80
+    let heightImageClosed: CGFloat = 40
     let viewHeightClosed: CGFloat = 65
     let viewHeightOpened: CGFloat = 150
-    @State private var size: CGSize = .zero
+
     var body: some View {
         GeometryReader{ geometry in
             ZStack{
                 Color.init(.JEWBackground())
-                ExpandableContentView(isOpen: self.$isOpened, parentSize: self.$size).onPreferenceChange(JEWPreferenceKey.self, perform: { self.size = $0 })
-            }.background(JEWGeometry()).frame(width: geometry.size.width, height: self.isOpened ? self.viewHeightOpened : self.viewHeightClosed).edgesIgnoringSafeArea(.all)
+                GeometryReader { proxy in
+                    ZStack {
+                        Color.init(.JEWBackground())
+                        Text(self.title)
+                            .foregroundColor(Color.init(red: 220, green: 220, blue: 220))
+                            .offset(x: self.textOffsetX(proxy: proxy), y: self.textOffsetY(proxy: proxy))
+                            .background(TextGeometry())
+                            .onPreferenceChange(SizePreferenceKey.self, perform: { self.size = $0 })
+                            .padding(.horizontal, 10)
+                        Image(uiImage: self.image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .background(Color.clear)
+                            .foregroundColor(.white)
+                            .frame(height:self.imageHeight()).clipShape(Circle())
+                            .overlay(Circle().stroke(Color.white, lineWidth: 3)).position(x: self.imageOffsetX(proxy: proxy), y: self.imageOffsetY(proxy: proxy))
+                    }
+                }
+            }.frame(width: geometry.size.width, height: self.isOpened ? self.viewHeightOpened : self.viewHeightClosed).edgesIgnoringSafeArea(.all)
             
         }
     }
-}
-
-
-struct ExpandableContentView: View {
-    let padding: CGFloat = 16
-    let widthImageOpened: CGFloat = 80
-    let widthImageClosed: CGFloat = 40
-    @Binding var isOpen: Bool
-    @Binding var parentSize: CGSize
-    @State private var size: CGSize = .zero
-    var body: some View {
+    
+    func imageHeight() -> CGFloat {
         
-        GeometryReader { proxy in
-            ZStack {
-                Color.init(.JEWBackground())
-                Text("Tweets321312312")
-                    .foregroundColor(.white)
-                    .offset(x: self.textOffsetX(proxy: proxy), y: self.textOffsetY(proxy: proxy))
-                    .background(TextGeometry())
-                    .onPreferenceChange(SizePreferenceKey.self, perform: { self.size = $0 })
-                    .padding(.horizontal, 10)
-                Image("")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .background(Color.clear)
-                    .foregroundColor(.white)
-                    .frame(height:self.isOpen ? self.widthImageOpened : self.widthImageClosed).clipShape(Circle())
-                    .overlay(Circle().stroke(Color.white, lineWidth: 3)).position(x: self.imageOffsetX(proxy: proxy), y: self.imageOffsetY(proxy: proxy))
-            }
+        if isPresented {
+            return 120
         }
+        return self.isOpened ? self.heightImageOpened : self.heightImageClosed
     }
     func textOffsetX(proxy: GeometryProxy) -> CGFloat {
-        return self.isOpen ? self.parentSize.width/2 : -((proxy.size.width/2) - (self.size.width/2) - padding)
-    }
-    
-    func textOffsetY(proxy: GeometryProxy) -> CGFloat {
-        return self.isOpen ? -proxy.size.height/2 : 0
-    }
-    
-    func imageOffsetX(proxy: GeometryProxy) -> CGFloat {
-        let imageWidth = self.isOpen ? self.widthImageOpened : self.widthImageClosed
-        return  self.isOpen ? proxy.size.width/2 : proxy.size.width - imageWidth/2 - padding
-    }
-    
-    func imageOffsetY(proxy: GeometryProxy) -> CGFloat {
-        return proxy.size.height/2
-    }
+        if isOpened {
+            return .zero
+        }
+            return -((proxy.size.width/2) - (self.size.width/2) - padding)
+       }
+       
+       func textOffsetY(proxy: GeometryProxy) -> CGFloat {
+           return self.isOpened ? -proxy.size.height/2 : 0
+       }
+       
+       func imageOffsetX(proxy: GeometryProxy) -> CGFloat {
+           let imageWidth = self.isOpened ? self.heightImageOpened : self.heightImageClosed
+        if isPresented {
+            return proxy.size.width/2 + 40
+        }
+           return  self.isOpened ? proxy.size.width/2 : proxy.size.width - imageWidth/2 - padding
+       }
+       
+       func imageOffsetY(proxy: GeometryProxy) -> CGFloat {
+        if isPresented {
+            return proxy.size.width/2 - 40
+        }
+           return proxy.size.height/2
+       }
 }
 
 struct SUIJewExpandableView_Previews: PreviewProvider {
     @State static var rects = Array<CGRect>(repeating: CGRect(), count: 1)
     @State static var isOpened = true
+    @State static var isPresented = false
+    @State static var title = "Mock Name"
+    @State static var image = UIImage()
     static var previews: some View {
-        SUIJewExpandableView(rects: $rects, isOpened: $isOpened)
+        SUIJewExpandableView(rects: $rects, isOpened: $isOpened, isPresented: $isPresented, title: $title, image: $image)
     }
 }
 

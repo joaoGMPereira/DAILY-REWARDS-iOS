@@ -9,7 +9,7 @@
 import SwiftUI
 
 class ListCardsViewModel: ObservableObject {
-    @Published var list: List = List(cards: cards, showLimit: 4)
+    @Published var list: ListCard = ListCard(cards: cards, showLimit: 4)
     
     @Published var forceUpdateLayout: CGFloat = 0
     @Published var isDraggingDown: Bool = true
@@ -201,6 +201,10 @@ extension ListCardsView {
 extension AnyTransition {
     static var moveUpWardsWhileFadingIn: AnyTransition {
         return AnyTransition.move(edge: .bottom).combined(with: .opacity)
+    }
+    
+    static var moveRightWardsWhileFadingIn: AnyTransition {
+        return AnyTransition.move(edge: .leading).combined(with: .opacity)
     }
     
     static var moveDownWardsWhileFadingIn: AnyTransition {

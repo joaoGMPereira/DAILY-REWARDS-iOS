@@ -21,11 +21,15 @@ class ChallengeWorker: NSObject, ChallengeWorkerProtocol {
     
     func downloadImage(success: @escaping ChallengeSuccess, failure: @escaping ChallengeError) {
         if let photoURL = JEWSession.session.user?.photoURL {
-            photoURL.downloadImage(success: { (image) in
-                success(image)
-            }, failure: { (error) in
-                failure(error)
-            })
+            var photoUrlString = photoURL.absoluteString
+            photoUrlString.append("?sz=200")
+            if let bigPhotoUrl = URL(string: photoUrlString) {
+                bigPhotoUrl.downloadImage(success: { (image) in
+                    success(image)
+                }, failure: { (error) in
+                    failure(error)
+                })
+            }
         }
     }
     

@@ -36,6 +36,6 @@ enum ProfileConstants: String {
 enum ChallengeConstants: String {
     case myChallenges = "Meus Desafios"
     case groupChallenges = "Desafios em Grupo"
-    case objectives = "Objectivos"
+    case objectives = "Objetivos"
     
 }

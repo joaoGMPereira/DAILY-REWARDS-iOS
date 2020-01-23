@@ -22,7 +22,7 @@ protocol ProfilePresenterProtocol {
 
 class ProfilePresenter: ProfilePresenterProtocol {
     
-    weak var viewController: ProfileViewControllerProtocol?
+    weak var viewController: NewProfileViewControllerProtocol?
     
     func presentProfile(name: String) {
         viewController?.displayProfile(name: name)

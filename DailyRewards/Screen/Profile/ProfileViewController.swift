@@ -45,7 +45,7 @@ class ProfileViewController: UIViewController {
         let interactor = ProfileInteractor()
         self.interactor = interactor
         let presenter = ProfilePresenter()
-        presenter.viewController = self
+        //presenter.viewController = self
         interactor.presenter = presenter
     }
     
@@ -234,8 +234,7 @@ extension ProfileViewController: ProfileViewControllerProtocol {
     }
     
     func displaySignOut() {
-        let windowScene = UIApplication.shared.connectedScenes.first
-        router.setupLoginViewController(scene: windowScene as? UIWindowScene)
+        router.setupLoginViewController()
     }
     
     func displayVote(index: Int) {

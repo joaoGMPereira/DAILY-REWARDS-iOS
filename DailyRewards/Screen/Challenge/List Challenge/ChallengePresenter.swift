@@ -18,7 +18,7 @@ protocol ChallengePresenterProtocol {
 
 class ChallengePresenter: ChallengePresenterProtocol {
 
-    weak var viewController: ChallengeViewControllerProtocol?
+    weak var viewController: NewListChallengeViewControllerProtocol?
     
     func presentProfile(image: UIImage) {
         viewController?.displayProfile(image: image)

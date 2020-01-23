@@ -14,12 +14,12 @@ import JewFeatures
 
 class InitializationSetup: NSObject {
     
-    static func setup(scene: UIWindowScene?) {
+    static func setup() {
         GIDSignIn.sharedInstance().clientID = "824758762408-jpdekfmriacq1j1h1m96bpi81iudcpii.apps.googleusercontent.com"
         setupColors()
         setupFirebase()
         let router = DailyRewardsRouter()
-        router.setupStartViewController(scene: scene)
+        router.setupStartViewController()
     }
     
     static func setupColors() {
@@ -27,12 +27,8 @@ class InitializationSetup: NSObject {
         JEWUIColor.default.lightDefaultColor = UIColor.JEWPallete(red: 238, green: 255, blue: 255)
         JEWUIColor.default.darkDefaultColor = UIColor.JEWPallete(red: 2, green: 119, blue: 189)
         JEWUIColor.default.backgroundColor = UIColor.JEWPallete(red: 114, green: 204, blue: 228)
-        UINavigationBar.appearance().barTintColor = .JEWBackground()
-        UINavigationBar.appearance().tintColor = .JEWBackground()
-        UINavigationBar.appearance().isTranslucent = false
-        UIBarButtonItem.appearance().tintColor = .JEWDefault()
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.JEWDefault()]
-        UITabBar.appearance().backgroundColor = .JEWBackground()
+        UINavigationBar.appearance().largeTitleTextAttributes = [
+        .foregroundColor: UIColor.white]
     }
     
     static func setupKeyChain() {

@@ -104,14 +104,14 @@ class ChallengeViewController: UIViewController {
     
     //MARK: Setup
     func setup() {
-        let interactor = ChallengeInteractor()
-        self.interactor = interactor
-        let presenter = ChallengePresenter()
-        presenter.viewController = self
-        interactor.presenter = presenter
-        delegate = self
-        interactor.downloadProfileImage()
-        interactor.setUserName()
+//        let interactor = ChallengeInteractor()
+//        self.interactor = interactor
+//        let presenter = ChallengePresenter()
+//        presenter.viewController = self
+//        interactor.presenter = presenter
+//        delegate = self
+//        interactor.downloadProfileImage()
+//        interactor.setUserName()
     }
     
     //MARK: SetupUI
