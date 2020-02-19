@@ -20,9 +20,7 @@ struct SUIJewGenericView<Content: View>: View {
     public var body: some View {
         switch viewState {
         case .loaded:
-            return AnyView(HStack(alignment: .center, spacing: 8) {
-                Rectangle().fill(Color.green)
-            }.frame(width: 300, height: 300))
+            return AnyView(content())
         case .loading:
             return AnyView(content().overlay(SUIJEWLoadingView()).clipped())
         }

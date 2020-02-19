@@ -46,7 +46,7 @@ struct CardView: View {
 extension CardView {
     
     func topLeftImage(for geometry: GeometryProxy) -> some View {
-        SUIJewGenericView(viewState: .loading) {
+        SUIJewGenericView(viewState: .loaded) {
             Image(self.card.leftImageName)
             .resizable()
             .aspectRatio(contentMode: .fit)
@@ -58,7 +58,7 @@ extension CardView {
     }
     
     func topRightImageWithLoading(for geometry: GeometryProxy) -> some View {
-        SUIJewGenericView(viewState: .loading) {
+        SUIJewGenericView(viewState: .loaded) {
             self.topRightImage(for: geometry)
         }.cornerRadius(10)
     }
@@ -107,7 +107,7 @@ extension CardView {
     }
     
     var title: some View {
-        SUIJewGenericView(viewState: .loading) {
+        SUIJewGenericView(viewState: .loaded) {
             Text(self.card.title)
                 .foregroundColor(self.card.type.highlightedColor)
             .font(.system(size: 23, weight: .medium))
@@ -115,7 +115,7 @@ extension CardView {
     }
     
     var description: some View {
-        SUIJewGenericView(viewState: .loading) {
+        SUIJewGenericView(viewState: .loaded) {
             VStack(alignment: .center, spacing: 3) {
                 Group {
                     Text(self.card.descripton).font(.system(size: 15))
@@ -125,7 +125,7 @@ extension CardView {
     }
     
     var status: some View {
-        SUIJewGenericView(viewState: .loading) {
+        SUIJewGenericView(viewState: .loaded) {
             Text(self.card.type.statusText)
                 .foregroundColor(self.card.type.highlightedColor)
                 .minimumScaleFactor(2)

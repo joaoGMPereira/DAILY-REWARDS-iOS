@@ -20,39 +20,43 @@ struct NewListChallengeView: View {
     @State var controller: NewListChallengeViewController?
     var cardView = ListCardsView()
     var router = DailyRewardsRouter()
+    @ObservedObject var model = MyModel()
     
     var body: some View {
-                GeometryReader.init { geometry in
-                    ZStack(alignment: .top, content: {
-                        Color(.JEWBackground())
-                            .edgesIgnoringSafeArea(.all)
-                        VStack(alignment: .center, spacing: 8) {
-                            SUIJewExpandableView(rects: self.$rectsExpandable, isOpened:  self.$expandableIsOpened, isPresented: self.$showProfile, title: self.$nameTitle, image: self.$image).frame(width: geometry.size.width, height: self.expandableIsOpened ? 150 : 65).padding(.top, 20).animation(.linear).onTapGesture {
-                                withAnimation{
-                                    self.showProfile.toggle()
-                                }
-                            }
-                            VStack(alignment: .center, spacing: 96) {
-                                SUIJewSegmentedControl(selectedIndex: self.$selectedIndex, rects: self.$rects, titles: self.$titles)
-                                VStack(alignment: .center) {
-                                    self.setCardsView(geometry: geometry)
-                                }
-                            }
+        DismissGuardian(preventDismissal: $model.preventDismissal, didUpdated: $model.didUpdate, isPresented: $model.isPresented) {
             
+            GeometryReader.init { geometry in
+                ZStack(alignment: .top, content: {
+                    Color(.JEWBackground())
+                        .edgesIgnoringSafeArea(.all)
+                    VStack(alignment: .center, spacing: 8) {
+                        SUIJewExpandableView(rects: self.$rectsExpandable, isOpened:  self.$expandableIsOpened, isPresented: self.$model.isPresented, title: self.$nameTitle, image: self.$image).frame(width: geometry.size.width, height: self.expandableIsOpened ? 150 : 65).padding(.top, 20).animation(.linear).onTapGesture {
+                            withAnimation{
+                                self.model.isPresented.toggle()
+                            }
                         }
+                        VStack(alignment: .center, spacing: 96) {
+                            SUIJewSegmentedControl(selectedIndex: self.$selectedIndex, rects: self.$rects, titles: self.$titles)
+                            VStack(alignment: .center) {
+                                self.setCardsView(geometry: geometry)
+                            }
+                        }
+                        
+                    }
+                })
+            }.onAppear {
+                self.controller = NewListChallengeViewController(withDelegate: self)
+            }
+            .sheet(isPresented: self.$model.isPresented) {
+                NewProfileView(isPresented: self.$model.isPresented)
+            }
+            .gesture(
+                DragGesture()
+                    .onChanged({ (value) in
+                        self.updateHeader(value: value)
                     })
-                }.onAppear {
-                    self.controller = NewListChallengeViewController(withDelegate: self)
-                }
-                .sheet(isPresented: self.$showProfile) {
-                    NewProfileView(isPresented: self.$showProfile)
-                }
-                .gesture(
-                    DragGesture()
-                        .onChanged({ (value) in
-                            self.updateHeader(value: value)
-                        })
-                )
+            )
+        }.edgesIgnoringSafeArea(.all)
     }
     
     func updateHeader(value: DragGesture.Value) {

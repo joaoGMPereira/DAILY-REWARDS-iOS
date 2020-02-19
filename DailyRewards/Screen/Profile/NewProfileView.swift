@@ -9,6 +9,13 @@
 import SwiftUI
 import JewFeatures
 
+enum TypeSelected {
+    case touchID
+    case notification
+    case vote
+    case undefined
+}
+
 struct NewProfileView: View {
     //MARK: Models
     let npsValues: [NPS] = [NPS(id: 1),NPS(id: 2),NPS(id: 3),NPS(id: 4),NPS(id: 5),NPS(id: 6),NPS(id: 7),NPS(id: 8),NPS(id: 9),NPS(id: 10)]
@@ -31,11 +38,11 @@ struct NewProfileView: View {
     @State var switchTouchID = JEWKeyChainWrapper.retrieveBool(withKey: JEWConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue) ?? false
     @State var switchNotification = false
     @State private var showSheet = false
-    @State private var hasVoted = false
+    @State private var typeSelected = TypeSelected.undefined
     @Binding var isPresented: Bool
-    
     //MARK: Controller
     @State var controller: NewProfileViewController?
+    @EnvironmentObject var model: MyModel
     
     var body: some View {
         GeometryReader { geometry in
@@ -73,6 +80,7 @@ struct NewProfileView: View {
                                                              offColor: .secondary,
                                                              thumbColor: .white, isSelected: { (isSelected) in
                                                                 self.showSheet = isSelected
+                                                                self.typeSelected = .notification
                                     }))
                         }.foregroundColor(.white).frame(width: geometry.size.width * 0.95, alignment: .trailing)
                         self.gridView(geometry)
@@ -133,32 +141,33 @@ struct NewProfileView: View {
     }
     
     private func presentActionSheet() -> ActionSheet {
-        if self.switchTouchID {
-           return ActionSheet(title: Text(JEWConstants.Default.title.rawValue), message: Text(JEWConstants.EnableBiometricViewController.biometricMessageType()), buttons: [.destructive(Text("Cancelar"), action: {
+        
+        
+        switch self.typeSelected {
+            
+        case .touchID:
+            return ActionSheet(title: Text(JEWConstants.Default.title.rawValue), message: Text(JEWConstants.EnableBiometricViewController.biometricMessageType()), buttons: [.destructive(Text("Cancelar"), action: {
                 self.switchTouchID.toggle()
             }), .default(Text("Confirmar"), action: {
                 JEWKeyChainWrapper.saveBool(withValue: true, andKey: JEWConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue)
             })])
-        }
-        if self.switchNotification {
+        case .notification:
             return ActionSheet(title: Text(JEWConstants.Default.title.rawValue), message: Text("TODO: NOTIFICATION"), buttons: [.destructive(Text("Cancelar"), action: {
                 self.switchNotification.toggle()
             }), .default(Text("Confirmar"), action: {
             })])
-        }
-        if self.hasVoted {
+        case .vote:
             return ActionSheet(title: Text(JEWConstants.Default.title.rawValue), message: Text(ProfileConstants.messageAlert.rawValue), buttons: [.destructive(Text("Cancelar"), action: {
                 self.deselectAllCells()
                 
             }), .default(Text("Confirmar"), action: {
-                self.hasVoted.toggle()
             })])
+        case .undefined:
+            return ActionSheet(title: Text(""))
         }
-        return ActionSheet(title: Text("Default"))
     }
     
     func deselectAllCells() {
-        self.hasVoted.toggle()
         for (cellIndex, _) in self.cellsSelected.enumerated() {
             withAnimation {
                     self.cellsSelected[cellIndex] = false
@@ -186,7 +195,7 @@ extension NewProfileView: NewProfileViewControllerDelegate {
     
     func displayVote(index: Int) {
         self.showSheet = true
-        self.hasVoted = true
+        self.typeSelected = .vote
         for (cellIndex, _) in self.cellsSelected.enumerated() {
             withAnimation {
                 if cellIndex <= index - 1  {
@@ -199,6 +208,7 @@ extension NewProfileView: NewProfileViewControllerDelegate {
     }
     
     func displayBiometricOn() {
+        self.typeSelected = .touchID
         self.showSheet = true
     }
     

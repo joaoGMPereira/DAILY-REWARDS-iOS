@@ -90,7 +90,7 @@ extension NewChallengeViewController {
         }
         
         challengeButtonsView.hasSelectedButtonCallback = { selectedIndex in
-            var stepMovement = self.stepSelected.moveStep(buttonIndex: selectedIndex)
+            let stepMovement = self.stepSelected.moveStep(buttonIndex: selectedIndex)
             self.setStepMovement(stepMovement: stepMovement, periodSelected: self.periodSelected ?? 0)
         }
         

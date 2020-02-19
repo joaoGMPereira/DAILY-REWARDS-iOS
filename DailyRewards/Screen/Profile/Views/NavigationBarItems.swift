@@ -15,7 +15,7 @@ struct NavigationLeftItem: View {
     var body: some View {
         Button(action: {
             self.isPresented = false
-        }, label: { Image(systemName: "xmark").scaleEffect(1.5) })
+        }, label: { Image(systemName: "xmark").scaleEffect(1.7) })
     }
 }
 
@@ -32,6 +32,6 @@ struct NavigationImageItem: View {
     var body: some View {
         Button(action: {
             self.callback.didTap?()
-        }, label: { image.scaleEffect(1.5) })
+        }, label: { image.scaleEffect(1.7) })
     }
 }

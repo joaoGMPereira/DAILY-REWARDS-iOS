@@ -68,7 +68,7 @@ struct SUIJewExpandableView: View {
     }
     
     func imageHeight() -> CGFloat {
-        
+        print(isPresented)
         if isPresented {
             return 120
         }

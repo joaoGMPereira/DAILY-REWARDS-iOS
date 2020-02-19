@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7625197223FCAF300030E852 /* DismissGuardianUIHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7625197123FCAF300030E852 /* DismissGuardianUIHostingController.swift */; };
+		7625197423FCAF720030E852 /* DismissGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7625197323FCAF720030E852 /* DismissGuardian.swift */; };
+		7625197623FCAFB40030E852 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7625197523FCAFB40030E852 /* MyModel.swift */; };
+		7625197823FCAFCE0030E852 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7625197723FCAFCE0030E852 /* MyView.swift */; };
 		763F7AFA23D21A5E00C47B63 /* NewListChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763F7AF923D21A5E00C47B63 /* NewListChallengeViewController.swift */; };
 		768232C723C44565006C680A /* SUITextWithAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768232C623C44565006C680A /* SUITextWithAttributedString.swift */; };
 		768232D023C66250006C680A /* ListCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768232CE23C66250006C680A /* ListCardsView.swift */; };
@@ -89,6 +93,10 @@
 
 /* Begin PBXFileReference section */
 		330214D1A0592BB321A1360B /* Pods-DailyRewards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyRewards.debug.xcconfig"; path = "Target Support Files/Pods-DailyRewards/Pods-DailyRewards.debug.xcconfig"; sourceTree = "<group>"; };
+		7625197123FCAF300030E852 /* DismissGuardianUIHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGuardianUIHostingController.swift; sourceTree = "<group>"; };
+		7625197323FCAF720030E852 /* DismissGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGuardian.swift; sourceTree = "<group>"; };
+		7625197523FCAFB40030E852 /* MyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyModel.swift; sourceTree = "<group>"; };
+		7625197723FCAFCE0030E852 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		763F7AF923D21A5E00C47B63 /* NewListChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListChallengeViewController.swift; sourceTree = "<group>"; };
 		768232C623C44565006C680A /* SUITextWithAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUITextWithAttributedString.swift; sourceTree = "<group>"; };
 		768232CE23C66250006C680A /* ListCardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCardsView.swift; sourceTree = "<group>"; };
@@ -327,6 +335,10 @@
 				768232DC23C662D5006C680A /* SUIJewPopupMessage */,
 				768232DB23C662C5006C680A /* SUILottie */,
 				768232C823C661F0006C680A /* SUIListCards */,
+				7625197123FCAF300030E852 /* DismissGuardianUIHostingController.swift */,
+				7625197323FCAF720030E852 /* DismissGuardian.swift */,
+				7625197523FCAFB40030E852 /* MyModel.swift */,
+				7625197723FCAFCE0030E852 /* MyView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -713,12 +725,15 @@
 				CC05AFDA23A106C40015E386 /* ChallengeNameTextFieldView.swift in Sources */,
 				7682923723D0C08800BD456D /* SUIJewExpandableView.swift in Sources */,
 				768232DF23C666B5006C680A /* NewListChallengeView.swift in Sources */,
+				7625197423FCAF720030E852 /* DismissGuardian.swift in Sources */,
 				CC9ED02823A464AB00DC49D2 /* NewChallengeViewController.swift in Sources */,
 				CC06679D23A278B30055D04C /* RewardType.swift in Sources */,
 				CCD2D23A239589D000B0A4B6 /* ChallengeCellFactory.swift in Sources */,
 				768232D023C66250006C680A /* ListCardsView.swift in Sources */,
 				76F16E8D23B858B80041C033 /* NewLoginView.swift in Sources */,
 				76F16EAF23BB32B30041C033 /* SceneDelegate.swift in Sources */,
+				7625197623FCAFB40030E852 /* MyModel.swift in Sources */,
+				7625197223FCAF300030E852 /* DismissGuardianUIHostingController.swift in Sources */,
 				CCE47C1F238C55D600CFF71B /* Challenge.swift in Sources */,
 				CCD2D24F2396F46B00B0A4B6 /* EditChallenge.swift in Sources */,
 				CCBCFCB7238A0463003B9CD8 /* DailyRewardsRouter.swift in Sources */,
@@ -731,6 +746,7 @@
 				768232D923C66295006C680A /* Card.swift in Sources */,
 				768BA91B23D53D5C00AF2A63 /* SUIJEWLoadingView.swift in Sources */,
 				768C844523D8941600ECAF71 /* NewProfileViewController.swift in Sources */,
+				7625197823FCAFCE0030E852 /* MyView.swift in Sources */,
 				CCCA986F2389D31100DCDC50 /* InitializationSetup.swift in Sources */,
 				CCB44020238F0EE700A54B92 /* ProfilePresenter.swift in Sources */,
 				CC531BBB237D838C006870EF /* AppDelegate.swift in Sources */,
