@@ -27,7 +27,6 @@ class MyModel: ObservableObject {
     }
     
     func save() {
-        print("save data")
         self.resetForm()
     }
     

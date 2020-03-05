@@ -10,9 +10,6 @@ import SwiftUI
 import UIKit
 import Firebase
 import JewFeatures
-import SwiftyRSA
-
-
 
 struct NewLoginView: View, NewLoginViewControllerDelegate {
     //MARK: Properties

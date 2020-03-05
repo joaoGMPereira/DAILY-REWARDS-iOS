@@ -10,55 +10,66 @@ import Foundation
 
 let cards = [
     Card(title: "Primeiro desafio",
-         descripton: "Descrição do primeiro desafio",
+         description: "Descrição do primeiro desafio",
          type: .completed,
          leftImageName: "mockImage",
          isIndividual: false),
     Card(title: "Segundo desafio",
-         descripton: "Descrição do segundo desafio",
+         description: "Descrição do segundo desafio",
          type: .inProgress,
          leftImageName: "mockImage"),
     Card(title: "Terceiro desafio",
-         descripton: "Descrição do Terceiro desafio",
+         description: "Descrição do Terceiro desafio",
          type: .inProgress,
          leftImageName: "mockImage"),
     Card(title: "Quarto desafio",
-         descripton: "Descrição do quarto desafio",
+         description: "Descrição do quarto desafio",
          type: .canceled,
          leftImageName: "mockImage"),
     Card(title: "Quinto desafio",
-         descripton: "Descrição do Quinto desafio",
+         description: "Descrição do Quinto desafio",
          type: .canceled,
          leftImageName: "mockImage"),
     Card(title: "Sexto desafio",
-         descripton: "Descrição do Sexto desafio",
+         description: "Descrição do Sexto desafio",
          type: .canceled,
          leftImageName: "mockImage"),
     Card(title: "Setimo desafio",
-         descripton: "Descrição do Setimo desafio",
+         description: "Descrição do Setimo desafio",
          type: .canceled,
          leftImageName: "mockImage"),
     Card(title: "Oitavo desafio",
-         descripton: "Descrição do Oitavo desafio",
+         description: "Descrição do Oitavo desafio",
          type: .canceled,
          leftImageName: "mockImage"),
     Card(title: "Nono desafio",
-         descripton: "Descrição do Nono desafio",
+         description: "Descrição do Nono desafio",
          type: .canceled,
          leftImageName: "mockImage"),
     Card(title: "Decimo desafio",
-         descripton: "Descrição do Decimo desafio",
+         description: "Descrição do Decimo desafio",
          type: .canceled,
          leftImageName: "mockImage")
 ]
 
 let cardNew = [Card(title: "Deseja criar um novo desafio?",
-descripton: "Clique no Card para começar a criação",
+description: "Clique no Card para começar a criação",
 type: .new,
 leftImageName: "add",
 isAddCard: true)]
 
-struct Card: Identifiable, Equatable {
+class Card: ObservableObject, Equatable, Identifiable {
+    static func == (lhs: Card, rhs: Card) -> Bool {
+        let firstCardId = lhs.id
+        let firstCardTitle = lhs.title
+        let firstCardDescription = lhs._description
+        let secondCardId = rhs.id
+        let secondCardTitle = rhs.title
+        let secondCardDescription = rhs._description
+        return firstCardId == secondCardId && firstCardTitle == secondCardTitle && firstCardDescription == secondCardDescription
+    }
+    
+
     
     static let aspectRatio: Double = 16 / 9
     
@@ -66,7 +77,7 @@ struct Card: Identifiable, Equatable {
         return title
     }
     var title: String
-    var descripton: String
+    var _description: String
     var status: String {
         return type.statusText
     }
@@ -77,4 +88,15 @@ struct Card: Identifiable, Equatable {
     }
     var isIndividual: Bool = true
     var isAddCard: Bool = false
+    @Published var isLoading: ViewState = .loaded
+    
+    init(title: String, description: String, type: CardType, leftImageName: String, isIndividual: Bool = true, isAddCard: Bool = false, isLoading: ViewState = .loaded) {
+        self.title = title
+        self._description = description
+        self.type = type
+        self.leftImageName = leftImageName
+        self.isIndividual = isIndividual
+        self.isAddCard = isAddCard
+        self.isLoading = isLoading
+    }
 }

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7609335D2408AB4000167F88 /* LoginPublicKeyWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7609335C2408AB4000167F88 /* LoginPublicKeyWorker.swift */; };
+		760933602409E98C00167F88 /* HTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7609335F2409E98C00167F88 /* HTTPResponse.swift */; };
+		760933632409E9EF00167F88 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760933622409E9EF00167F88 /* PublicKey.swift */; };
+		7609336B2410093600167F88 /* LoginAccessTokenWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7609336A2410093600167F88 /* LoginAccessTokenWorker.swift */; };
+		760933722410136E00167F88 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760933712410136E00167F88 /* HTTPRequest.swift */; };
+		7609337624103C4400167F88 /* LoginSignInWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7609337524103C4300167F88 /* LoginSignInWorker.swift */; };
 		7625197223FCAF300030E852 /* DismissGuardianUIHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7625197123FCAF300030E852 /* DismissGuardianUIHostingController.swift */; };
 		7625197423FCAF720030E852 /* DismissGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7625197323FCAF720030E852 /* DismissGuardian.swift */; };
 		7625197623FCAFB40030E852 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7625197523FCAFB40030E852 /* MyModel.swift */; };
@@ -30,7 +36,6 @@
 		76972EAB23D788FA007126A9 /* GridNPSCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76972EAA23D788FA007126A9 /* GridNPSCell.swift */; };
 		76AEA56023D5F21C00A2BA08 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AEA55F23D5F21C00A2BA08 /* GridView.swift */; };
 		76AEA56223D60EAA00A2BA08 /* NewProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AEA56123D60EAA00A2BA08 /* NewProfileView.swift */; };
-		76AEA56423D60F6300A2BA08 /* people.json in Resources */ = {isa = PBXBuildFile; fileRef = 76AEA56323D60F6300A2BA08 /* people.json */; };
 		76AEA56823D768FA00A2BA08 /* GridViewExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AEA56723D768FA00A2BA08 /* GridViewExample.swift */; };
 		76DEA2FE23BDA0A1000B3257 /* SUILottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA2FD23BDA0A1000B3257 /* SUILottieView.swift */; };
 		76DEA30023BDA0FD000B3257 /* SUIGoogleButtonSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DEA2FF23BDA0FD000B3257 /* SUIGoogleButtonSignInView.swift */; };
@@ -67,7 +72,7 @@
 		CCB44024238F0EE700A54B92 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4401E238F0EE700A54B92 /* ProfileInteractor.swift */; };
 		CCB4402C238FEC8A00A54B92 /* DailyRewardsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4402B238FEC8900A54B92 /* DailyRewardsConstants.swift */; };
 		CCBCFCB5238A0463003B9CD8 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCFCB0238A0463003B9CD8 /* LoginPresenter.swift */; };
-		CCBCFCB6238A0463003B9CD8 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCFCB1238A0463003B9CD8 /* LoginWorker.swift */; };
+		CCBCFCB6238A0463003B9CD8 /* LoginFirebaseWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCFCB1238A0463003B9CD8 /* LoginFirebaseWorker.swift */; };
 		CCBCFCB7238A0463003B9CD8 /* DailyRewardsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCFCB2238A0463003B9CD8 /* DailyRewardsRouter.swift */; };
 		CCBCFCB8238A0463003B9CD8 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCFCB3238A0463003B9CD8 /* LoginInteractor.swift */; };
 		CCCA17E62395736400AEF0E9 /* ChallengeNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA17E52395736400AEF0E9 /* ChallengeNewCell.swift */; };
@@ -93,6 +98,12 @@
 
 /* Begin PBXFileReference section */
 		330214D1A0592BB321A1360B /* Pods-DailyRewards.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyRewards.debug.xcconfig"; path = "Target Support Files/Pods-DailyRewards/Pods-DailyRewards.debug.xcconfig"; sourceTree = "<group>"; };
+		7609335C2408AB4000167F88 /* LoginPublicKeyWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPublicKeyWorker.swift; sourceTree = "<group>"; };
+		7609335F2409E98C00167F88 /* HTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
+		760933622409E9EF00167F88 /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
+		7609336A2410093600167F88 /* LoginAccessTokenWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAccessTokenWorker.swift; sourceTree = "<group>"; };
+		760933712410136E00167F88 /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
+		7609337524103C4300167F88 /* LoginSignInWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignInWorker.swift; sourceTree = "<group>"; };
 		7625197123FCAF300030E852 /* DismissGuardianUIHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGuardianUIHostingController.swift; sourceTree = "<group>"; };
 		7625197323FCAF720030E852 /* DismissGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissGuardian.swift; sourceTree = "<group>"; };
 		7625197523FCAFB40030E852 /* MyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyModel.swift; sourceTree = "<group>"; };
@@ -116,7 +127,6 @@
 		76972EAA23D788FA007126A9 /* GridNPSCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridNPSCell.swift; sourceTree = "<group>"; };
 		76AEA55F23D5F21C00A2BA08 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		76AEA56123D60EAA00A2BA08 /* NewProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileView.swift; sourceTree = "<group>"; };
-		76AEA56323D60F6300A2BA08 /* people.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = people.json; sourceTree = "<group>"; };
 		76AEA56723D768FA00A2BA08 /* GridViewExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewExample.swift; sourceTree = "<group>"; };
 		76DEA2FD23BDA0A1000B3257 /* SUILottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUILottieView.swift; sourceTree = "<group>"; };
 		76DEA2FF23BDA0FD000B3257 /* SUIGoogleButtonSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUIGoogleButtonSignInView.swift; sourceTree = "<group>"; };
@@ -155,7 +165,7 @@
 		CCB4401E238F0EE700A54B92 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		CCB4402B238FEC8900A54B92 /* DailyRewardsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRewardsConstants.swift; sourceTree = "<group>"; };
 		CCBCFCB0238A0463003B9CD8 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		CCBCFCB1238A0463003B9CD8 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
+		CCBCFCB1238A0463003B9CD8 /* LoginFirebaseWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFirebaseWorker.swift; sourceTree = "<group>"; };
 		CCBCFCB2238A0463003B9CD8 /* DailyRewardsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRewardsRouter.swift; sourceTree = "<group>"; };
 		CCBCFCB3238A0463003B9CD8 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		CCCA17E52395736400AEF0E9 /* ChallengeNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeNewCell.swift; sourceTree = "<group>"; };
@@ -200,6 +210,41 @@
 				FB185F9362793955DBBF3537 /* Pods-DailyRewards.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		7609335B2408A92700167F88 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				CCBCFCB1238A0463003B9CD8 /* LoginFirebaseWorker.swift */,
+				7609335C2408AB4000167F88 /* LoginPublicKeyWorker.swift */,
+				7609336A2410093600167F88 /* LoginAccessTokenWorker.swift */,
+				7609337524103C4300167F88 /* LoginSignInWorker.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		7609335E2409E96800167F88 /* BaseModels */ = {
+			isa = PBXGroup;
+			children = (
+				7609335F2409E98C00167F88 /* HTTPResponse.swift */,
+				760933712410136E00167F88 /* HTTPRequest.swift */,
+			);
+			path = BaseModels;
+			sourceTree = "<group>";
+		};
+		760933612409E9E300167F88 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				760933622409E9EF00167F88 /* PublicKey.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		76093364240A963200167F88 /* AESCrypto */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AESCrypto;
 			sourceTree = "<group>";
 		};
 		768232C823C661F0006C680A /* SUIListCards */ = {
@@ -395,6 +440,8 @@
 		CC531BB9237D838C006870EF /* DailyRewards */ = {
 			isa = PBXGroup;
 			children = (
+				76093364240A963200167F88 /* AESCrypto */,
+				7609335E2409E96800167F88 /* BaseModels */,
 				CC531BDF237DB352006870EF /* GoogleAnalytics */,
 				CCCA986D2389D2E900DCDC50 /* Initialization */,
 				CC531BDE237DB07B006870EF /* Screen */,
@@ -497,12 +544,13 @@
 		CCCA986C2389D2D500DCDC50 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				760933612409E9E300167F88 /* Models */,
+				7609335B2408A92700167F88 /* Workers */,
 				76F16E8C23B858B80041C033 /* NewLoginView.swift */,
 				76DEA30323BDD5AF000B3257 /* NewLoginViewController.swift */,
 				CC531BDA237DB077006870EF /* LoginViewController.swift */,
 				CC531BDB237DB077006870EF /* LoginViewController.xib */,
 				CCBCFCB0238A0463003B9CD8 /* LoginPresenter.swift */,
-				CCBCFCB1238A0463003B9CD8 /* LoginWorker.swift */,
 				CCBCFCB3238A0463003B9CD8 /* LoginInteractor.swift */,
 			);
 			path = Login;
@@ -511,7 +559,6 @@
 		CCCA986D2389D2E900DCDC50 /* Initialization */ = {
 			isa = PBXGroup;
 			children = (
-				76AEA56323D60F6300A2BA08 /* people.json */,
 				CCCA986E2389D31100DCDC50 /* InitializationSetup.swift */,
 			);
 			path = Initialization;
@@ -625,7 +672,6 @@
 				CC531BC2237D838D006870EF /* Assets.xcassets in Resources */,
 				CC531BDD237DB077006870EF /* LoginViewController.xib in Resources */,
 				CC05AFCC239FCF570015E386 /* infinityLottieOrange.json in Resources */,
-				76AEA56423D60F6300A2BA08 /* people.json in Resources */,
 				CC531BE3237DBCD4006870EF /* IconLottie.json in Resources */,
 				CC06679F23A279470055D04C /* closeLottieOrange.json in Resources */,
 				CC06679A23A26F8E0055D04C /* plusMinusLottieOrange.json in Resources */,
@@ -705,7 +751,7 @@
 				76DEA30223BDC6D0000B3257 /* SUIJEWPopupMessage.swift in Sources */,
 				CCB44021238F0EE700A54B92 /* ProfileWorker.swift in Sources */,
 				768232E223C7FB89006C680A /* SUIJewSegmentedControl.swift in Sources */,
-				CCBCFCB6238A0463003B9CD8 /* LoginWorker.swift in Sources */,
+				CCBCFCB6238A0463003B9CD8 /* LoginFirebaseWorker.swift in Sources */,
 				76AEA56823D768FA00A2BA08 /* GridViewExample.swift in Sources */,
 				CCD2D24D2396F46B00B0A4B6 /* EditChallengeViewController.swift in Sources */,
 				768C844723D90B7000ECAF71 /* NavigationBarItems.swift in Sources */,
@@ -724,6 +770,7 @@
 				CCE47C1A238C55D600CFF71B /* ChallengePresenter.swift in Sources */,
 				CC05AFDA23A106C40015E386 /* ChallengeNameTextFieldView.swift in Sources */,
 				7682923723D0C08800BD456D /* SUIJewExpandableView.swift in Sources */,
+				7609336B2410093600167F88 /* LoginAccessTokenWorker.swift in Sources */,
 				768232DF23C666B5006C680A /* NewListChallengeView.swift in Sources */,
 				7625197423FCAF720030E852 /* DismissGuardian.swift in Sources */,
 				CC9ED02823A464AB00DC49D2 /* NewChallengeViewController.swift in Sources */,
@@ -738,8 +785,11 @@
 				CCD2D24F2396F46B00B0A4B6 /* EditChallenge.swift in Sources */,
 				CCBCFCB7238A0463003B9CD8 /* DailyRewardsRouter.swift in Sources */,
 				CCD2D23D2396D0BD00B0A4B6 /* MyChallengesCollectionViewDataSource.swift in Sources */,
+				7609337624103C4400167F88 /* LoginSignInWorker.swift in Sources */,
+				760933632409E9EF00167F88 /* PublicKey.swift in Sources */,
 				CC531BDC237DB077006870EF /* LoginViewController.swift in Sources */,
 				CCCF564423A3F21D00BD34D1 /* ChallengePeriodView.swift in Sources */,
+				760933602409E98C00167F88 /* HTTPResponse.swift in Sources */,
 				CCB4402C238FEC8A00A54B92 /* DailyRewardsConstants.swift in Sources */,
 				CC05AFDC23A11A9F0015E386 /* ChallengeRecurrencyView.swift in Sources */,
 				CC05AFD623A057D70015E386 /* ZoomAnimator.swift in Sources */,
@@ -750,6 +800,7 @@
 				CCCA986F2389D31100DCDC50 /* InitializationSetup.swift in Sources */,
 				CCB44020238F0EE700A54B92 /* ProfilePresenter.swift in Sources */,
 				CC531BBB237D838C006870EF /* AppDelegate.swift in Sources */,
+				7609335D2408AB4000167F88 /* LoginPublicKeyWorker.swift in Sources */,
 				CC9ED02A23A7E7CE00DC49D2 /* NewChallengeViewController+Steps.swift in Sources */,
 				CCE47C1D238C55D600CFF71B /* ChallengeViewController.swift in Sources */,
 				CCCA17E62395736400AEF0E9 /* ChallengeNewCell.swift in Sources */,
@@ -761,6 +812,7 @@
 				76DEA30023BDA0FD000B3257 /* SUIGoogleButtonSignInView.swift in Sources */,
 				CCD2D24B2396F46B00B0A4B6 /* EditChallengeWorker.swift in Sources */,
 				CCCA17E82395817900AEF0E9 /* ChallengeInfoCell.swift in Sources */,
+				760933722410136E00167F88 /* HTTPRequest.swift in Sources */,
 				768232D123C66250006C680A /* CardView.swift in Sources */,
 				CC05AFD423A035E40015E386 /* ChallengeImageView.swift in Sources */,
 				76DEA2FE23BDA0A1000B3257 /* SUILottieView.swift in Sources */,

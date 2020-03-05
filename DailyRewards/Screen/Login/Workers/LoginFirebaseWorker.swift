@@ -11,18 +11,18 @@ import Firebase
 import GoogleSignIn
 import JewFeatures
 
-typealias LoginSuccess = ((_ response: JEWUserModel) -> Void)
-typealias LoginError = ((_ errorMessage: String) -> Void)
+typealias LoginFirebaseSuccess = ((_ response: JEWUserModel) -> Void)
+typealias LoginFirebaseError = ((_ errorMessage: String) -> Void)
 
-protocol LoginWorkerProtocol {
-    var successCallback: LoginSuccess?{ get set }
-    var errorCallback: LoginError?{ get set }
-    func create(user: User?, success: @escaping LoginSuccess, error: LoginError)
+protocol LoginFirebaseWorkerProtocol {
+    var successCallback: LoginFirebaseSuccess?{ get set }
+    var errorCallback: LoginFirebaseError?{ get set }
+    func create(user: User?, success: @escaping LoginFirebaseSuccess, error: LoginFirebaseError)
 }
 
-class LoginWorker: NSObject, LoginWorkerProtocol, GIDSignInDelegate {
-    var successCallback: LoginSuccess?
-    var errorCallback: LoginError?
+class LoginFirebaseWorker: NSObject, LoginFirebaseWorkerProtocol, GIDSignInDelegate {
+    var successCallback: LoginFirebaseSuccess?
+    var errorCallback: LoginFirebaseError?
     let userNotLogged = "The user has not signed in before or they have since signed out."
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
@@ -48,7 +48,7 @@ class LoginWorker: NSObject, LoginWorkerProtocol, GIDSignInDelegate {
         }
     }
     
-    func create(user: User?, success: @escaping LoginSuccess, error: LoginError) {
+    func create(user: User?, success: @escaping LoginFirebaseSuccess, error: LoginFirebaseError) {
         guard let user = user, let email = user.email, let fullName = user.displayName, let photoURL = user.photoURL else {
             self.showError(text: JEWConstants.Default.errorMessage.rawValue)
             return
@@ -58,7 +58,7 @@ class LoginWorker: NSObject, LoginWorkerProtocol, GIDSignInDelegate {
                 success(JEWUserModel(email: email, uid: token, fullName: fullName, photoURL: photoURL))
                 return
             }
-            self.showError(text: JEWConstants.Default.errorMessage.rawValue)
+            self.showError(text: error?.localizedDescription ?? JEWConstants.Default.errorMessage.rawValue)
         }
     }
     

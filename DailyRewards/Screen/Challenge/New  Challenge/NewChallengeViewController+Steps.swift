@@ -28,11 +28,8 @@ extension NewChallengeViewController {
         break
         case .fourth(let direction):
             if direction == .next && periodSelected == 0 {
-                //TODO Move to fifth
-                print("next5")
             } else if direction == .next {
                 nextToFourthStep()
-                print("next4")
             } else {
                 //TODO Move BACK to FOURTH
                 backToFourthStep()

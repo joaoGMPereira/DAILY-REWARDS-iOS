@@ -11,7 +11,6 @@ import Firebase
 import GoogleSignIn
 import Lottie
 import JewFeatures
-import SwiftyRSA
 
 protocol LoginViewControllerProtocol: class {
     func displayLogin(user: JEWUserModel)

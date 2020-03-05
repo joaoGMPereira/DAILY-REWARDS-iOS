@@ -7,10 +7,11 @@ def all_pods
   #MyJewThings
   #pod 'JewFeatures', :git => 'https://github.com/joaoGMPereira/JEW-FEATURE', :branch => 'master'
   pod 'JewFeatures', :path => '../JEW-FEATURE'
-  pod 'SwiftyRSA'
+  
   
   #Security
   pod 'SwiftKeychainWrapper'
+  pod 'SwiftyRSA'
   
   #UIPods
   pod 'Hero'

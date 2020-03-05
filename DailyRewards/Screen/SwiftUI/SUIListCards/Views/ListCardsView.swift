@@ -84,10 +84,10 @@ extension ListCardsView {
         if let addCard = changeableList.limitedCards.last, addCard.isAddCard == true, addCard != card {
             addCardArray.append(addCard)
             let newCards = addCardArray + changeableList.limitedCards.dropLast().filter { $0 != card } + [card]
-            changeableList.limitedCards = newCards
+            changeableList.limitedCards = ListCard.setupLoadingInFirstCard(cards: newCards)
         } else {
             let newCards = changeableList.limitedCards.filter { $0 != card } + [card]
-            changeableList.limitedCards = newCards
+            changeableList.limitedCards = ListCard.setupLoadingInFirstCard(cards: newCards)
         }
         self.viewModel.list = changeableList
     }
@@ -125,12 +125,11 @@ extension ListCardsView {
             if numberLimitedCards > 1 {
             let newLimitedCards = updateLimitedCardsAfterTransaction(draggedCard: card)
             updateAllCardsAfterTransaction(draggedCard: card)
-                return newLimitedCards
+                return ListCard.setupLoadingInFirstCard(cards: newLimitedCards)
             }
-            return self.viewModel.list.limitedCards
+            return ListCard.setupLoadingInFirstCard(cards: viewModel.list.limitedCards)
         }
-        
-        return viewModel.list.limitedCards
+        return ListCard.setupLoadingInFirstCard(cards: viewModel.list.limitedCards)
     }
     
     private func updateLimitedCardsAfterTransaction(draggedCard card: Card) -> [Card] {

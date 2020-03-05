@@ -20,8 +20,8 @@ class ListCard: ObservableObject {
                 minimumLimitedCardsIndex = 0
             }
         }
-        self.limitedCards = cardNew + Array(cards.reversed()[minimumLimitedCardsIndex ..< cardsCount])
-        self.cards = Array(cards.reversed()[0 ..< minimumLimitedCardsIndex])
+        self.limitedCards = cardNew + ListCard.setupLoadingInFirstCard(cards: Array(cards.reversed()[minimumLimitedCardsIndex ..< cardsCount]))
+        self.cards = ListCard.setupLoadingInFirstCard(cards: Array(cards.reversed()[0 ..< minimumLimitedCardsIndex]))
         
     }
     
@@ -48,4 +48,13 @@ class ListCard: ObservableObject {
     func isLast(ofLimited card: Card) -> Bool {
         return index(ofLimited: card) == self.limitedCards.count - 1
     }
+    
+    static func setupLoadingInFirstCard(cards: [Card]) -> [Card] {
+           var updatedCards = [Card]()
+           for (index, card) in cards.enumerated() {
+               card.isLoading = index == cards.count - 1 ? .loading : .loaded
+               updatedCards.append(card)
+           }
+           return updatedCards
+       }
 }

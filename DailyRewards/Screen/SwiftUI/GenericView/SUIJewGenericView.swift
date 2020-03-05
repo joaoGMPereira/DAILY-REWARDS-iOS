@@ -20,7 +20,7 @@ struct SUIJewGenericView<Content: View>: View {
     public var body: some View {
         switch viewState {
         case .loaded:
-            return AnyView(content())
+            return AnyView(content().clipped())
         case .loading:
             return AnyView(content().overlay(SUIJEWLoadingView()).clipped())
         }

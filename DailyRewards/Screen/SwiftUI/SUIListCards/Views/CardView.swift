@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CardView: View {
     
-    var card: Card
+    @ObservedObject var card: Card
     @State var cornerRadius: CGFloat = 10
     var body: some View {
         GeometryReader { (geometry) in
@@ -18,9 +18,9 @@ struct CardView: View {
                 Group {
                     Spacer()
                     HStack(alignment: .center) {
-                        self.topLeftImage(for: geometry)
+                        self.topLeftImage(for: geometry, isLoading: self.card.isLoading)
                         Spacer()
-                        self.topRightImageWithLoading(for: geometry).padding()
+                        self.topRightImageWithLoading(for: geometry, isLoading: self.card.isLoading).padding()
                         
                     }.padding(.horizontal)
                     Spacer()
@@ -45,20 +45,20 @@ struct CardView: View {
 
 extension CardView {
     
-    func topLeftImage(for geometry: GeometryProxy) -> some View {
-        SUIJewGenericView(viewState: .loaded) {
+    func topLeftImage(for geometry: GeometryProxy, isLoading: ViewState) -> some View {
+        SUIJewGenericView(viewState: isLoading) {
             Image(self.card.leftImageName)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .background(Color.clear)
             .foregroundColor(.white)
             .frame(height: UIScreen.main.bounds.height / 14).clipShape(RoundedRectangle(cornerRadius: self.cornerRadius))
-                .overlay(RoundedRectangle(cornerRadius: self.cornerRadius).stroke(self.card.type.firstColor, lineWidth: 3)).offset(x: 0, y: self.card.isAddCard ? -30 : 0)
+                .overlay(RoundedRectangle(cornerRadius: self.cornerRadius).stroke(self.card.type.firstColor, lineWidth: 3)).offset(x: 0, y: self.card.isAddCard ? -10 : 0)
         }.cornerRadius(10)
     }
     
-    func topRightImageWithLoading(for geometry: GeometryProxy) -> some View {
-        SUIJewGenericView(viewState: .loaded) {
+    func topRightImageWithLoading(for geometry: GeometryProxy, isLoading: ViewState) -> some View {
+        SUIJewGenericView(viewState: isLoading) {
             self.topRightImage(for: geometry)
         }.cornerRadius(10)
     }
@@ -107,7 +107,7 @@ extension CardView {
     }
     
     var title: some View {
-        SUIJewGenericView(viewState: .loaded) {
+        SUIJewGenericView(viewState: self.card.isLoading) {
             Text(self.card.title)
                 .foregroundColor(self.card.type.highlightedColor)
             .font(.system(size: 23, weight: .medium))
@@ -115,23 +115,22 @@ extension CardView {
     }
     
     var description: some View {
-        SUIJewGenericView(viewState: .loaded) {
+        SUIJewGenericView(viewState: self.card.isLoading) {
             VStack(alignment: .center, spacing: 3) {
                 Group {
-                    Text(self.card.descripton).font(.system(size: 15))
+                    Text(self.card._description).font(.system(size: 15))
                 }.foregroundColor(self.card.type.highlightedColor)
             }
         }.cornerRadius(10)
     }
     
     var status: some View {
-        SUIJewGenericView(viewState: .loaded) {
+        SUIJewGenericView(viewState: self.card.isLoading) {
             Text(self.card.type.statusText)
                 .foregroundColor(self.card.type.highlightedColor)
                 .minimumScaleFactor(2)
-                .font(.system(size: 16))
+                .font(.system(size: 14))
                 .shadow(radius: 3)
-                .padding(.horizontal)
         }.cornerRadius(10)
     }
     

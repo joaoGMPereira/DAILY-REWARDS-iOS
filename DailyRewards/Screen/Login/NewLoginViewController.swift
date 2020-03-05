@@ -52,16 +52,14 @@ extension NewLoginViewController: NewLoginViewControllerProtocol {
         }) { (type) in
             switch type {
             case .default:
-//                let message = JEWBiometrics.faceIDAvailable() ? BioMetricsFaceIDErrors.kDefaultFaceIDErrorAuthentication.rawValue : BioMetricsTouchIDErrors.kDefaultTouchIDErrorAuthentication.rawValue
-//                self.delegate?.showError(withTextMessage: message, title: "\(JEWConstants.Default.title.rawValue)\n", popupType: .error, shouldHideAutomatically: true)
-                self.router.setupChallengeViewController()
+                let message = JEWBiometrics.faceIDAvailable() ? BioMetricsFaceIDErrors.kDefaultFaceIDErrorAuthentication.rawValue : BioMetricsTouchIDErrors.kDefaultTouchIDErrorAuthentication.rawValue
+                self.delegate?.showError(withTextMessage: message, title: "\(JEWConstants.Default.title.rawValue)\n", popupType: .error, shouldHideAutomatically: true)
                 break
             case .error(let error):
                 self.delegate?.showError(withTextMessage: error.message(), title: "\(error.title())\n", popupType: .error, shouldHideAutomatically: true)
                 break
-            case .goSettings(let _):
-                 self.router.setupChallengeViewController()
-                //self.delegate?.showError(withTextMessage: error.message(), title: "\(error.title())\n", popupType: .error, shouldHideAutomatically: true)
+            case .goSettings(let error):
+                 self.delegate?.showError(withTextMessage: error.message(), title: "\(error.title())\n", popupType: .error, shouldHideAutomatically: true)
                 break
             }
         }
