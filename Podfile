@@ -12,7 +12,7 @@ def all_pods
   #Security
   pod 'SwiftKeychainWrapper'
   pod 'SwiftyRSA'
-  
+  pod 'CryptoSwift'
   #UIPods
   pod 'Hero'
   pod 'lottie-ios'

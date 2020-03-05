@@ -95,8 +95,8 @@ class LoginInteractor: LoginInteractorProtocol {
     private func signIn(accessToken: String) {
         let currentUser = Auth.auth().currentUser
         let signIn = SignInModel(name: currentUser?.displayName ?? "User Without Name", email: currentUser?.email ?? "User Without Email", picture: currentUser?.photoURL?.absoluteString ?? "User Without Photo")
-        if let signInData = getData(signIn: signIn), let encryptedSignInString = AES256Crypter.crypto.encrypt(signInData) {
-            workerSignIn?.post(accessToken: accessToken, signInEncrypted: encryptedSignInString, successCompletion: { (sessionToken) in
+        if let signInData = getData(signIn: signIn), let encryptedSignInString = AES256Crypter.crypto.aesEncrypt(signInData) {
+            workerSignIn?.post(accessToken: accessToken, signInEncrypted: teste, successCompletion: { (sessionToken) in
                 guard let user = JEWSession.session.user else {
                     self.presenter?.presentLogin(error: "Tente Novamente!")
                     return
