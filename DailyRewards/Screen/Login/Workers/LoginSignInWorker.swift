@@ -36,7 +36,7 @@ class LoginSignInWorker: NSObject, LoginSignInWorkerProtocol {
             }
             successCompletion(sessionToken)
         }) { (error) in
-            //errorCompletion(error.title)
+            errorCompletion(error.title)
         }
     }
 

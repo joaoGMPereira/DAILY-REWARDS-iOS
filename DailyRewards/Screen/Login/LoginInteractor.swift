@@ -73,7 +73,7 @@ class LoginInteractor: LoginInteractorProtocol {
     
     private func getPublicKey(successCompletion: @escaping () -> (), errorCompletion: @escaping (String) -> ()) {
         workerPublicKey?.get(successCompletion: { responsePublicKey in
-            JEWSession.session.publicKey = responsePublicKey.data.publicKey
+            JEWSession.session.services.publicKey = responsePublicKey.data.publicKey
             self.getAccessToken()
         }, errorCompletion: { (error) in
             self.presenter?.presentLogin(error: error)
@@ -101,6 +101,7 @@ class LoginInteractor: LoginInteractorProtocol {
                     self.presenter?.presentLogin(error: "Tente Novamente!")
                     return
                 }
+                JEWSession.session.services.token = sessionToken.data.sessionToken
                 self.presenter?.presentLogin(user: user)
             }, errorCompletion: { (error) in
                 self.presenter?.presentLogin(error: error)
@@ -114,6 +115,7 @@ class LoginInteractor: LoginInteractorProtocol {
             let data = try encoder.encode(signIn)
             return data
         } catch let error {
+            JEWLogger.e
             return nil
         }
     }
