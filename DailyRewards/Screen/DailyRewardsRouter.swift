@@ -39,6 +39,7 @@ class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
         SceneDelegate.shared.window?.rootViewController = startViewController
         SceneDelegate.shared.window?.makeKeyAndVisible()
         //JEWConnector.connector.baseURL = "https://daily-rewards-node-api.herokuapp.com/api/v1"
+        //TestAES.testando()
         checkIfStartHasBeenLoaded(withViewController: startViewController)
         
     }
