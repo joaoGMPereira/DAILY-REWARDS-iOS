@@ -115,7 +115,7 @@ class LoginInteractor: LoginInteractorProtocol {
             let data = try encoder.encode(signIn)
             return data
         } catch let error {
-            JEWLogger.e
+            JEWLogger.error(error.localizedDescription)
             return nil
         }
     }
