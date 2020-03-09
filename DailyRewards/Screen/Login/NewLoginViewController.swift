@@ -53,13 +53,13 @@ extension NewLoginViewController: NewLoginViewControllerProtocol {
             switch type {
             case .default:
                 let message = JEWBiometrics.faceIDAvailable() ? BioMetricsFaceIDErrors.kDefaultFaceIDErrorAuthentication.rawValue : BioMetricsTouchIDErrors.kDefaultTouchIDErrorAuthentication.rawValue
-                self.delegate?.showError(withTextMessage: message, title: "\(JEWConstants.Default.title.rawValue)\n", popupType: .error, shouldHideAutomatically: true)
+                self.delegate?.showError(withTextMessage: message, title: "\(JEWConstants.Default.title.rawValue)\n", popupType: .error, shouldHideAutomatically: false)
                 break
             case .error(let error):
-                self.delegate?.showError(withTextMessage: error.message(), title: "\(error.title())\n", popupType: .error, shouldHideAutomatically: true)
+                self.delegate?.showError(withTextMessage: error.message(), title: "\(error.title())\n", popupType: .error, shouldHideAutomatically: false)
                 break
             case .goSettings(let error):
-                 self.delegate?.showError(withTextMessage: error.message(), title: "\(error.title())\n", popupType: .error, shouldHideAutomatically: true)
+                 self.delegate?.showError(withTextMessage: error.message(), title: "\(error.title())\n", popupType: .error, shouldHideAutomatically: false)
                 break
             }
         }
