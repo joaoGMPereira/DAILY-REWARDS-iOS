@@ -12,7 +12,7 @@ import GoogleSignIn
 import JewFeatures
 
 typealias LoginFirebaseSuccess = ((_ response: JEWUserModel) -> Void)
-typealias LoginFirebaseError = ((_ errorMessage: String) -> Void)
+typealias LoginFirebaseError = ((_ errorMessage: ConnectorError) -> Void)
 
 protocol LoginFirebaseWorkerProtocol {
     var successCallback: LoginFirebaseSuccess?{ get set }
@@ -23,67 +23,51 @@ protocol LoginFirebaseWorkerProtocol {
 class LoginFirebaseWorker: NSObject, LoginFirebaseWorkerProtocol, GIDSignInDelegate {
     var successCallback: LoginFirebaseSuccess?
     var errorCallback: LoginFirebaseError?
-    let userNotLogged = "The user has not signed in before or they have since signed out."
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        
-        if !shouldShowError(withError: error) {
+        if !shouldShowError(error: error) {
             guard let idToken = user.authentication.idToken else {
                 return
-            } // Safe to send to the server
+            } 
             guard let accessToken = user.authentication.accessToken else {return}
             let credentials = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
             
             Auth.auth().signIn(with: credentials) { (authData, error) in
-                if !self.shouldShowError(withError: error) {
+                if !self.shouldShowError(error: error) {
                     self.create(user: authData?.user, success: { (user) in
                         if let success = self.successCallback {
                             success(user)
                         }
-                    }, error: { (user) in
-                        self.showError(text: JEWConstants.Default.errorMessage.rawValue)
+                    }, error: { (error) in
+                        self.shouldShowError(error: error)
                     })
                 }
-                
             }
         }
     }
     
     func create(user: User?, success: @escaping LoginFirebaseSuccess, error: LoginFirebaseError) {
         guard let user = user, let email = user.email, let fullName = user.displayName, let photoURL = user.photoURL else {
-            self.showError(text: JEWConstants.Default.errorMessage.rawValue)
+            self.shouldShowError(error: ConnectorError.customError())
             return
         }
         user.getIDToken { (token, error) in
-            if !self.shouldShowError(withError: error), let token = token {
+            if !self.shouldShowError(error: error), let token = token {
                 success(JEWUserModel(email: email, uid: token, fullName: fullName, photoURL: photoURL))
                 return
             }
-            self.showError(text: error?.localizedDescription ?? JEWConstants.Default.errorMessage.rawValue)
         }
     }
     
-    func shouldShowError(withError error: Error? = nil, text: String? = nil) -> Bool {
+    @discardableResult func shouldShowError(error: Error?) -> Bool {
         if let error = error {
-            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
-                showError(text: error.localizedDescription, log: userNotLogged)
-            } else {
-                showError(text: error.localizedDescription, log: error.localizedDescription)
+            JEWLogger.error(error.localizedDescription)
+            if let errorCallback = self.errorCallback {
+                errorCallback(ConnectorError.handleError(error: error))
             }
-            return true
-        }
-        if let text = text {
-            showError(text: text)
             return true
         }
         return false
     }
     
-    
-    func showError(text: String, log: String? = nil) {
-        JEWLogger.error(log ?? text)
-        if let errorCallback = errorCallback {
-            errorCallback(text)
-        }
-    }
     
 }

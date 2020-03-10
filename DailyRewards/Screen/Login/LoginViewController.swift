@@ -77,13 +77,13 @@ extension LoginViewController: LoginViewControllerProtocol {
     
     func askForBiometric() {
         JEWBiometricsChallenge.checkLoggedUser(keychainKey: JEWConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue, successChallenge: {
-            self.router.setupChallengeViewController()
+            DailyRewardsRouter.setupChallengeViewController()
         }) { (type) in
             switch type {
             case .default:
                 //let message = JEWBiometrics.faceIDAvailable() ? BioMetricsFaceIDErrors.kDefaultFaceIDErrorAuthentication.rawValue : BioMetricsTouchIDErrors.kDefaultTouchIDErrorAuthentication.rawValue
                 //self.popupMessageView?.show(withTextMessage: message, title: "\(JEWConstants.Default.title.rawValue)\n", popupType: .error, shouldHideAutomatically: true)
-                self.router.setupChallengeViewController()
+                DailyRewardsRouter.setupChallengeViewController()
             case .error(let error):
                 self.popupMessageView?.show(withTextMessage: error.message(), title: "\(error.title())\n", popupType: .error, shouldHideAutomatically: true)
             case .goSettings(let error):

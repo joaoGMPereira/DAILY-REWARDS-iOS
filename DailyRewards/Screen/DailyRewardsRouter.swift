@@ -13,12 +13,12 @@ import SwiftUI
 import SwiftyRSA
 
 protocol DailyRewardsRouterProtocol: class {
-    func setupStartViewController()
-    func setupLoginViewController()
-    func setupChallengeViewController()
-    func setupProfileViewController(withParentViewController parentViewController: UIViewController, heroImageView: UIView?)
-    func setupNewChallengeViewController(withParentViewController parentViewController: UIViewController)
-    func setupEditChallengeViewController(withParentViewController parentViewController: UIViewController, challenge: Challenge)
+    static func setupStartViewController()
+    static func setupLoginViewController()
+    static func setupChallengeViewController()
+    static func setupProfileViewController(withParentViewController parentViewController: UIViewController, heroImageView: UIView?)
+    static func setupNewChallengeViewController(withParentViewController parentViewController: UIViewController)
+    static func setupEditChallengeViewController(withParentViewController parentViewController: UIViewController, challenge: Challenge)
 }
 
 struct StartView: View {
@@ -33,7 +33,7 @@ struct StartView: View {
 
 class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
     
-    func setupStartViewController() {
+    static func setupStartViewController() {
         let startView = StartView()
         let startViewController = UIHostingController(rootView: startView)
         SceneDelegate.shared.window?.rootViewController = startViewController
@@ -43,7 +43,7 @@ class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
         
     }
     
-    private func checkIfStartHasBeenLoaded(withViewController viewController: UIViewController) {
+    private static func checkIfStartHasBeenLoaded(withViewController viewController: UIViewController) {
         if viewController.isViewLoaded {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.setupLoginViewController()
@@ -53,7 +53,7 @@ class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
         }
     }
     
-    func setupLoginViewController() {
+    static func setupLoginViewController() {
         
         let loginView = NewLoginView()
         var options = UIWindow.TransitionOptions()
@@ -65,7 +65,7 @@ class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
         
     }
     
-    func setupChallengeViewController() {
+    static func setupChallengeViewController() {
         let challengeView = NewListChallengeView()
         var options = UIWindow.TransitionOptions()
         options.direction = .toBottom
@@ -78,14 +78,14 @@ class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
         
     }
     
-    func setupNewChallengeViewController(withParentViewController parentViewController: UIViewController) {
+    static func setupNewChallengeViewController(withParentViewController parentViewController: UIViewController) {
         let newChallengeViewController = NewChallengeViewController()
         let newChallengeNavigationController = UINavigationController.init(rootViewController: newChallengeViewController)
         newChallengeNavigationController.modalTransitionStyle = .crossDissolve
         parentViewController.present(newChallengeNavigationController, animated: true, completion: nil)
     }
     
-    func setupEditChallengeViewController(withParentViewController parentViewController: UIViewController, challenge: Challenge) {
+    static func setupEditChallengeViewController(withParentViewController parentViewController: UIViewController, challenge: Challenge) {
         let editChallengeViewController = EditChallengeViewController()
         let editChallengeNavigationController = UINavigationController.init(rootViewController: editChallengeViewController)
         editChallengeNavigationController.modalTransitionStyle = .crossDissolve
@@ -94,7 +94,7 @@ class DailyRewardsRouter: NSObject, DailyRewardsRouterProtocol {
         parentViewController.present(editChallengeNavigationController, animated: true)
     }
     
-    func setupProfileViewController(withParentViewController parentViewController: UIViewController, heroImageView: UIView?) {
+    static func setupProfileViewController(withParentViewController parentViewController: UIViewController, heroImageView: UIView?) {
         let profileViewController = ProfileViewController()
         profileViewController.setup()
         profileViewController.interactor?.setInfo()

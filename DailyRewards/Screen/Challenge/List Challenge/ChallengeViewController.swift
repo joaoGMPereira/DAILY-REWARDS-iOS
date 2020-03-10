@@ -141,7 +141,7 @@ class ChallengeViewController: UIViewController {
         }
         
         headerView.imageCallback = {(imageView) in
-            self.router.setupProfileViewController(withParentViewController: self, heroImageView: self.headerView.iconImageView)
+            DailyRewardsRouter.setupProfileViewController(withParentViewController: self, heroImageView: self.headerView.iconImageView)
         }
     }
     
@@ -232,11 +232,11 @@ extension ChallengeViewController: ChallengeViewControllerProtocol {
     }
     
     func displayNew() {
-        router.setupNewChallengeViewController(withParentViewController: self)
+        DailyRewardsRouter.setupNewChallengeViewController(withParentViewController: self)
     }
     
     func displayDetail(challenge: Challenge) {
-        router.setupEditChallengeViewController(withParentViewController: self, challenge: challenge)
+        DailyRewardsRouter.setupEditChallengeViewController(withParentViewController: self, challenge: challenge)
     }
 }
 

@@ -11,7 +11,7 @@ import JewFeatures
 
 protocol LoginPresenterProtocol {
     func presentLogin(user: JEWUserModel)
-    func presentLogin(error: String)
+    func presentLogin(error: ConnectorError)
 }
 
 class LoginPresenter: LoginPresenterProtocol {
@@ -22,7 +22,8 @@ class LoginPresenter: LoginPresenterProtocol {
        viewController?.displayLogin(user: user)
     }
     
-    func presentLogin(error: String) {
-        viewController?.displayLogin(error: error)
+    func presentLogin(error: ConnectorError) {
+        let errorViewData = JEWViewDataErrorContract(error: error)
+        viewController?.displayLogin(error: errorViewData.getErrorDescription())
     }
 }

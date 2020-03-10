@@ -18,8 +18,7 @@ class InitializationSetup: NSObject {
         GIDSignIn.sharedInstance().clientID = "824758762408-jpdekfmriacq1j1h1m96bpi81iudcpii.apps.googleusercontent.com"
         setupColors()
         setupFirebase()
-        let router = DailyRewardsRouter()
-        router.setupStartViewController()
+        DailyRewardsRouter.setupStartViewController()
     }
     
     static func setupColors() {

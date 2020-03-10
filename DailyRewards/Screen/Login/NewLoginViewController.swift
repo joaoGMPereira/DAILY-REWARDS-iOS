@@ -43,12 +43,13 @@ class NewLoginViewController: NSObject {
 
 extension NewLoginViewController: NewLoginViewControllerProtocol {
     func displayLogin(user: JEWUserModel) {
-        askForBiometric()
+        DailyRewardsRouter.setupChallengeViewController()
+       // askForBiometric()
     }
     
     func askForBiometric() {
         JEWBiometricsChallenge.checkLoggedUser(keychainKey: JEWConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue, successChallenge: {
-            self.router.setupChallengeViewController()
+            DailyRewardsRouter.setupChallengeViewController()
         }) { (type) in
             switch type {
             case .default:
@@ -66,6 +67,6 @@ extension NewLoginViewController: NewLoginViewControllerProtocol {
     }
     
     func displayLogin(error: String) {
-        self.delegate?.showError(withTextMessage: error, title: "\(JEWConstants.Default.title.rawValue)\n", popupType: .error, shouldHideAutomatically: true)
+        self.delegate?.showError(withTextMessage: error, title: "\(JEWConstants.Default.title.rawValue)\n", popupType: .error, shouldHideAutomatically: false )
     }
 }

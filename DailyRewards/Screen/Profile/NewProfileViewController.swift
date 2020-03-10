@@ -67,7 +67,7 @@ extension NewProfileViewController: NewProfileViewControllerProtocol {
     
     func displaySignOut() {
         delegate?.displaySignOut()
-        router.setupLoginViewController()
+        DailyRewardsRouter.setupLoginViewController()
     }
     
     func displayVote(index: Int) {

@@ -38,7 +38,11 @@ class ListCard: ObservableObject {
     }
     
     func index(ofLimited card: Card) -> Int {
-        return limitedCards.count - limitedCards.firstIndex(of: card)! - 1
+        var indexCard = 0
+        if let index = limitedCards.firstIndex(of: card) {
+            indexCard = index
+        }
+        return limitedCards.count - indexCard - 1
     }
     
     func isFirst(ofLimited card: Card) -> Bool {

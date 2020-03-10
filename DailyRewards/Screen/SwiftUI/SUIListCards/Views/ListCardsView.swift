@@ -13,6 +13,7 @@ class ListCardsViewModel: ObservableObject {
     
     @Published var forceUpdateLayout: CGFloat = 0
     @Published var isDraggingDown: Bool = true
+    
 }
 
 struct ListCardsView: View {

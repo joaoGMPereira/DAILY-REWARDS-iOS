@@ -29,7 +29,7 @@ class LoginInteractor: LoginInteractorProtocol {
         }
     }
     
-    private func getFirebase(userCompletion: @escaping (JEWUserModel) -> (), errorCompletion: @escaping (String) -> ()) {
+    private func getFirebase(userCompletion: @escaping (JEWUserModel) -> (), errorCompletion: @escaping (ConnectorError) -> ()) {
         savedFirebaseUser(userCompletion: { (user) in
             userCompletion(user)
         }) { (error) in
@@ -42,7 +42,7 @@ class LoginInteractor: LoginInteractorProtocol {
         }
     }
     
-    private func savedFirebaseUser(userCompletion: @escaping (JEWUserModel) -> (), errorCompletion: @escaping (String) -> ()) {
+    private func savedFirebaseUser(userCompletion: @escaping (JEWUserModel) -> (), errorCompletion: @escaping (ConnectorError) -> ()) {
         let currentUser = Auth.auth().currentUser
         if(currentUser != nil) {
             workerFirebase?.create(user: currentUser, success: { (user) in
@@ -54,7 +54,7 @@ class LoginInteractor: LoginInteractorProtocol {
         }
     }
     
-    private func getServerFirebaseUser(userCompletion: @escaping (JEWUserModel) -> (), errorCompletion: @escaping (String) -> ()) {
+    private func getServerFirebaseUser(userCompletion: @escaping (JEWUserModel) -> (), errorCompletion: @escaping (ConnectorError) -> ()) {
         workerFirebase?.successCallback = { (user) in
             userCompletion(user)
         }
@@ -71,7 +71,7 @@ class LoginInteractor: LoginInteractorProtocol {
         }
     }
     
-    private func getPublicKey(successCompletion: @escaping () -> (), errorCompletion: @escaping (String) -> ()) {
+    private func getPublicKey(successCompletion: @escaping () -> (), errorCompletion: @escaping (ConnectorError) -> ()) {
         workerPublicKey?.get(successCompletion: { responsePublicKey in
             JEWSession.session.services.publicKey = responsePublicKey.data.publicKey
             self.getAccessToken()
@@ -98,7 +98,7 @@ class LoginInteractor: LoginInteractorProtocol {
         if let signInData = getData(signIn: signIn), let encryptedSignInString = AES256Crypter.crypto.encrypt(signInData) {
             workerSignIn?.post(accessToken: accessToken, signInEncrypted: encryptedSignInString, successCompletion: { (sessionToken) in
                 guard let user = JEWSession.session.user else {
-                    self.presenter?.presentLogin(error: "Tente Novamente!")
+                    self.presenter?.presentLogin(error: (ConnectorError.handleError(error: ConnectorError.customError())))
                     return
                 }
                 JEWSession.session.services.token = sessionToken.data.sessionToken

@@ -10,7 +10,7 @@ import Foundation
 import JewFeatures
 
 typealias LoginAccessTokenSuccess = ((HTTPResponse<AccessTokenModel>) -> Void)
-typealias LoginAccessTokenError = ((_ errorMessage: String) -> Void)
+typealias LoginAccessTokenError = ((_ errorMessage: ConnectorError) -> Void)
 
 protocol LoginAccessTokenWorkerProtocol {
     func post(aesCryptoEncrypted: String, successCompletion: @escaping LoginAccessTokenSuccess, errorCompletion: @escaping LoginAccessTokenError)
@@ -24,12 +24,12 @@ class LoginAccessTokenWorker: NSObject, LoginAccessTokenWorkerProtocol {
     func post(aesCryptoEncrypted: String, successCompletion: @escaping LoginAccessTokenSuccess, errorCompletion: @escaping LoginAccessTokenError) {
         JEWConnector.connector.request(withRoute: "/access-token", method: .post, parameters: HTTPRequest(data: aesCryptoEncrypted), responseClass: HTTPResponse<AccessTokenModel>.self, successCompletion: { (decodable) in
             guard let responsePublicKey = decodable as? HTTPResponse<AccessTokenModel> else {
-                errorCompletion("Tente novamente mais tarde!")
+                errorCompletion(ConnectorError.handleError(error: ConnectorError.customError()))
                 return
             }
             successCompletion(responsePublicKey)
         }) { (error) in
-            
+            errorCompletion(error)
         }
     }
 

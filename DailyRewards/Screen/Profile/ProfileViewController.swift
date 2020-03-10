@@ -234,7 +234,7 @@ extension ProfileViewController: ProfileViewControllerProtocol {
     }
     
     func displaySignOut() {
-        router.setupLoginViewController()
+        DailyRewardsRouter.setupLoginViewController()
     }
     
     func displayVote(index: Int) {
