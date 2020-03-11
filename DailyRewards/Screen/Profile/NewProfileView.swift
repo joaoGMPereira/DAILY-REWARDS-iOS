@@ -10,7 +10,7 @@ import SwiftUI
 import JewFeatures
 
 enum TypeSelected {
-    case touchID
+    case authentication
     case notification
     case vote
     case undefined
@@ -145,7 +145,7 @@ struct NewProfileView: View {
         
         switch self.typeSelected {
             
-        case .touchID:
+        case .authentication:
             return ActionSheet(title: Text(JEWConstants.Default.title.rawValue), message: Text(JEWConstants.EnableBiometricViewController.biometricMessageType()), buttons: [.destructive(Text("Cancelar"), action: {
                 self.switchTouchID.toggle()
             }), .default(Text("Confirmar"), action: {
@@ -208,7 +208,7 @@ extension NewProfileView: NewProfileViewControllerDelegate {
     }
     
     func displayBiometricOn() {
-        self.typeSelected = .touchID
+        self.typeSelected = .authentication
         self.showSheet = true
     }
     

@@ -15,6 +15,7 @@ protocol NewLoginViewControllerDelegate {
 }
 
 protocol NewLoginViewControllerProtocol {
+    func displayLoginFirebase()
     func displayLogin(user: JEWUserModel)
     func displayLogin(error: String)
 }
@@ -35,21 +36,24 @@ class NewLoginViewController: NSObject {
         let presenter = LoginPresenter()
         presenter.viewController = self
         interactor.presenter = presenter
-        interactor.setupSignIn()
+        interactor.setupSignInFirebase()
         
     }
 }
 
 
 extension NewLoginViewController: NewLoginViewControllerProtocol {
+    func displayLoginFirebase() {
+        askForBiometric()
+    }
+    
     func displayLogin(user: JEWUserModel) {
         DailyRewardsRouter.setupChallengeViewController()
-       // askForBiometric()
     }
     
     func askForBiometric() {
         JEWBiometricsChallenge.checkLoggedUser(keychainKey: JEWConstants.LoginKeyChainConstants.hasEnableBiometricAuthentication.rawValue, successChallenge: {
-            DailyRewardsRouter.setupChallengeViewController()
+            self.interactor?.setupSignInBackend()
         }) { (type) in
             switch type {
             case .default:

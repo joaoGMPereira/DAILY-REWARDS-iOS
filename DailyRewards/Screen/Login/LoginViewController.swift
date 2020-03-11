@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
         let presenter = LoginPresenter()
         //presenter.viewController = self
         interactor.presenter = presenter
-        interactor.setupSignIn()
+        interactor.setupSignInFirebase()
     }
     
     //MARK: View lifecycle

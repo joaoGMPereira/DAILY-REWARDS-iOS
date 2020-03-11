@@ -11,7 +11,8 @@ import JewFeatures
 import SwiftyRSA
 
 protocol LoginInteractorProtocol {
-    func setupSignIn()
+    func setupSignInFirebase()
+    func setupSignInBackend()
 }
 
 class LoginInteractor: LoginInteractorProtocol {
@@ -20,47 +21,51 @@ class LoginInteractor: LoginInteractorProtocol {
     var workerPublicKey: LoginPublicKeyWorkerProtocol? = LoginPublicKeyWorker()
     var workerAccessToken: LoginAccessTokenWorkerProtocol? = LoginAccessTokenWorker()
     var workerSignIn: LoginSignInWorkerProtocol? = LoginSignInWorker()
-    func setupSignIn() {
+    func setupSignInFirebase() {
         GIDSignIn.sharedInstance()?.delegate = workerFirebase as? GIDSignInDelegate
-        getFirebase(userCompletion: { (user) in
-            self.authentication()
+        getFirebase(userCompletion: {
+            self.presenter?.presentLoginFirebase()
         }) { (error) in
             self.presenter?.presentLogin(error: error)
         }
     }
     
-    private func getFirebase(userCompletion: @escaping (JEWUserModel) -> (), errorCompletion: @escaping (ConnectorError) -> ()) {
-        savedFirebaseUser(userCompletion: { (user) in
-            userCompletion(user)
+    private func getFirebase(userCompletion: @escaping () -> (), errorCompletion: @escaping (ConnectorError) -> ()) {
+        savedFirebaseUser(userCompletion: {
+            userCompletion()
         }) { (error) in
             errorCompletion(error)
         }
-        getServerFirebaseUser(userCompletion: { (user) in
-            userCompletion(user)
+        getServerFirebaseUser(userCompletion: {
+            userCompletion()
         }) { (error) in
             errorCompletion(error)
         }
     }
     
-    private func savedFirebaseUser(userCompletion: @escaping (JEWUserModel) -> (), errorCompletion: @escaping (ConnectorError) -> ()) {
+    private func savedFirebaseUser(userCompletion: @escaping () -> (), errorCompletion: @escaping (ConnectorError) -> ()) {
         let currentUser = Auth.auth().currentUser
         if(currentUser != nil) {
             workerFirebase?.create(user: currentUser, success: { (user) in
                 JEWSession.session.user = user
-                userCompletion(user)
+                userCompletion()
             }, error: { (error) in
                 errorCompletion(error)
             })
         }
     }
     
-    private func getServerFirebaseUser(userCompletion: @escaping (JEWUserModel) -> (), errorCompletion: @escaping (ConnectorError) -> ()) {
+    private func getServerFirebaseUser(userCompletion: @escaping () -> (), errorCompletion: @escaping (ConnectorError) -> ()) {
         workerFirebase?.successCallback = { (user) in
-            userCompletion(user)
+            userCompletion()
         }
         workerFirebase?.errorCallback = { (error) in
             errorCompletion(error)
         }
+    }
+    
+    func setupSignInBackend() {
+        self.authentication()
     }
     
     private func authentication() {
