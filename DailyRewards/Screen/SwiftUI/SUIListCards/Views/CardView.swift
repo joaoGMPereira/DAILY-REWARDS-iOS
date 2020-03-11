@@ -18,9 +18,9 @@ struct CardView: View {
                 Group {
                     Spacer()
                     HStack(alignment: .center) {
-                        self.topLeftImage(for: geometry, isLoading: self.card.isLoading)
+                        self.topLeftImage(for: geometry, isLoading: self.card.state)
                         Spacer()
-                        self.topRightImageWithLoading(for: geometry, isLoading: self.card.isLoading).padding()
+                        self.topRightImageWithLoading(for: geometry, isLoading: self.card.state).padding()
                         
                     }.padding(.horizontal)
                     Spacer()
@@ -107,7 +107,7 @@ extension CardView {
     }
     
     var title: some View {
-        SUIJewGenericView(viewState: self.card.isLoading) {
+        SUIJewGenericView(viewState: self.card.state) {
             Text(self.card.title)
                 .foregroundColor(self.card.type.highlightedColor)
             .font(.system(size: 23, weight: .medium))
@@ -115,7 +115,7 @@ extension CardView {
     }
     
     var description: some View {
-        SUIJewGenericView(viewState: self.card.isLoading) {
+        SUIJewGenericView(viewState: self.card.state) {
             VStack(alignment: .center, spacing: 3) {
                 Group {
                     Text(self.card._description).font(.system(size: 15))
@@ -125,7 +125,7 @@ extension CardView {
     }
     
     var status: some View {
-        SUIJewGenericView(viewState: self.card.isLoading) {
+        SUIJewGenericView(viewState: self.card.state) {
             Text(self.card.type.statusText)
                 .foregroundColor(self.card.type.highlightedColor)
                 .minimumScaleFactor(2)

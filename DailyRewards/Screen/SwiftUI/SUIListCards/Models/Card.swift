@@ -88,15 +88,15 @@ class Card: ObservableObject, Equatable, Identifiable {
     }
     var isIndividual: Bool = true
     var isAddCard: Bool = false
-    @Published var isLoading: ViewState = .loaded
+    @Published var state: ViewState = .loaded
     
-    init(title: String, description: String, type: CardType, leftImageName: String, isIndividual: Bool = true, isAddCard: Bool = false, isLoading: ViewState = .loaded) {
+    init(title: String, description: String, type: CardType, leftImageName: String, isIndividual: Bool = true, isAddCard: Bool = false, state: ViewState = .loaded) {
         self.title = title
         self._description = description
         self.type = type
         self.leftImageName = leftImageName
         self.isIndividual = isIndividual
         self.isAddCard = isAddCard
-        self.isLoading = isLoading
+        self.state = state
     }
 }

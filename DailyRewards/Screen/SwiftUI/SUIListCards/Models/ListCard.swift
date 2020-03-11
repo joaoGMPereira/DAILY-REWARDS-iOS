@@ -11,7 +11,14 @@ import Foundation
 class ListCard: ObservableObject {
     @Published var cards = [Card]()
     @Published var limitedCards = [Card]()
-    init(cards: [Card], showLimit: Int? = nil) {
+    @Published var state = ViewState.loaded {
+        didSet {
+            limitedCards.forEach { (card) in
+                card.state = state
+            }
+        }
+    }
+    init(cards: [Card], showLimit: Int? = nil, state: ViewState = .loaded) {
         let cardsCount = cards.count
         var minimumLimitedCardsIndex = 0
         if let showLimit = showLimit {
@@ -20,8 +27,15 @@ class ListCard: ObservableObject {
                 minimumLimitedCardsIndex = 0
             }
         }
-        self.limitedCards = cardNew + ListCard.setupLoadingInFirstCard(cards: Array(cards.reversed()[minimumLimitedCardsIndex ..< cardsCount]))
-        self.cards = ListCard.setupLoadingInFirstCard(cards: Array(cards.reversed()[0 ..< minimumLimitedCardsIndex]))
+        self.state = state
+        let sortedLimitedCards = Array(cards.reversed()[minimumLimitedCardsIndex ..< cardsCount])
+        self.cards = Array(cards.reversed()[0 ..< minimumLimitedCardsIndex])
+        self.limitedCards = cardNew
+        if state == .loading {
+            self.limitedCards = limitedCards + ListCard.setupLoadingInFirstCard(cards: sortedLimitedCards)
+            return
+        }
+        self.limitedCards = limitedCards + sortedLimitedCards
         
     }
     
@@ -56,7 +70,7 @@ class ListCard: ObservableObject {
     static func setupLoadingInFirstCard(cards: [Card]) -> [Card] {
            var updatedCards = [Card]()
            for (index, card) in cards.enumerated() {
-               card.isLoading = index == cards.count - 1 ? .loading : .loaded
+               card.state = index == cards.count - 1 ? .loading : .loaded
                updatedCards.append(card)
            }
            return updatedCards

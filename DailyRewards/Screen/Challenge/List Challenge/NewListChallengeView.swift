@@ -18,6 +18,7 @@ struct NewListChallengeView: View {
     @State var expandableIsOpened: Bool = false
     @State var showProfile: Bool = false
     @State var controller: NewListChallengeViewController?
+    @State var state: ViewState = .loading
     var cardView = ListCardsView()
     var router = DailyRewardsRouter()
     @ObservedObject var model = MyModel()
@@ -82,17 +83,21 @@ struct NewListChallengeView: View {
     
     func getCardList() -> ListCard {
         if selectedIndex == 0 {
-            return ListCard(cards: cards, showLimit: 4)
+            return ListCard(cards: cards, showLimit: 4, state: state)
         } else if selectedIndex == 1 {
-            return ListCard(cards: cards.filter{$0.isIndividual == true}, showLimit: 4)
+            return ListCard(cards: cards.filter{$0.isIndividual == true}, showLimit: 4, state: state)
         }
-        return ListCard(cards: cards.filter{$0.isIndividual == false}, showLimit: 4)
+        return ListCard(cards: cards.filter{$0.isIndividual == false}, showLimit: 4, state: state)
     }
 }
 
 extension NewListChallengeView: NewListChallengeViewControllerDelegate {
     func displayProfile(image: UIImage) {
         self.image = image
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.cardView.viewModel.list.state = .loaded
+            }
+        
     }
     
     func displayProfile(name: String) {

@@ -61,7 +61,7 @@ struct ListCardsView: View {
                                 self.didTap(card: card)
                             }
                         .transition(self.viewModel.isDraggingDown ? .moveUpWardsWhileFadingIn :.moveDownWardsWhileFadingIn)
-                            .animation(Animation.easeOut.delay(self.transitionDelay(card: card)))
+                        .animation(Animation.easeOut.delay(self.viewModel.list.state == .loaded ? self.transitionDelay(card: card) : 0))
                     }.onAppear {
                         self.shouldDelay = false
                     }
@@ -85,10 +85,10 @@ extension ListCardsView {
         if let addCard = changeableList.limitedCards.last, addCard.isAddCard == true, addCard != card {
             addCardArray.append(addCard)
             let newCards = addCardArray + changeableList.limitedCards.dropLast().filter { $0 != card } + [card]
-            changeableList.limitedCards = ListCard.setupLoadingInFirstCard(cards: newCards)
+            changeableList.limitedCards = newCards
         } else {
             let newCards = changeableList.limitedCards.filter { $0 != card } + [card]
-            changeableList.limitedCards = ListCard.setupLoadingInFirstCard(cards: newCards)
+            changeableList.limitedCards = newCards
         }
         self.viewModel.list = changeableList
     }
@@ -126,11 +126,11 @@ extension ListCardsView {
             if numberLimitedCards > 1 {
             let newLimitedCards = updateLimitedCardsAfterTransaction(draggedCard: card)
             updateAllCardsAfterTransaction(draggedCard: card)
-                return ListCard.setupLoadingInFirstCard(cards: newLimitedCards)
+                return newLimitedCards
             }
-            return ListCard.setupLoadingInFirstCard(cards: viewModel.list.limitedCards)
+            return viewModel.list.limitedCards
         }
-        return ListCard.setupLoadingInFirstCard(cards: viewModel.list.limitedCards)
+        return viewModel.list.limitedCards
     }
     
     private func updateLimitedCardsAfterTransaction(draggedCard card: Card) -> [Card] {
