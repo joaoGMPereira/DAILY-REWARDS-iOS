@@ -95,7 +95,8 @@ extension NewListChallengeView: NewListChallengeViewControllerDelegate {
     func displayProfile(image: UIImage) {
         self.image = image
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.cardView.viewModel.list.state = .loaded
+            self.state = .loaded
+            self.cardView.viewModel.list.state = self.state
             }
         
     }

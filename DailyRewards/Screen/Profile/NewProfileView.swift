@@ -190,7 +190,8 @@ extension NewProfileView: NewProfileViewControllerDelegate {
     }
     
     func displaySignOut() {
-        
+        JEWKeyChainWrapper.clear()
+        DailyRewardsRouter.setupLoginViewController()
     }
     
     func displayVote(index: Int) {
