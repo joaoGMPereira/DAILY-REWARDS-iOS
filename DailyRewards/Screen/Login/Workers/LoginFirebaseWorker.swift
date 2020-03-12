@@ -23,11 +23,12 @@ protocol LoginFirebaseWorkerProtocol {
 class LoginFirebaseWorker: NSObject, LoginFirebaseWorkerProtocol, GIDSignInDelegate {
     var successCallback: LoginFirebaseSuccess?
     var errorCallback: LoginFirebaseError?
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if !shouldShowError(error: error) {
             guard let idToken = user.authentication.idToken else {
                 return
-            } 
+            }
             guard let accessToken = user.authentication.accessToken else {return}
             let credentials = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
             

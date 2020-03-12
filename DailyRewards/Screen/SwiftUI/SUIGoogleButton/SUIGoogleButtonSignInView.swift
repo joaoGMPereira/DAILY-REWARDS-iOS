@@ -24,9 +24,31 @@ struct SUIGoogleButtonSignInView: UIViewRepresentable {
             signInButton.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
         return view
-     }
-     
+    }
+    
+    func show(animated: Bool = true) {
+        if animated {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.signInButton.isHidden = false
+                self.signInButton.alpha = 1
+            })
+            return
+        }
+        signInButton.isHidden = false
+    }
+    
+    func hide(animated: Bool = true) {
+        if animated {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.signInButton.isHidden = true
+                self.signInButton.alpha = 1
+            })
+            return
+        }
+        signInButton.isHidden = true
+    }
+    
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<SUIGoogleButtonSignInView>) {
-     
-     }
+        
+    }
 }

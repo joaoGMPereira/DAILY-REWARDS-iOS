@@ -15,7 +15,8 @@ struct NewLoginView: View, NewLoginViewControllerDelegate {
     //MARK: Properties
     @State var controller: NewLoginViewController?
     var popupMessage = SUIJEWPopupMessage()
-    
+    var lottieView = SUILottieView(animationFileName: "IconLottie")
+    var signInButton = SUIGoogleButtonSignInView()
     var body: some View {
         ZStack {
             Color.init(UIColor.JEWBackground())
@@ -23,17 +24,27 @@ struct NewLoginView: View, NewLoginViewControllerDelegate {
             VStack(alignment: .center) {
                 Text("Daily Rewards").foregroundColor(Color.init(UIColor.JEWDefault())).font(.largeTitle).padding(.bottom, 64.0)
             
-                SUILottieView(animationFileName: "IconLottie").frame(width: 150, height: 150, alignment: .center)
-                SUIGoogleButtonSignInView().frame(width: 240, height: 50, alignment: .center).padding(.top, 64)
+                lottieView.frame(width: 150, height: 150, alignment: .center)
+                signInButton.frame(width: 240, height: 50, alignment: .center).padding(.top, 64)
             }.padding(.bottom, 100.0)
              popupMessage
         }.onAppear {
-            self.controller = NewLoginViewController()
-            self.controller?.delegate = self
+            self.showLoading()
+            self.controller = NewLoginViewController(with: self)
             self.popupMessage.popupMessageObservable.didDismiss = {
 
             }
         }
+    }
+    
+    func showLoading() {
+        self.lottieView.startAnimation()
+        self.signInButton.hide()
+    }
+    
+    func hideLoading() {
+        lottieView.stopAnimation()
+        signInButton.show()
     }
     
     func showError(withTextMessage message:String, title:String, popupType: JEWPopupMessageType, shouldHideAutomatically: Bool) {

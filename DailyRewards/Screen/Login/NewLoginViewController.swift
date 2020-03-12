@@ -11,10 +11,14 @@ import JewFeatures
 import SwiftUI
 
 protocol NewLoginViewControllerDelegate {
+    func showLoading()
+    func hideLoading()
     func showError(withTextMessage message:String, title:String, popupType: JEWPopupMessageType, shouldHideAutomatically: Bool)
 }
 
 protocol NewLoginViewControllerProtocol {
+    func displayShowLoading()
+    func displayHideLoading()
     func displayLoginFirebase()
     func displayLogin(user: JEWUserModel)
     func displayLogin(error: String)
@@ -25,7 +29,8 @@ class NewLoginViewController: NSObject {
     var interactor: LoginInteractorProtocol?
     let router: DailyRewardsRouterProtocol = DailyRewardsRouter()
     
-    override init() {
+    init(with delegate: NewLoginViewControllerDelegate) {
+        self.delegate = delegate
         super.init()
         setup()
     }
@@ -43,6 +48,15 @@ class NewLoginViewController: NSObject {
 
 
 extension NewLoginViewController: NewLoginViewControllerProtocol {
+    
+    func displayShowLoading() {
+        delegate?.showLoading()
+    }
+    
+    func displayHideLoading() {
+        delegate?.hideLoading()
+    }
+    
     func displayLoginFirebase() {
         askForBiometric()
     }

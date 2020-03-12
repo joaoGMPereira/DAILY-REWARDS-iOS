@@ -26,6 +26,7 @@ class LoginInteractor: LoginInteractorProtocol {
         getFirebase(userCompletion: {
             self.presenter?.presentLoginFirebase()
         }) { (error) in
+            self.presenter?.presentHideLoading()
             self.presenter?.presentLogin(error: error)
         }
     }
@@ -37,6 +38,7 @@ class LoginInteractor: LoginInteractorProtocol {
             errorCompletion(error)
         }
         getServerFirebaseUser(userCompletion: {
+            self.presenter?.presentShowLoading()
             userCompletion()
         }) { (error) in
             errorCompletion(error)
@@ -46,17 +48,21 @@ class LoginInteractor: LoginInteractorProtocol {
     private func savedFirebaseUser(userCompletion: @escaping () -> (), errorCompletion: @escaping (ConnectorError) -> ()) {
         let currentUser = Auth.auth().currentUser
         if(currentUser != nil) {
+            presenter?.presentShowLoading()
             workerFirebase?.create(user: currentUser, success: { (user) in
                 JEWSession.session.user = user
                 userCompletion()
             }, error: { (error) in
                 errorCompletion(error)
             })
+            return
         }
+        presenter?.presentHideLoading()
     }
     
     private func getServerFirebaseUser(userCompletion: @escaping () -> (), errorCompletion: @escaping (ConnectorError) -> ()) {
         workerFirebase?.successCallback = { (user) in
+            JEWSession.session.user = user
             userCompletion()
         }
         workerFirebase?.errorCallback = { (error) in
@@ -72,6 +78,7 @@ class LoginInteractor: LoginInteractorProtocol {
         getPublicKey(successCompletion: {
             self.getAccessToken()
         }) { (error) in
+            self.presenter?.presentHideLoading()
             self.presenter?.presentLogin(error: error)
         }
     }
@@ -81,6 +88,7 @@ class LoginInteractor: LoginInteractorProtocol {
             JEWSession.session.services.publicKey = responsePublicKey.data.publicKey
             self.getAccessToken()
         }, errorCompletion: { (error) in
+            self.presenter?.presentHideLoading()
             self.presenter?.presentLogin(error: error)
         })
     }
@@ -92,6 +100,7 @@ class LoginInteractor: LoginInteractorProtocol {
                     self.signIn(accessToken: accessTokenString)
                 }
             }, errorCompletion: { (error) in
+                self.presenter?.presentHideLoading()
                 self.presenter?.presentLogin(error: error)
             })
         }
@@ -103,12 +112,14 @@ class LoginInteractor: LoginInteractorProtocol {
         if let signInData = getData(signIn: signIn), let encryptedSignInString = AES256Crypter.crypto.encrypt(signInData) {
             workerSignIn?.post(accessToken: accessToken, signInEncrypted: encryptedSignInString, successCompletion: { (sessionToken) in
                 guard let user = JEWSession.session.user else {
+                    self.presenter?.presentHideLoading()
                     self.presenter?.presentLogin(error: (ConnectorError.handleError(error: ConnectorError.customError())))
                     return
                 }
                 JEWSession.session.services.token = sessionToken.data.sessionToken
                 self.presenter?.presentLogin(user: user)
             }, errorCompletion: { (error) in
+                self.presenter?.presentHideLoading()
                 self.presenter?.presentLogin(error: error)
             })
         }

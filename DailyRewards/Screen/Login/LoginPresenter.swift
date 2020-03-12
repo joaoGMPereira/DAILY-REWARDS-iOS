@@ -11,6 +11,8 @@ import JewFeatures
 
 protocol LoginPresenterProtocol {
     func presentLogin(user: JEWUserModel)
+    func presentShowLoading()
+    func presentHideLoading()
     func presentLoginFirebase()
     func presentLogin(error: ConnectorError)
 }
@@ -18,6 +20,14 @@ protocol LoginPresenterProtocol {
 class LoginPresenter: LoginPresenterProtocol {
     
     var viewController: NewLoginViewControllerProtocol?
+    
+    func presentShowLoading() {
+        viewController?.displayShowLoading()
+    }
+    
+    func presentHideLoading() {
+        viewController?.displayHideLoading()
+    }
     
     func presentLoginFirebase() {
         viewController?.displayLoginFirebase()

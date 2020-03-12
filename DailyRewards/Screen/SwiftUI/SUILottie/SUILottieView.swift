@@ -32,6 +32,15 @@ struct SUILottieView: UIViewRepresentable {
         return view
     }
     
+    func startAnimation() {
+        animationView.loopMode = .loop
+        animationView.play()
+    }
+    
+    func stopAnimation() {
+        animationView.play(fromFrame: AnimationFrameTime(89), toFrame: AnimationFrameTime(89), loopMode: .playOnce, completion: nil)
+    }
+    
    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<SUILottieView>) {
     
     }
