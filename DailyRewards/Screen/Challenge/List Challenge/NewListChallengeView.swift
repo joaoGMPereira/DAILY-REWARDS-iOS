@@ -92,6 +92,7 @@ struct NewListChallengeView: View {
 }
 
 extension NewListChallengeView: NewListChallengeViewControllerDelegate {
+    
     func displayProfile(image: UIImage) {
         self.image = image
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -99,6 +100,10 @@ extension NewListChallengeView: NewListChallengeViewControllerDelegate {
             self.cardView.viewModel.list.state = self.state
             }
         
+    }
+    
+    func displayTasks() {
+           
     }
     
     func displayProfile(name: String) {

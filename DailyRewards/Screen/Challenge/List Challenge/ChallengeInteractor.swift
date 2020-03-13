@@ -11,7 +11,7 @@ import FirebaseAuth
 protocol ChallengeInteractorProtocol {
     func downloadProfileImage()
     func setUserName()
-    func setMyChallenges()
+    func setTasks()
     func selectedCell(cellType: ChallengeCellType, challenge: Challenge?)
     var myChallenges: [Challenge] {get set}
     var groupChallenges: [Challenge] {get set}
@@ -24,10 +24,10 @@ class ChallengeInteractor: ChallengeInteractorProtocol {
     var myChallenges: [Challenge] = []
     var groupChallenges: [Challenge] = []
     func downloadProfileImage() {
-        worker?.downloadImage(success: { (image) in
+        worker?.downloadImage(successCompletion: { (image) in
             JEWSession.session.user?.photoImage = image
             self.presenter?.presentProfile(image: image)
-        }, failure: { (error) in
+        }, errorCompletion: { (error) in
             self.presenter?.presentProfile(error: error)
         })
     }
@@ -36,9 +36,12 @@ class ChallengeInteractor: ChallengeInteractorProtocol {
         presenter?.presentProfile(name: ChallengeConstants.objectives.rawValue)
     }
     
-    func setMyChallenges() {
-        myChallenges = ChallengeInteractor.challenges()
-        groupChallenges = ChallengeInteractor.groupsChallenges()
+    func setTasks() {
+        worker?.getTasks(successCompletion: {
+            
+        }, errorCompletion: { (error) in
+            
+        })
     }
     
     func selectedCell(cellType: ChallengeCellType, challenge: Challenge?) {
@@ -54,26 +57,26 @@ class ChallengeInteractor: ChallengeInteractorProtocol {
         }
     }
     
-    static func challenges() -> [Challenge] {
-        let challengeObject1 = Challenge.init(title: "Testando objects 1", description: "Estou testa teste", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .Canceled)
-        let challengeObject2 = Challenge.init(title: "Testando objects 2", description: "Estou testando objects 2 com mais 2 linha testandooooo", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .Completed)
-        let challengeObject3 = Challenge.init(title: "Testando objects 3", description: "Estou testando objects 3 com mais 3 linha teste teste teste teste teste teste", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .InProgress)
-        let challengeObject4 = Challenge.init(title: "Testando objects 4", description: "Estou testando objects 1 com mais 1 linha", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .InProgress)
-        let challengeObject5 = Challenge.init(title: "Testando objects 5", description: "Estou testando objects 3 com mais 3 linha teste teste teste teste teste teste", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .Completed)
-        let challengeObject6 = Challenge.init(title: "", description: "", imageURLString: "", cellType: .NewChallenge, challengeStatus: .Canceled)
-        
-        return [challengeObject1,challengeObject2,challengeObject3,challengeObject4,challengeObject5,challengeObject6]
-    }
-    
-    static func groupsChallenges() -> [Challenge] {
-        let challengeObject1 = Challenge.init(title: "Testando objects 1 Groups", description: "Estou testa teste", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .Canceled)
-        let challengeObject2 = Challenge.init(title: "Testando objects 2 Groups", description: "Estou testando objects 2 com mais 2 linha testandooooo", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .Completed)
-        let challengeObject3 = Challenge.init(title: "Testando objects 3 Groups", description: "Estou testando objects 3 com mais 3 linha teste teste teste teste teste teste", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .InProgress)
-        let challengeObject4 = Challenge.init(title: "Testando objects 4 Groups", description: "Estou testando objects 1 com mais 1 linha", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .InProgress)
-        let challengeObject5 = Challenge.init(title: "Testando objects 5 Groups", description: "Estou testando objects 3 com mais 3 linha teste teste teste teste teste teste", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .Completed)
-        let challengeObject6 = Challenge.init(title: "", description: "", imageURLString: "", cellType: .NewChallenge, challengeStatus: .Canceled)
-        
-        return [challengeObject1,challengeObject2,challengeObject3,challengeObject4,challengeObject5,challengeObject6]
-    }
+//    static func challenges() -> [Challenge] {
+//        let challengeObject1 = Challenge.init(title: "Testando objects 1", description: "Estou testa teste", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .Canceled)
+//        let challengeObject2 = Challenge.init(title: "Testando objects 2", description: "Estou testando objects 2 com mais 2 linha testandooooo", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .Completed)
+//        let challengeObject3 = Challenge.init(title: "Testando objects 3", description: "Estou testando objects 3 com mais 3 linha teste teste teste teste teste teste", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .InProgress)
+//        let challengeObject4 = Challenge.init(title: "Testando objects 4", description: "Estou testando objects 1 com mais 1 linha", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .InProgress)
+//        let challengeObject5 = Challenge.init(title: "Testando objects 5", description: "Estou testando objects 3 com mais 3 linha teste teste teste teste teste teste", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .Completed)
+//        let challengeObject6 = Challenge.init(title: "", description: "", imageURLString: "", cellType: .NewChallenge, challengeStatus: .Canceled)
+//
+//        return [challengeObject1,challengeObject2,challengeObject3,challengeObject4,challengeObject5,challengeObject6]
+//    }
+//
+//    static func groupsChallenges() -> [Challenge] {
+//        let challengeObject1 = Challenge.init(title: "Testando objects 1 Groups", description: "Estou testa teste", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .Canceled)
+//        let challengeObject2 = Challenge.init(title: "Testando objects 2 Groups", description: "Estou testando objects 2 com mais 2 linha testandooooo", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .Completed)
+//        let challengeObject3 = Challenge.init(title: "Testando objects 3 Groups", description: "Estou testando objects 3 com mais 3 linha teste teste teste teste teste teste", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .InProgress)
+//        let challengeObject4 = Challenge.init(title: "Testando objects 4 Groups", description: "Estou testando objects 1 com mais 1 linha", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .InProgress)
+//        let challengeObject5 = Challenge.init(title: "Testando objects 5 Groups", description: "Estou testando objects 3 com mais 3 linha teste teste teste teste teste teste", imageURLString: Auth.auth().currentUser?.photoURL?.absoluteString ?? "", cellType: .Challenge, challengeStatus: .Completed)
+//        let challengeObject6 = Challenge.init(title: "", description: "", imageURLString: "", cellType: .NewChallenge, challengeStatus: .Canceled)
+//
+//        return [challengeObject1,challengeObject2,challengeObject3,challengeObject4,challengeObject5,challengeObject6]
+//    }
     
 }

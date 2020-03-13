@@ -9,25 +9,38 @@
 import Foundation
 import UIKit
 import JewFeatures
-typealias ChallengeSuccess = ((_ response: UIImage) -> Void)
-typealias ChallengeError = ((_ errorMessage: String) -> Void)
+typealias ChallengeTasksSuccess = (() -> ())
+typealias ChallengeTasksError = ((_ connectorError: ConnectorError) -> ())
+typealias ChallengeImageSuccess = ((_ response: UIImage) -> ())
+typealias ChallengeImageError = ((_ errorMessage: String) -> ())
 
 protocol ChallengeWorkerProtocol {
     
-    func downloadImage(success: @escaping ChallengeSuccess, failure: @escaping ChallengeError)
+    func downloadImage(successCompletion: @escaping ChallengeImageSuccess, errorCompletion: @escaping ChallengeImageError)
+    func getTasks(successCompletion: @escaping ChallengeTasksSuccess, errorCompletion: @escaping ChallengeTasksError)
 }
 
 class ChallengeWorker: NSObject, ChallengeWorkerProtocol {
-    
-    func downloadImage(success: @escaping ChallengeSuccess, failure: @escaping ChallengeError) {
+    func getTasks(successCompletion: @escaping ChallengeTasksSuccess, errorCompletion: @escaping ChallengeTasksError) {
+        JEWConnector.connector.request(withRoute: "/group", method: .get, responseClass: HTTPResponse<HTTPPublicKey>.self, successCompletion: { (decodable) in
+//            guard let responsePublicKey = decodable as? HTTPResponse<HTTPPublicKey> else {
+//                errorCompletion(ConnectorError.handleError(error: ConnectorError.customError()))
+//                return
+//            }
+            successCompletion()
+        }) { (error) in
+            errorCompletion(error)
+        }
+    }
+    func downloadImage(successCompletion: @escaping ChallengeImageSuccess, errorCompletion: @escaping ChallengeImageError) {
         if let photoURL = JEWSession.session.user?.photoURL {
             var photoUrlString = photoURL.absoluteString
             photoUrlString.append("?sz=200")
             if let bigPhotoUrl = URL(string: photoUrlString) {
                 bigPhotoUrl.downloadImage(success: { (image) in
-                    success(image)
+                    successCompletion(image)
                 }, failure: { (error) in
-                    failure(error)
+                    errorCompletion(error)
                 })
             }
         }

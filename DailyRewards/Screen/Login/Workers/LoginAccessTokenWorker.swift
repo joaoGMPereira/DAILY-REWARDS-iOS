@@ -23,11 +23,11 @@ struct AccessTokenModel: Codable {
 class LoginAccessTokenWorker: NSObject, LoginAccessTokenWorkerProtocol {
     func post(aesCryptoEncrypted: String, successCompletion: @escaping LoginAccessTokenSuccess, errorCompletion: @escaping LoginAccessTokenError) {
         JEWConnector.connector.request(withRoute: "/access-token", method: .post, parameters: HTTPRequest(data: aesCryptoEncrypted), responseClass: HTTPResponse<AccessTokenModel>.self, successCompletion: { (decodable) in
-            guard let responsePublicKey = decodable as? HTTPResponse<AccessTokenModel> else {
+            guard let responseAccessToken = decodable as? HTTPResponse<AccessTokenModel> else {
                 errorCompletion(ConnectorError.handleError(error: ConnectorError.customError()))
                 return
             }
-            successCompletion(responsePublicKey)
+            successCompletion(responseAccessToken)
         }) { (error) in
             errorCompletion(error)
         }

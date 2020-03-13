@@ -15,6 +15,7 @@ protocol NewListChallengeViewControllerDelegate {
     func displayProfile(error: String)
     func displayNew()
     func displayDetail(challenge: Challenge)
+    func displayTasks()
 }
 
 protocol NewListChallengeViewControllerProtocol: class {
@@ -43,6 +44,7 @@ class NewListChallengeViewController: NSObject {
         interactor.presenter = presenter
         interactor.downloadProfileImage()
         interactor.setUserName()
+        interactor.setTasks()
         
     }
 }

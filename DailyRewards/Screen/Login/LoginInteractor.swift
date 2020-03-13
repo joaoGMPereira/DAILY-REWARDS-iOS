@@ -116,7 +116,6 @@ class LoginInteractor: LoginInteractorProtocol {
                     self.presenter?.presentLogin(error: (ConnectorError.handleError(error: ConnectorError.customError())))
                     return
                 }
-                JEWSession.session.services.token = sessionToken.data.sessionToken
                 self.presenter?.presentLogin(user: user)
             }, errorCompletion: { (error) in
                 self.presenter?.presentHideLoading()

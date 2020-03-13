@@ -34,6 +34,7 @@ class LoginSignInWorker: NSObject, LoginSignInWorkerProtocol {
                 errorCompletion((ConnectorError.handleError(error: ConnectorError.customError())))
                 return
             }
+            JEWConnector.connector.sessionToken = sessionToken.data.sessionToken
             successCompletion(sessionToken)
         }) { (error) in
             errorCompletion(error)

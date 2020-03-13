@@ -150,7 +150,7 @@ class ChallengeViewController: UIViewController {
         groupsChallengesSelectedAnimationView = SelectedAnimationView(frame: .zero, superView: groupsChallengesScalingCarousel, parentView: view)
         let titleMyRewardsLabel = self.setupMyChallengesTitle()
         let titleGroupsChallegens = self.setupGroupsChallengesTitle()
-        interactor?.setMyChallenges()
+       // interactor?.setMyChallenges()
         setupMyChallengesCollectionView()
         setupGroupsChallengesCollectionView()
         scrollableStackView.delegate = self
@@ -203,7 +203,7 @@ class ChallengeViewController: UIViewController {
             scrollableStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             scrollableStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
             ])
-        self.interactor?.setMyChallenges()
+       // self.interactor?.setMyChallenges()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.myChallengesScalingCarousel.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
             self.myChallengesScalingCarousel.reloadData()
